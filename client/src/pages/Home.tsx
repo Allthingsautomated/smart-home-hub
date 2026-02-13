@@ -35,8 +35,10 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useState } from "react";
+import { useLocation } from "wouter";
 
 export default function Home() {
+  const [, navigate] = useLocation();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const testimonials = [
@@ -95,25 +97,34 @@ export default function Home() {
       <nav className="glass sticky top-0 z-50">
         <div className="container mx-auto py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+            <button
+              onClick={() => navigate("/")}
+              className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+            >
               <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                 <HomeIcon className="w-6 h-6 text-primary-foreground" />
               </div>
               <span className="text-xl font-bold">All Things Automated</span>
-            </div>
+            </button>
             <div className="hidden md:flex items-center space-x-6">
-              <a href="#services" className="hover:text-primary transition-colors">
+              <button
+                onClick={() => navigate("/services")}
+                className="hover:text-primary transition-colors"
+              >
                 Services
-              </a>
-              <a href="#about" className="hover:text-primary transition-colors">
+              </button>
+              <button
+                onClick={() => navigate("/about")}
+                className="hover:text-primary transition-colors"
+              >
                 About Us
-              </a>
-              <a href="#testimonials" className="hover:text-primary transition-colors">
-                Reviews
-              </a>
-              <a href="#contact" className="hover:text-primary transition-colors">
+              </button>
+              <button
+                onClick={() => navigate("/contact")}
+                className="hover:text-primary transition-colors"
+              >
                 Contact
-              </a>
+              </button>
               <Button className="rounded-full">Book Now</Button>
             </div>
           </div>
