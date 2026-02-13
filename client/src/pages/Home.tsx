@@ -101,9 +101,11 @@ export default function Home() {
               onClick={() => navigate("/")}
               className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
             >
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                <HomeIcon className="w-6 h-6 text-primary-foreground" />
-              </div>
+              <img
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/NFtgaObIakoZmJFV.png"
+                alt="All Things Automated Logo"
+                className="h-12 w-auto"
+              />
               <span className="text-xl font-bold">All Things Automated</span>
             </button>
             <div className="hidden md:flex items-center space-x-6">
@@ -757,9 +759,11 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                  <HomeIcon className="w-5 h-5 text-primary-foreground" />
-                </div>
+                <img
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/NFtgaObIakoZmJFV.png"
+                  alt="All Things Automated Logo"
+                  className="h-10 w-auto"
+                />
                 <span className="text-lg font-bold">All Things Automated</span>
               </div>
               <p className="text-sm opacity-80">
