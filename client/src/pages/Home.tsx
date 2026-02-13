@@ -1,26 +1,14 @@
 /*
-Design Philosophy: Premium Minimalism
-- Serif headings (Cormorant Garamond) for luxury feel
-- Minimal text, maximum impact
-- Generous whitespace and breathing room
-- Large, bold typography hierarchy
-- Clean layouts with strategic use of color
+Design Philosophy: Premium Minimalism + Bold Geometric
+- Cormorant Garamond serif for luxury headings
+- Bold, geometric design matching logo aesthetic
+- Strategic use of blue (#1E5BA8) and black
+- Clean, powerful typography hierarchy
+- Maximum impact with minimal text
 */
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Lightbulb,
   ShieldCheck,
@@ -38,17 +26,17 @@ export default function Home() {
 
   const testimonials = [
     {
-      text: "Transformed our home into an intelligent living space. The team was professional and the installation seamless.",
+      text: "Transformed our home into an intelligent living space. Professional installation and seamless integration.",
       author: "Sarah Johnson",
       role: "Homeowner",
     },
     {
-      text: "Saved us significantly on energy bills. Voice control integration works flawlessly with all our devices.",
+      text: "Saved us significantly on energy bills. Voice control works flawlessly with all our devices.",
       author: "Michael Chen",
       role: "Residential Client",
     },
     {
-      text: "Upgraded our entire office building. The security and energy management have been transformative for our business.",
+      text: "Upgraded our entire office building. Security and energy management have been transformative.",
       author: "Emily Rodriguez",
       role: "Business Owner",
     },
@@ -94,19 +82,21 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <button
               onClick={() => navigate("/")}
-              className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+              className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/NFtgaObIakoZmJFV.png"
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/LnTadohNeulVPyBf.png"
                 alt="All Things Automated Logo"
-                className="h-12 w-auto"
+                className="h-10 w-auto"
               />
-              <span className="text-xl font-bold">All Things Automated</span>
+              <span className="text-lg font-bold hidden sm:inline">
+                All Things Automated
+              </span>
             </button>
-            <div className="hidden md:flex items-center space-x-6">
+            <div className="hidden md:flex items-center space-x-8">
               <button
                 onClick={() => navigate("/")}
-                className="text-primary font-semibold"
+                className="text-primary font-semibold hover:opacity-80 transition-opacity"
               >
                 Home
               </button>
@@ -114,7 +104,7 @@ export default function Home() {
                 onClick={() => navigate("/about")}
                 className="hover:text-primary transition-colors"
               >
-                About Us
+                About
               </button>
               <button
                 onClick={() => navigate("/services")}
@@ -136,105 +126,120 @@ export default function Home() {
 
       {/* Hero Section */}
       <section
-        className="relative py-40 bg-cover bg-center"
+        className="relative py-48 bg-cover bg-center overflow-hidden"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80')",
+            "url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80')",
         }}
       >
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30"></div>
         <div className="container relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-7xl font-bold text-white mb-8 leading-tight">
-              Step Into The World Of Smart Homes With Ease
+          <div className="max-w-4xl">
+            <div className="mb-8">
+              <span className="inline-block px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-semibold backdrop-blur-sm">
+                Smart Home Automation
+              </span>
+            </div>
+            <h1 className="text-7xl md:text-8xl font-bold text-white mb-8 leading-tight">
+              Step Into The Future
             </h1>
-            <p className="text-2xl text-white/90 mb-12 leading-relaxed">
-              Intelligent automation for modern living.
+            <p className="text-2xl text-white/90 mb-12 leading-relaxed max-w-2xl">
+              Intelligent automation for modern living. Transform your home with cutting-edge smart technology.
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <Button
                 size="lg"
-                className="rounded-full px-8 py-6 text-lg"
+                className="rounded-full px-8 py-6 text-lg font-semibold"
                 onClick={() => navigate("/contact")}
               >
-                Book a Consultation
+                Schedule Consultation
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-full px-8 py-6 text-lg bg-white/10 border-white text-white hover:bg-white/20"
+                className="rounded-full px-8 py-6 text-lg font-semibold bg-white/10 border-white text-white hover:bg-white/20"
                 onClick={() => navigate("/services")}
               >
-                Learn More
+                Explore Services
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Preview */}
-      <section className="py-40 bg-background">
+      {/* Services Section */}
+      <section className="py-48 bg-background">
         <div className="container">
-          <h2 className="text-6xl font-bold mb-20 text-center">
-            Our Services
-          </h2>
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Lightbulb className="w-10 h-10 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">Smart Lighting</h3>
-              <p className="text-muted-foreground">
-                Automated lighting control and ambiance.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <ShieldCheck className="w-10 h-10 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">Home Security</h3>
-              <p className="text-muted-foreground">
-                Advanced security and monitoring systems.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Thermometer className="w-10 h-10 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">Climate Control</h3>
-              <p className="text-muted-foreground">
-                Intelligent temperature and humidity management.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Mic className="w-10 h-10 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">Voice Control</h3>
-              <p className="text-muted-foreground">
-                Seamless voice integration and automation.
-              </p>
-            </div>
+          <div className="mb-20">
+            <h2 className="text-6xl md:text-7xl font-bold mb-6">
+              Our Services
+            </h2>
+            <div className="w-20 h-1 bg-primary rounded-full"></div>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: Lightbulb,
+                title: "Smart Lighting",
+                desc: "Automated lighting control and ambiance.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Home Security",
+                desc: "Advanced security and monitoring systems.",
+              },
+              {
+                icon: Thermometer,
+                title: "Climate Control",
+                desc: "Intelligent temperature management.",
+              },
+              {
+                icon: Mic,
+                title: "Voice Control",
+                desc: "Seamless voice integration.",
+              },
+            ].map((service, idx) => {
+              const IconComponent = service.icon;
+              return (
+                <div
+                  key={idx}
+                  className="group p-8 rounded-2xl bg-white border border-border hover:border-primary hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                    <IconComponent className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground">{service.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+          <div className="mt-16 text-center">
+            <Button
+              size="lg"
+              variant="outline"
+              className="rounded-full px-8 py-6 text-lg"
+              onClick={() => navigate("/services")}
+            >
+              View All Services
+            </Button>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-40 bg-primary text-primary-foreground">
+      <section className="py-48 bg-primary text-primary-foreground">
         <div className="container">
-          <h2 className="text-6xl font-bold mb-20 text-center">
+          <h2 className="text-6xl md:text-7xl font-bold mb-20 text-center">
             What Our Clients Say
           </h2>
           <div className="max-w-3xl mx-auto">
-            <div className="mb-12">
-              <p className="text-2xl mb-8 leading-relaxed">
+            <div className="mb-12 text-center">
+              <p className="text-2xl md:text-3xl mb-8 leading-relaxed italic">
                 "{testimonials[currentTestimonial].text}"
               </p>
               <div>
-                <p className="text-lg font-semibold">
+                <p className="text-xl font-semibold">
                   {testimonials[currentTestimonial].author}
                 </p>
                 <p className="opacity-80">
@@ -243,7 +248,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-6">
               <button
                 onClick={prevTestimonial}
                 className="p-3 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
@@ -262,30 +267,34 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-40 bg-background">
-        <div className="container text-center">
-          <h2 className="text-6xl font-bold mb-8">Ready to Begin?</h2>
-          <p className="text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Let's transform your home into an intelligent living space.
-          </p>
-          <Button
-            size="lg"
-            className="rounded-full px-8 py-6 text-lg"
-            onClick={() => navigate("/contact")}
-          >
-            Schedule a Consultation
-          </Button>
+      <section className="py-48 bg-background">
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-6xl md:text-7xl font-bold mb-8">
+              Ready to Transform Your Home?
+            </h2>
+            <p className="text-2xl text-muted-foreground mb-12">
+              Let's discuss how All Things Automated can create the perfect smart home solution for you.
+            </p>
+            <Button
+              size="lg"
+              className="rounded-full px-10 py-7 text-lg font-semibold"
+              onClick={() => navigate("/contact")}
+            >
+              Get Started Today
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-background py-16">
+      <footer className="bg-foreground text-background py-20">
         <div className="container">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
+          <div className="grid md:grid-cols-4 gap-12 mb-16">
             <div>
               <div className="flex items-center space-x-2 mb-6">
                 <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/NFtgaObIakoZmJFV.png"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/LnTadohNeulVPyBf.png"
                   alt="All Things Automated Logo"
                   className="h-10 w-auto"
                 />
@@ -298,11 +307,11 @@ export default function Home() {
 
             <div>
               <h4 className="font-semibold mb-4">Navigate</h4>
-              <ul className="space-y-2 text-sm opacity-80">
+              <ul className="space-y-3 text-sm opacity-80">
                 <li>
                   <button
                     onClick={() => navigate("/")}
-                    className="hover:opacity-100"
+                    className="hover:opacity-100 transition-opacity"
                   >
                     Home
                   </button>
@@ -310,7 +319,7 @@ export default function Home() {
                 <li>
                   <button
                     onClick={() => navigate("/about")}
-                    className="hover:opacity-100"
+                    className="hover:opacity-100 transition-opacity"
                   >
                     About
                   </button>
@@ -318,7 +327,7 @@ export default function Home() {
                 <li>
                   <button
                     onClick={() => navigate("/services")}
-                    className="hover:opacity-100"
+                    className="hover:opacity-100 transition-opacity"
                   >
                     Services
                   </button>
@@ -326,7 +335,7 @@ export default function Home() {
                 <li>
                   <button
                     onClick={() => navigate("/contact")}
-                    className="hover:opacity-100"
+                    className="hover:opacity-100 transition-opacity"
                   >
                     Contact
                   </button>
@@ -336,7 +345,7 @@ export default function Home() {
 
             <div>
               <h4 className="font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-sm opacity-80">
+              <ul className="space-y-3 text-sm opacity-80">
                 <li>Smart Lighting</li>
                 <li>Home Security</li>
                 <li>Climate Control</li>
@@ -346,7 +355,7 @@ export default function Home() {
 
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm opacity-80">
+              <ul className="space-y-3 text-sm opacity-80">
                 <li>(555) 123-4567</li>
                 <li>info@allthingsautomated.com</li>
                 <li>Available 24/7</li>

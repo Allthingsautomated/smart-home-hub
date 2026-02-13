@@ -66,7 +66,7 @@ export default function Contact() {
               className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
             >
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/NFtgaObIakoZmJFV.png"
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/LnTadohNeulVPyBf.png"
                 alt="All Things Automated Logo"
                 className="h-12 w-auto"
               />
@@ -281,7 +281,7 @@ export default function Contact() {
             <div>
               <div className="flex items-center space-x-2 mb-6">
                 <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/NFtgaObIakoZmJFV.png"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/LnTadohNeulVPyBf.png"
                   alt="All Things Automated Logo"
                   className="h-10 w-auto"
                 />
