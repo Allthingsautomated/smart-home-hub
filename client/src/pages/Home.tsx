@@ -1,6 +1,6 @@
 /*
 Design Philosophy: Soft Modernism with Organic Flow
-- Warm cream/sage/terracotta palette
+- Blue and black color scheme from All Things Automated logo
 - Rounded corners (16-24px) and soft shadows
 - Flowing sections with curved dividers
 - Generous whitespace and comfortable typography
@@ -99,7 +99,7 @@ export default function Home() {
               <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                 <HomeIcon className="w-6 h-6 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold">SmartHome Hub</span>
+              <span className="text-xl font-bold">All Things Automated</span>
             </div>
             <div className="hidden md:flex items-center space-x-6">
               <a href="#services" className="hover:text-primary transition-colors">
@@ -139,10 +139,10 @@ export default function Home() {
               <span className="text-sm font-medium">Licensed. Bonded. Insured.</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Transform Your Home with Intelligent Automation
+              Step Into The World Of Smart Homes With Ease
             </h1>
             <p className="text-lg md:text-xl mb-8 leading-relaxed">
-              SmartHome Hub delivers comprehensive home automation solutions that
+              All Things Automated delivers comprehensive home automation solutions that
               provide comfort, security, and energy efficiency for modern living.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -173,17 +173,15 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 Automating Homes Across the Nation
               </h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                SmartHome Hub is a certified and insured smart home integration
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">                All Things Automated is a certified and insured smart home integration
                 company. Since our founding, we've been proud to serve homeowners
                 and businesses with dependable, high-quality automation solutions.
               </p>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 With more than 15 years of hands-on experience, our team brings
                 specialized skills and genuine care to every project. From lighting
-                and climate control to security and entertainment systems, SmartHome
-                Hub delivers solutions built on trust and long-term relationships.
-              </p>
+                and climate control to security and entertainment systems, All Things
+                Automated delivers solutions built on trust and long-term relationships.         </p>
               <Button className="rounded-full" size="lg">
                 Learn More
               </Button>
@@ -299,9 +297,8 @@ export default function Home() {
               Comprehensive Smart Home Solutions
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              SmartHome Hub delivers safe, reliable, and innovative automation
-              solutions for homes and businesses nationwide.
-            </p>
+              All Things Automated delivers safe, reliable, and innovative automation
+              solutions for homes and businesses nationwide.      </p>
           </div>
 
           <Tabs defaultValue="residential" className="w-full">
@@ -752,7 +749,7 @@ export default function Home() {
                 <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
                   <HomeIcon className="w-5 h-5 text-primary-foreground" />
                 </div>
-                <span className="text-lg font-bold">SmartHome Hub</span>
+                <span className="text-lg font-bold">All Things Automated</span>
               </div>
               <p className="text-sm opacity-80">
                 Your trusted partner for intelligent home automation solutions.
@@ -807,7 +804,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-background/20 mt-8 pt-8 text-center text-sm opacity-80">
-            <p>© 2026 SmartHome Hub. All rights reserved.</p>
+            <p>© 2026 All Things Automated. All rights reserved.</p>
           </div>
         </div>
       </footer>
