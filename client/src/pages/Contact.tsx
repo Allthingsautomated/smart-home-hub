@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,10 +10,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Home as HomeIcon } from "lucide-react";
-import { useLocation } from "wouter";
 import { useState } from "react";
-import { toast } from "sonner";
+import { useLocation } from "wouter";
 
 export default function Contact() {
   const [, navigate] = useLocation();
@@ -22,23 +19,39 @@ export default function Contact() {
     name: "",
     email: "",
     phone: "",
-    urgency: "",
-    serviceType: "residential",
     service: "",
     message: "",
+    type: "residential",
   });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSelectChange = (value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      service: value,
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message sent! We'll contact you soon.");
+    console.log("Form submitted:", formData);
+    alert("Thank you for your inquiry! We'll be in touch soon.");
     setFormData({
       name: "",
       email: "",
       phone: "",
-      urgency: "",
-      serviceType: "residential",
       service: "",
       message: "",
+      type: "residential",
     });
   };
 
@@ -91,285 +104,182 @@ export default function Contact() {
       </nav>
 
       {/* Hero Section */}
-      <section className="py-20 bg-secondary/30">
+      <section className="py-32 bg-background">
         <div className="container">
           <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Get In Touch</h1>
-            <p className="text-xl text-muted-foreground">
-              Ready to transform your home with smart automation? Contact us today
-              for a free consultation.
+            <h1 className="text-6xl font-bold mb-8 leading-tight">
+              Get In Touch
+            </h1>
+            <p className="text-2xl text-muted-foreground leading-relaxed">
+              Let's discuss how we can automate your home or business.
             </p>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-20">
+      <section className="py-40 bg-background">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-3 gap-20">
+            {/* Contact Info */}
             <div>
-              <h2 className="text-4xl font-bold mb-8">Contact Information</h2>
-
+              <h2 className="text-3xl font-bold mb-12">Contact Info</h2>
               <div className="space-y-8">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <svg
-                      className="w-6 h-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Phone</h3>
-                    <p className="text-muted-foreground">(555) 123-4567</p>
-                    <p className="text-sm text-muted-foreground">
-                      Available 24/7 for emergencies
-                    </p>
-                  </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Phone</h3>
+                  <p className="text-muted-foreground">(555) 123-4567</p>
                 </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <svg
-                      className="w-6 h-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Email</h3>
-                    <p className="text-muted-foreground">
-                      info@allthingsautomated.com
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      We respond within 24 hours
-                    </p>
-                  </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Email</h3>
+                  <p className="text-muted-foreground">
+                    info@allthingsautomated.com
+                  </p>
                 </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <svg
-                      className="w-6 h-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Location</h3>
-                    <p className="text-muted-foreground">
-                      123 Smart Street
-                    </p>
-                    <p className="text-muted-foreground">
-                      Tech City, TC 12345
-                    </p>
-                  </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Hours</h3>
+                  <p className="text-muted-foreground">Available 24/7</p>
                 </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <svg
-                      className="w-6 h-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Hours</h3>
-                    <p className="text-muted-foreground">
-                      Monday - Friday: 8am - 6pm
-                    </p>
-                    <p className="text-muted-foreground">
-                      Saturday - Sunday: 10am - 4pm
-                    </p>
-                  </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Service Area</h3>
+                  <p className="text-muted-foreground">
+                    Nationwide coverage
+                  </p>
                 </div>
               </div>
             </div>
 
-            <Card className="rounded-2xl shadow-soft">
-              <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <Label htmlFor="name">Name</Label>
-                    <Input
-                      id="name"
-                      placeholder="Your name"
-                      className="rounded-xl mt-2"
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                      required
-                    />
-                  </div>
+            {/* Contact Form */}
+            <div className="md:col-span-2">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                {/* Name */}
+                <div>
+                  <Label htmlFor="name" className="text-base font-semibold mb-2 block">
+                    Full Name
+                  </Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="h-12 text-base"
+                    placeholder="Your name"
+                  />
+                </div>
 
-                  <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="your@email.com"
-                      className="rounded-xl mt-2"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      required
-                    />
-                  </div>
+                {/* Email */}
+                <div>
+                  <Label htmlFor="email" className="text-base font-semibold mb-2 block">
+                    Email
+                  </Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="h-12 text-base"
+                    placeholder="your@email.com"
+                  />
+                </div>
 
-                  <div>
-                    <Label htmlFor="phone">Phone</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="(555) 123-4567"
-                      className="rounded-xl mt-2"
-                      value={formData.phone}
-                      onChange={(e) =>
-                        setFormData({ ...formData, phone: e.target.value })
-                      }
-                    />
-                  </div>
+                {/* Phone */}
+                <div>
+                  <Label htmlFor="phone" className="text-base font-semibold mb-2 block">
+                    Phone
+                  </Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="h-12 text-base"
+                    placeholder="(555) 123-4567"
+                  />
+                </div>
 
-                  <div>
-                    <Label htmlFor="urgency">Urgency</Label>
-                    <Select
-                      value={formData.urgency}
-                      onValueChange={(value) =>
-                        setFormData({ ...formData, urgency: value })
-                      }
-                    >
-                      <SelectTrigger className="rounded-xl mt-2">
-                        <SelectValue placeholder="Select urgency" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="urgent">⚡ Urgent</SelectItem>
-                        <SelectItem value="soon">🔧 Soon</SelectItem>
-                        <SelectItem value="routine">🗓️ Routine</SelectItem>
-                        <SelectItem value="info">💬 Just looking for info</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div>
-                    <Label>Service Type</Label>
-                    <RadioGroup
-                      value={formData.serviceType}
-                      onValueChange={(value) =>
-                        setFormData({ ...formData, serviceType: value })
-                      }
-                      className="mt-2"
-                    >
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="residential" id="residential" />
-                        <Label htmlFor="residential">Residential</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="commercial" id="commercial" />
-                        <Label htmlFor="commercial">Commercial</Label>
-                      </div>
-                    </RadioGroup>
-                  </div>
-
-                  <div>
-                    <Label htmlFor="service">Service Needed</Label>
-                    <Select
-                      value={formData.service}
-                      onValueChange={(value) =>
-                        setFormData({ ...formData, service: value })
-                      }
-                    >
-                      <SelectTrigger className="rounded-xl mt-2">
-                        <SelectValue placeholder="Select service" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="lighting">Smart Lighting</SelectItem>
-                        <SelectItem value="security">Home Security</SelectItem>
-                        <SelectItem value="climate">Climate Control</SelectItem>
-                        <SelectItem value="voice">Voice Control</SelectItem>
-                        <SelectItem value="entertainment">
-                          Entertainment Systems
-                        </SelectItem>
-                        <SelectItem value="integration">
-                          Whole Home Integration
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div>
-                    <Label htmlFor="message">How can we help?</Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Tell us about your project..."
-                      className="rounded-xl mt-2 min-h-[120px]"
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className="w-full rounded-xl"
-                    size="lg"
+                {/* Property Type */}
+                <div>
+                  <Label className="text-base font-semibold mb-4 block">
+                    Property Type
+                  </Label>
+                  <RadioGroup
+                    value={formData.type}
+                    onValueChange={(value) =>
+                      setFormData((prev) => ({ ...prev, type: value }))
+                    }
                   >
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+                    <div className="flex items-center space-x-3 mb-3">
+                      <RadioGroupItem value="residential" id="residential" />
+                      <Label htmlFor="residential" className="font-normal cursor-pointer">
+                        Residential
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <RadioGroupItem value="commercial" id="commercial" />
+                      <Label htmlFor="commercial" className="font-normal cursor-pointer">
+                        Commercial
+                      </Label>
+                    </div>
+                  </RadioGroup>
+                </div>
+
+                {/* Service */}
+                <div>
+                  <Label htmlFor="service" className="text-base font-semibold mb-2 block">
+                    Service Interest
+                  </Label>
+                  <Select value={formData.service} onValueChange={handleSelectChange}>
+                    <SelectTrigger className="h-12 text-base">
+                      <SelectValue placeholder="Select a service" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="lighting">Smart Lighting</SelectItem>
+                      <SelectItem value="security">Home Security</SelectItem>
+                      <SelectItem value="climate">Climate Control</SelectItem>
+                      <SelectItem value="voice">Voice Control</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Message */}
+                <div>
+                  <Label htmlFor="message" className="text-base font-semibold mb-2 block">
+                    Message
+                  </Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="min-h-32 text-base"
+                    placeholder="Tell us about your project..."
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full h-12 text-lg rounded-full"
+                >
+                  Send Message
+                </Button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-background py-12 mt-auto">
+      <footer className="bg-foreground text-background py-16 mt-auto">
         <div className="container">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
+              <div className="flex items-center space-x-2 mb-6">
                 <img
                   src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/NFtgaObIakoZmJFV.png"
                   alt="All Things Automated Logo"
@@ -378,12 +288,12 @@ export default function Contact() {
                 <span className="text-lg font-bold">All Things Automated</span>
               </div>
               <p className="text-sm opacity-80">
-                Your trusted partner for intelligent home automation solutions.
+                Intelligent automation for modern homes.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <h4 className="font-semibold mb-4">Navigate</h4>
               <ul className="space-y-2 text-sm opacity-80">
                 <li>
                   <button
@@ -433,14 +343,14 @@ export default function Contact() {
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-sm opacity-80">
-                <li>Phone: (555) 123-4567</li>
-                <li>Email: info@allthingsautomated.com</li>
+                <li>(555) 123-4567</li>
+                <li>info@allthingsautomated.com</li>
                 <li>Available 24/7</li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-background/20 mt-8 pt-8 text-center text-sm opacity-80">
+          <div className="border-t border-background/20 pt-8 text-center text-sm opacity-80">
             <p>© 2026 All Things Automated. All rights reserved.</p>
           </div>
         </div>

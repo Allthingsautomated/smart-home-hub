@@ -50,8 +50,8 @@ Design Philosophy: Soft Modernism with Organic Flow
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 :root {
@@ -153,6 +153,26 @@ Design Philosophy: Soft Modernism with Organic Flow
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  body {
+    letter-spacing: 0.3px;
+    line-height: 1.7;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),

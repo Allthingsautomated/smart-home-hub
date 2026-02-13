@@ -6,14 +6,67 @@ import {
   ShieldCheck,
   Thermometer,
   Mic,
-  Smartphone,
-  HomeIcon,
+  Home as HomeIcon,
   Building2,
 } from "lucide-react";
 import { useLocation } from "wouter";
 
 export default function Services() {
   const [, navigate] = useLocation();
+
+  const residentialServices = [
+    {
+      icon: Lightbulb,
+      title: "Smart Lighting",
+      description: "Automated lighting with scheduling and remote control.",
+      price: "$1,500",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Security Systems",
+      description: "Advanced cameras, sensors, and monitoring.",
+      price: "$2,500",
+    },
+    {
+      icon: Thermometer,
+      title: "Climate Control",
+      description: "Intelligent HVAC and temperature management.",
+      price: "$1,800",
+    },
+    {
+      icon: Mic,
+      title: "Voice Integration",
+      description: "Alexa, Google Home, and voice automation.",
+      price: "$800",
+    },
+  ];
+
+  const commercialServices = [
+    {
+      icon: Building2,
+      title: "Building Automation",
+      description: "Enterprise-level automation systems.",
+      price: "Custom",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Security Solutions",
+      description: "Commercial-grade security infrastructure.",
+      price: "Custom",
+    },
+    {
+      icon: Thermometer,
+      title: "Energy Management",
+      description: "Optimize energy consumption and costs.",
+      price: "Custom",
+    },
+    {
+      icon: Lightbulb,
+      title: "Lighting Systems",
+      description: "Smart lighting for offices and facilities.",
+      price: "Custom",
+    },
+  ];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -64,269 +117,108 @@ export default function Services() {
       </nav>
 
       {/* Hero Section */}
-      <section className="py-20 bg-secondary/30">
+      <section className="py-32 bg-background">
         <div className="container">
           <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Services</h1>
-            <p className="text-xl text-muted-foreground">
-              Comprehensive smart home automation solutions for residential and
-              commercial properties.
+            <h1 className="text-6xl font-bold mb-8 leading-tight">Services</h1>
+            <p className="text-2xl text-muted-foreground leading-relaxed">
+              Comprehensive automation solutions for residential and commercial properties.
             </p>
           </div>
         </div>
       </section>
 
       {/* Services Tabs */}
-      <section className="py-20">
+      <section className="py-40 bg-background">
         <div className="container">
           <Tabs defaultValue="residential" className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12 rounded-full h-12">
-              <TabsTrigger value="residential" className="rounded-full">
+            <TabsList className="grid w-full max-w-md mx-auto mb-20 h-auto">
+              <TabsTrigger value="residential" className="text-lg py-3">
                 Residential
               </TabsTrigger>
-              <TabsTrigger value="commercial" className="rounded-full">
+              <TabsTrigger value="commercial" className="text-lg py-3">
                 Commercial
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="residential">
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="rounded-2xl shadow-soft hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
-                      <Lightbulb className="w-8 h-8 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">Smart Lighting</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Transform your home with intelligent lighting solutions,
-                      including color-changing bulbs, automated schedules, and
-                      voice control integration. Create the perfect ambiance for
-                      any moment.
-                    </p>
-                    <div className="text-sm text-primary font-semibold">
-                      Starting at $500
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="rounded-2xl shadow-soft hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
-                      <ShieldCheck className="w-8 h-8 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">Home Security</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Protect your home with smart security systems, video
-                      doorbells, cameras, and automated locks with remote
-                      monitoring from anywhere.
-                    </p>
-                    <div className="text-sm text-primary font-semibold">
-                      Starting at $1,200
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="rounded-2xl shadow-soft hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
-                      <Thermometer className="w-8 h-8 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">Climate Control</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Enjoy perfect comfort with smart thermostats, automated
-                      climate zones, and energy-efficient temperature management
-                      that learns your preferences.
-                    </p>
-                    <div className="text-sm text-primary font-semibold">
-                      Starting at $800
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="rounded-2xl shadow-soft hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
-                      <Mic className="w-8 h-8 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">Voice Control</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Control your entire home with voice commands through Alexa,
-                      Google Assistant, or Siri. Hands-free convenience at your
-                      fingertips.
-                    </p>
-                    <div className="text-sm text-primary font-semibold">
-                      Starting at $300
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="rounded-2xl shadow-soft hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
-                      <Smartphone className="w-8 h-8 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">
-                      Entertainment Systems
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                      Create the ultimate entertainment experience with smart TVs,
-                      multi-room audio, and automated home theaters with seamless
-                      integration.
-                    </p>
-                    <div className="text-sm text-primary font-semibold">
-                      Starting at $2,000
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="rounded-2xl shadow-soft hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
-                      <HomeIcon className="w-8 h-8 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">
-                      Whole Home Integration
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                      Seamlessly connect all your smart devices into one unified
-                      system for complete home automation control and management.
-                    </p>
-                    <div className="text-sm text-primary font-semibold">
-                      Custom Quote
-                    </div>
-                  </CardContent>
-                </Card>
+              <div className="grid md:grid-cols-2 gap-8">
+                {residentialServices.map((service, index) => {
+                  const IconComponent = service.icon;
+                  return (
+                    <Card key={index} className="border-none shadow-sm">
+                      <CardContent className="p-8">
+                        <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                          <IconComponent className="w-8 h-8 text-primary" />
+                        </div>
+                        <h3 className="text-2xl font-bold mb-3">
+                          {service.title}
+                        </h3>
+                        <p className="text-muted-foreground mb-6 leading-relaxed">
+                          {service.description}
+                        </p>
+                        <div className="text-3xl font-bold text-primary">
+                          {service.price}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </div>
             </TabsContent>
 
             <TabsContent value="commercial">
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="rounded-2xl shadow-soft hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-4">
-                      <Building2 className="w-8 h-8 text-accent" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">
-                      Office Automation
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                      Enhance productivity with automated lighting, climate
-                      control, and security systems for modern office spaces and
-                      commercial buildings.
-                    </p>
-                    <div className="text-sm text-accent font-semibold">
-                      Custom Quote
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="rounded-2xl shadow-soft hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-4">
-                      <ShieldCheck className="w-8 h-8 text-accent" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">
-                      Commercial Security
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                      Protect your business with enterprise-grade security
-                      systems, access control, and 24/7 monitoring solutions with
-                      professional support.
-                    </p>
-                    <div className="text-sm text-accent font-semibold">
-                      Custom Quote
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="rounded-2xl shadow-soft hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-4">
-                      <Thermometer className="w-8 h-8 text-accent" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">
-                      Energy Management
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                      Reduce operating costs with smart energy monitoring,
-                      automated HVAC control, and efficiency optimization for
-                      large facilities.
-                    </p>
-                    <div className="text-sm text-accent font-semibold">
-                      Custom Quote
-                    </div>
-                  </CardContent>
-                </Card>
+              <div className="grid md:grid-cols-2 gap-8">
+                {commercialServices.map((service, index) => {
+                  const IconComponent = service.icon;
+                  return (
+                    <Card key={index} className="border-none shadow-sm">
+                      <CardContent className="p-8">
+                        <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                          <IconComponent className="w-8 h-8 text-primary" />
+                        </div>
+                        <h3 className="text-2xl font-bold mb-3">
+                          {service.title}
+                        </h3>
+                        <p className="text-muted-foreground mb-6 leading-relaxed">
+                          {service.description}
+                        </p>
+                        <div className="text-3xl font-bold text-primary">
+                          {service.price}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </div>
             </TabsContent>
           </Tabs>
-
-          <div className="text-center mt-12">
-            <Button
-              size="lg"
-              className="rounded-full"
-              onClick={() => navigate("/contact")}
-            >
-              Get a Custom Quote
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-20 bg-secondary/30">
-        <div className="container">
-          <h2 className="text-4xl font-bold mb-12 text-center">Why Choose Us</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-2xl font-semibold mb-4">Expert Installation</h3>
-              <p className="text-muted-foreground">
-                Our certified technicians have years of experience installing and
-                integrating smart home systems with precision and care.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold mb-4">24/7 Support</h3>
-              <p className="text-muted-foreground">
-                We're always available to help with maintenance, troubleshooting,
-                and support whenever you need us.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold mb-4">Licensed & Insured</h3>
-              <p className="text-muted-foreground">
-                Fully licensed, bonded, and insured for your peace of mind and
-                protection on every project.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section className="py-40 bg-primary text-primary-foreground">
         <div className="container text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Contact us today for a free consultation and custom quote for your
-            smart home automation project.
+          <h2 className="text-5xl font-bold mb-8">Ready to Get Started?</h2>
+          <p className="text-xl mb-12 opacity-90 max-w-2xl mx-auto">
+            Let's find the perfect automation solution for your needs.
           </p>
           <Button
             size="lg"
-            className="rounded-full bg-white text-primary hover:bg-white/90"
+            className="rounded-full bg-white text-primary hover:bg-white/90 px-8 py-6 text-lg"
             onClick={() => navigate("/contact")}
           >
-            Schedule Consultation
+            Schedule a Consultation
           </Button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-background py-12">
+      <footer className="bg-foreground text-background py-16">
         <div className="container">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
+              <div className="flex items-center space-x-2 mb-6">
                 <img
                   src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/NFtgaObIakoZmJFV.png"
                   alt="All Things Automated Logo"
@@ -335,12 +227,12 @@ export default function Services() {
                 <span className="text-lg font-bold">All Things Automated</span>
               </div>
               <p className="text-sm opacity-80">
-                Your trusted partner for intelligent home automation solutions.
+                Intelligent automation for modern homes.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <h4 className="font-semibold mb-4">Navigate</h4>
               <ul className="space-y-2 text-sm opacity-80">
                 <li>
                   <button
@@ -371,7 +263,7 @@ export default function Services() {
                     onClick={() => navigate("/contact")}
                     className="hover:opacity-100"
                   >
-                    Contact Us
+                    Contact
                   </button>
                 </li>
               </ul>
@@ -390,14 +282,14 @@ export default function Services() {
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-sm opacity-80">
-                <li>Phone: (555) 123-4567</li>
-                <li>Email: info@allthingsautomated.com</li>
+                <li>(555) 123-4567</li>
+                <li>info@allthingsautomated.com</li>
                 <li>Available 24/7</li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-background/20 mt-8 pt-8 text-center text-sm opacity-80">
+          <div className="border-t border-background/20 pt-8 text-center text-sm opacity-80">
             <p>© 2026 All Things Automated. All rights reserved.</p>
           </div>
         </div>
