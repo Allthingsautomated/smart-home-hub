@@ -17,6 +17,10 @@ import ClimateControl from "./pages/services/ClimateControl";
 import VoiceIntegration from "./pages/services/VoiceIntegration";
 import HomeAudio from "./pages/services/HomeAudio";
 import Networks from "./pages/services/Networks";
+import CommercialAutomation from "./pages/services/CommercialAutomation";
+import CommercialSecurity from "./pages/services/CommercialSecurity";
+import CommercialClimate from "./pages/services/CommercialClimate";
+import CommercialNetworks from "./pages/services/CommercialNetworks";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -31,6 +35,10 @@ function Router() {
       <Route path={"/services/voice-integration"} component={VoiceIntegration} />
       <Route path={"/services/home-audio"} component={HomeAudio} />
       <Route path={"/services/networks"} component={Networks} />
+      <Route path={"/services/commercial-automation"} component={CommercialAutomation} />
+      <Route path={"/services/commercial-security"} component={CommercialSecurity} />
+      <Route path={"/services/commercial-climate"} component={CommercialClimate} />
+      <Route path={"/services/commercial-networks"} component={CommercialNetworks} />
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/contact"} component={Contact} />
       <Route path={"/admin"} component={AdminDashboard} />

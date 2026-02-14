@@ -112,8 +112,14 @@ export default function Home() {
               >
                 Contact
               </button>
+              <button
+                onClick={() => navigate("/quote-builder")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Pricing
+              </button>
             </div>
-            <Button className="rounded-full">Book Now</Button>
+            <Button className="rounded-full" onClick={() => navigate("/contact")}>Book Now</Button>
           </div>
         </div>
       </nav>

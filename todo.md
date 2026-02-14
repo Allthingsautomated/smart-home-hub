@@ -37,14 +37,20 @@
 - [x] Pricing calculator page
 - [x] Admin dashboard
 - [x] Quote builder with room selection
-- [ ] Make service cards clickable on Services page
-- [ ] Remove prices from service cards, add "See More" buttons
-- [ ] Create Smart Lighting service detail page (Lutron Caséta/RA3/HomeWorks)
-- [ ] Create Home Security service detail page (Ring, Lorex, Ubiquiti)
-- [ ] Create Climate Control service detail page (Lutron + HVAC systems)
-- [ ] Create Voice Integration service detail page (Siri, Alexa, Josh.ai)
-- [ ] Create Home Audio service detail page (Sonos, TV systems)
-- [ ] Create Networks service detail page (Ubiquiti)
+- [x] Make service cards clickable on Services page
+- [x] Remove prices from service cards, add "See More" buttons
+- [x] Create Smart Lighting service detail page (Lutron Caséta/RA3/HomeWorks)
+- [x] Create Home Security service detail page (Ring, Lorex, Ubiquiti)
+- [x] Create Climate Control service detail page (Lutron + HVAC systems)
+- [x] Create Voice Integration service detail page (Siri, Alexa, Josh.ai)
+- [x] Create Home Audio service detail page (Sonos, TV systems)
+- [x] Create Networks service detail page (Ubiquiti)
+- [x] Create Commercial Building Automation service detail page
+- [x] Create Commercial Security Solutions service detail page
+- [x] Create Commercial Energy Management service detail page
+- [x] Create Commercial Network Infrastructure service detail page
+- [x] Add Pricing link to main navigation
+- [x] Fix Book Now button navigation
 - [ ] Add product logos and images to each service page
 - [ ] Add source citations to ROI calculations
 - [ ] Hide labor hours, show only total labor cost
