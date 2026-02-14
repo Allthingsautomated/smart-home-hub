@@ -160,10 +160,10 @@ export default function Services() {
                 {residentialServices.map((service) => {
                   const IconComponent = service.icon;
                   return (
-                    <button
+                    <div
                       key={service.id}
                       onClick={() => navigate(`/services/${service.id}`)}
-                      className="text-left hover:opacity-80 transition-opacity"
+                      className="text-left hover:opacity-80 transition-opacity cursor-pointer"
                     >
                       <Card className="border-none shadow-sm h-full hover:shadow-lg transition-shadow">
                         <CardContent className="p-8">
@@ -176,12 +176,14 @@ export default function Services() {
                           <p className="text-muted-foreground mb-6 leading-relaxed">
                             {service.description}
                           </p>
-                          <Button variant="outline" className="rounded-full">
-                            See More
-                          </Button>
+                          <div className="pointer-events-none">
+                            <Button variant="outline" className="rounded-full">
+                              See More
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
-                    </button>
+                    </div>
                   );
                 })}
               </div>
@@ -192,10 +194,10 @@ export default function Services() {
                 {commercialServices.map((service) => {
                   const IconComponent = service.icon;
                   return (
-                    <button
+                    <div
                       key={service.id}
                       onClick={() => navigate(`/services/${service.id}`)}
-                      className="text-left hover:opacity-80 transition-opacity"
+                      className="text-left hover:opacity-80 transition-opacity cursor-pointer"
                     >
                       <Card className="border-none shadow-sm h-full hover:shadow-lg transition-shadow">
                         <CardContent className="p-8">
@@ -208,12 +210,14 @@ export default function Services() {
                           <p className="text-muted-foreground mb-6 leading-relaxed">
                             {service.description}
                           </p>
-                          <Button variant="outline" className="rounded-full">
-                            See More
-                          </Button>
+                          <div className="pointer-events-none">
+                            <Button variant="outline" className="rounded-full">
+                              See More
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
-                    </button>
+                    </div>
                   );
                 })}
               </div>
