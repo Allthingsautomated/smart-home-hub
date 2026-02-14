@@ -11,6 +11,12 @@ import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
 import AdminDashboard from "./pages/AdminDashboard";
 import QuoteBuilder from "./pages/QuoteBuilder";
+import SmartLighting from "./pages/services/SmartLighting";
+import HomeSecurity from "./pages/services/HomeSecurity";
+import ClimateControl from "./pages/services/ClimateControl";
+import VoiceIntegration from "./pages/services/VoiceIntegration";
+import HomeAudio from "./pages/services/HomeAudio";
+import Networks from "./pages/services/Networks";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -19,6 +25,12 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/about"} component={About} />
       <Route path={"/services"} component={Services} />
+      <Route path={"/services/smart-lighting"} component={SmartLighting} />
+      <Route path={"/services/home-security"} component={HomeSecurity} />
+      <Route path={"/services/climate-control"} component={ClimateControl} />
+      <Route path={"/services/voice-integration"} component={VoiceIntegration} />
+      <Route path={"/services/home-audio"} component={HomeAudio} />
+      <Route path={"/services/networks"} component={Networks} />
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/contact"} component={Contact} />
       <Route path={"/admin"} component={AdminDashboard} />

@@ -37,12 +37,17 @@
 - [x] Pricing calculator page
 - [x] Admin dashboard
 - [x] Quote builder with room selection
+- [ ] Make service cards clickable on Services page
+- [ ] Remove prices from service cards, add "See More" buttons
+- [ ] Create Smart Lighting service detail page (Lutron Caséta/RA3/HomeWorks)
+- [ ] Create Home Security service detail page (Ring, Lorex, Ubiquiti)
+- [ ] Create Climate Control service detail page (Lutron + HVAC systems)
+- [ ] Create Voice Integration service detail page (Siri, Alexa, Josh.ai)
+- [ ] Create Home Audio service detail page (Sonos, TV systems)
+- [ ] Create Networks service detail page (Ubiquiti)
+- [ ] Add product logos and images to each service page
 - [ ] Add source citations to ROI calculations
 - [ ] Hide labor hours, show only total labor cost
-- [ ] Make rooms clickable for package selection
-- [ ] Implement Small/Medium/Large room packages
-- [ ] Address search component with Google Maps
-- [ ] Room selector with visual mockup
 
 ## Testing & Deployment
 - [ ] Test all calculator functionality

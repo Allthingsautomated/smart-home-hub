@@ -8,6 +8,8 @@ import {
   Mic,
   Home as HomeIcon,
   Building2,
+  Volume2,
+  Wifi,
 } from "lucide-react";
 import { useLocation } from "wouter";
 
@@ -16,55 +18,67 @@ export default function Services() {
 
   const residentialServices = [
     {
+      id: "smart-lighting",
       icon: Lightbulb,
       title: "Smart Lighting",
-      description: "Automated lighting with scheduling and remote control.",
-      price: "$1,500",
+      description: "Lutron Caséta, RA3, and HomeWorks automation systems.",
     },
     {
+      id: "home-security",
       icon: ShieldCheck,
-      title: "Security Systems",
-      description: "Advanced cameras, sensors, and monitoring.",
-      price: "$2,500",
+      title: "Home Security",
+      description: "Ring, Lorex, and Ubiquiti security solutions.",
     },
     {
+      id: "climate-control",
       icon: Thermometer,
       title: "Climate Control",
       description: "Intelligent HVAC and temperature management.",
-      price: "$1,800",
     },
     {
+      id: "voice-integration",
       icon: Mic,
       title: "Voice Integration",
-      description: "Alexa, Google Home, and voice automation.",
-      price: "$800",
+      description: "Siri, Alexa, and Josh.ai voice control.",
+    },
+    {
+      id: "home-audio",
+      icon: Volume2,
+      title: "Home Audio",
+      description: "Sonos and premium TV system installations.",
+    },
+    {
+      id: "networks",
+      icon: Wifi,
+      title: "Networks",
+      description: "Ubiquiti networking and connectivity solutions.",
     },
   ];
 
   const commercialServices = [
     {
+      id: "commercial-automation",
       icon: Building2,
       title: "Building Automation",
-      description: "Enterprise-level automation systems.",
-      price: "Custom",
+      description: "Enterprise-level Lutron and automation systems.",
     },
     {
+      id: "commercial-security",
       icon: ShieldCheck,
       title: "Security Solutions",
       description: "Commercial-grade security infrastructure.",
-      price: "Custom",
     },
     {
+      id: "commercial-climate",
       icon: Thermometer,
       title: "Energy Management",
       description: "Optimize energy consumption and costs.",
-      price: "Custom",
     },
     {
-      icon: Lightbulb,
-      title: "Lighting Systems",
-      description: "Smart lighting for offices and facilities.",
-      price: "Custom",
+      id: "commercial-networks",
+      icon: Wifi,
+      title: "Network Infrastructure",
+      description: "Enterprise Ubiquiti networking solutions.",
     },
   ];
 
@@ -143,25 +157,31 @@ export default function Services() {
 
             <TabsContent value="residential">
               <div className="grid md:grid-cols-2 gap-8">
-                {residentialServices.map((service, index) => {
+                {residentialServices.map((service) => {
                   const IconComponent = service.icon;
                   return (
-                    <Card key={index} className="border-none shadow-sm">
-                      <CardContent className="p-8">
-                        <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                          <IconComponent className="w-8 h-8 text-primary" />
-                        </div>
-                        <h3 className="text-2xl font-bold mb-3">
-                          {service.title}
-                        </h3>
-                        <p className="text-muted-foreground mb-6 leading-relaxed">
-                          {service.description}
-                        </p>
-                        <div className="text-3xl font-bold text-primary">
-                          {service.price}
-                        </div>
-                      </CardContent>
-                    </Card>
+                    <button
+                      key={service.id}
+                      onClick={() => navigate(`/services/${service.id}`)}
+                      className="text-left hover:opacity-80 transition-opacity"
+                    >
+                      <Card className="border-none shadow-sm h-full hover:shadow-lg transition-shadow">
+                        <CardContent className="p-8">
+                          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                            <IconComponent className="w-8 h-8 text-primary" />
+                          </div>
+                          <h3 className="text-2xl font-bold mb-3">
+                            {service.title}
+                          </h3>
+                          <p className="text-muted-foreground mb-6 leading-relaxed">
+                            {service.description}
+                          </p>
+                          <Button variant="outline" className="rounded-full">
+                            See More
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </button>
                   );
                 })}
               </div>
@@ -169,25 +189,31 @@ export default function Services() {
 
             <TabsContent value="commercial">
               <div className="grid md:grid-cols-2 gap-8">
-                {commercialServices.map((service, index) => {
+                {commercialServices.map((service) => {
                   const IconComponent = service.icon;
                   return (
-                    <Card key={index} className="border-none shadow-sm">
-                      <CardContent className="p-8">
-                        <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                          <IconComponent className="w-8 h-8 text-primary" />
-                        </div>
-                        <h3 className="text-2xl font-bold mb-3">
-                          {service.title}
-                        </h3>
-                        <p className="text-muted-foreground mb-6 leading-relaxed">
-                          {service.description}
-                        </p>
-                        <div className="text-3xl font-bold text-primary">
-                          {service.price}
-                        </div>
-                      </CardContent>
-                    </Card>
+                    <button
+                      key={service.id}
+                      onClick={() => navigate(`/services/${service.id}`)}
+                      className="text-left hover:opacity-80 transition-opacity"
+                    >
+                      <Card className="border-none shadow-sm h-full hover:shadow-lg transition-shadow">
+                        <CardContent className="p-8">
+                          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                            <IconComponent className="w-8 h-8 text-primary" />
+                          </div>
+                          <h3 className="text-2xl font-bold mb-3">
+                            {service.title}
+                          </h3>
+                          <p className="text-muted-foreground mb-6 leading-relaxed">
+                            {service.description}
+                          </p>
+                          <Button variant="outline" className="rounded-full">
+                            See More
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </button>
                   );
                 })}
               </div>
