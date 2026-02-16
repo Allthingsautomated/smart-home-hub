@@ -83,9 +83,9 @@ export default function Services() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-slate-50">
       {/* Navigation */}
-      <nav className="glass sticky top-0 z-50">
+      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="container mx-auto py-4">
           <div className="flex items-center justify-between">
             <button
@@ -131,11 +131,11 @@ export default function Services() {
       </nav>
 
       {/* Hero Section */}
-      <section className="py-32 bg-background">
-        <div className="container">
+      <section className="py-20 px-4 bg-gradient-to-r from-primary/5 to-accent/5">
+        <div className="container mx-auto">
           <div className="max-w-3xl">
-            <h1 className="text-6xl font-bold mb-8 leading-tight">Services</h1>
-            <p className="text-2xl text-muted-foreground leading-relaxed">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-primary">Services</h1>
+            <p className="text-xl text-gray-700 leading-relaxed">
               Comprehensive automation solutions for residential and commercial properties.
             </p>
           </div>
@@ -143,7 +143,7 @@ export default function Services() {
       </section>
 
       {/* Services Tabs */}
-      <section className="py-40 bg-background">
+      <section className="py-20 px-4">
         <div className="container">
           <Tabs defaultValue="residential" className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto mb-20 h-auto">
@@ -167,8 +167,8 @@ export default function Services() {
                     >
                       <Card className="border-none shadow-sm h-full hover:shadow-lg transition-shadow">
                         <CardContent className="p-8">
-                          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                            <IconComponent className="w-8 h-8 text-primary" />
+                          <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg flex items-center justify-center mb-6">
+                            <IconComponent className="w-8 h-8 text-accent" />
                           </div>
                           <h3 className="text-2xl font-bold mb-3">
                             {service.title}
@@ -201,8 +201,8 @@ export default function Services() {
                     >
                       <Card className="border-none shadow-sm h-full hover:shadow-lg transition-shadow">
                         <CardContent className="p-8">
-                          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                            <IconComponent className="w-8 h-8 text-primary" />
+                          <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg flex items-center justify-center mb-6">
+                            <IconComponent className="w-8 h-8 text-accent" />
                           </div>
                           <h3 className="text-2xl font-bold mb-3">
                             {service.title}

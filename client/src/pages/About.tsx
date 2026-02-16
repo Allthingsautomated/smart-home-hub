@@ -5,9 +5,9 @@ export default function About() {
   const [, navigate] = useLocation();
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-slate-50">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
+      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <button
@@ -52,15 +52,15 @@ export default function About() {
       </nav>
 
       {/* Hero Section */}
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-7xl md:text-8xl font-bold mb-6">ABOUT US</h1>
-          <div className="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+      <section className="py-20 px-4 bg-gradient-to-r from-primary/5 to-accent/5">
+        <div className="container mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-primary">ABOUT US</h1>
+          <div className="w-20 h-1 bg-accent mx-auto rounded-full"></div>
         </div>
       </section>
 
       {/* Story Section */}
-      <section className="py-32 bg-white">
+      <section className="py-20 px-4 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>

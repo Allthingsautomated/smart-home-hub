@@ -1,4 +1,5 @@
 import { useAuth } from "@/_core/hooks/useAuth";
+
 import { Button } from "@/components/ui/button";
 import {
   Lightbulb,
@@ -8,6 +9,10 @@ import {
   ChevronLeft,
   ChevronRight,
   ArrowRight,
+  Zap,
+  Lock,
+  Wifi,
+  Volume2,
 } from "lucide-react";
 import { useState } from "react";
 import { useLocation } from "wouter";
@@ -40,12 +45,12 @@ export default function Home() {
 
   const services = [
     {
-      icon: Lightbulb,
+      icon: Zap,
       title: "Smart Lighting",
       desc: "Automated lighting control and ambiance.",
     },
     {
-      icon: ShieldCheck,
+      icon: Lock,
       title: "Home Security",
       desc: "Advanced security and monitoring systems.",
     },
@@ -55,7 +60,7 @@ export default function Home() {
       desc: "Intelligent temperature management.",
     },
     {
-      icon: Mic,
+      icon: Volume2,
       title: "Voice Control",
       desc: "Seamless voice integration.",
     },
@@ -74,7 +79,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
+      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <button
@@ -83,7 +88,7 @@ export default function Home() {
             >
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
-                alt="All Things Automated Logo"
+                alt="SmartHome Hub Logo"
                 className="h-10 w-auto"
               />
             </button>
@@ -129,10 +134,10 @@ export default function Home() {
         className="relative h-screen flex items-center justify-center bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80')",
+            "url('https://private-us-east-1.manuscdn.com/sessionFile/G41wwZxJTdeFqWuVf8Z88y/sandbox/XHFc9s6nwSGdz8ri9QjlWr-img-1_1771269105000_na1fn_c21hcnQtaG9tZS1oZXJv.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvRzQxd3daeEpUZGVGcVd1VmY4Wjg4eS9zYW5kYm94L1hIRmM5czZud1NHZHo4cmk5UWpsV3ItaW1nLTFfMTc3MTI2OTEwNTAwMF9uYTFmbl9jMjFoY25RdGFHOXRaUzFvWlhKdi5qcGc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=qbwv4hUTzejzL1mj6PefAdpDLb0Cn8qCYTRv3IlWb8SfAdfxCijCBATn-kekKPEp0cN3F5g-8OAENz92uvCBTGsXt7utGT9SIHJIfeZcUj-~uHmVfaMyZbJQiZGVpbgJJJrwQM0I3Yyw1-xC1jEtCGd1MzGAn4EywjI6DKTMpcGnxHsL5hciy-1rLdOKaV0CgY1LETJ5YDTaW7JYF7xseUZhoK3XTUZVv-~ErR-uNvCvpjvX-Ic1Zee4qg~sgUehi4SWgvO-Mv9eoWdWVJ88vrSm~oJwVPlGBEBQOaRa95kYBhgvWFteV829VYjo1sfaGp8dnuPHMnI8HKNfy6oe1g__')",
         }}
       >
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <h1 className="text-7xl md:text-8xl font-bold text-white mb-6 leading-tight">
             STEP INTO THE FUTURE
@@ -161,30 +166,35 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-32 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-6xl md:text-7xl font-bold mb-4">OUR SERVICES</h2>
-            <div className="w-16 h-1 bg-primary mx-auto rounded-full"></div>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, idx) => {
-              const IconComponent = service.icon;
+      <section className="py-20 px-4 bg-gradient-to-b from-white to-slate-50">
+        <div className="container mx-auto">
+          <h2 className="text-center text-4xl md:text-5xl font-bold mb-4 text-primary">
+            OUR SERVICES
+          </h2>
+          <div className="w-20 h-1 bg-accent mx-auto mb-16"></div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, index) => {
+              const Icon = service.icon;
               return (
                 <div
-                  key={idx}
-                  className="p-8 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors group"
+                  key={index}
+                  className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                  onClick={() => navigate("/services")}
                 >
-                  <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                    <IconComponent className="w-7 h-7 text-primary" />
+                  <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg flex items-center justify-center mb-4">
+                    <Icon className="w-8 h-8 text-accent" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
+                  <h3 className="text-xl font-bold text-primary mb-2">
+                    {service.title}
+                  </h3>
                   <p className="text-gray-600">{service.desc}</p>
                 </div>
               );
             })}
           </div>
-          <div className="text-center mt-16">
+
+          <div className="text-center mt-12">
             <Button
               size="lg"
               variant="outline"
@@ -198,80 +208,80 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-32 bg-primary text-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-12 text-center">
+      <section className="py-16 px-4 bg-gradient-to-r from-primary to-primary/80 text-white">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-5xl font-bold mb-2">15+</div>
-              <p className="text-lg opacity-90">Years Experience</p>
+              <h3 className="text-4xl md:text-5xl font-bold mb-2">15+</h3>
+              <p className="text-white/80">Years Experience</p>
             </div>
             <div>
-              <div className="text-5xl font-bold mb-2">1000+</div>
-              <p className="text-lg opacity-90">Homes Automated</p>
+              <h3 className="text-4xl md:text-5xl font-bold mb-2">1000+</h3>
+              <p className="text-white/80">Homes Automated</p>
             </div>
             <div>
-              <div className="text-5xl font-bold mb-2">100%</div>
-              <p className="text-lg opacity-90">Satisfaction Rate</p>
+              <h3 className="text-4xl md:text-5xl font-bold mb-2">100%</h3>
+              <p className="text-white/80">Satisfaction Rate</p>
             </div>
             <div>
-              <div className="text-5xl font-bold mb-2">24/7</div>
-              <p className="text-lg opacity-90">Support Available</p>
+              <h3 className="text-4xl md:text-5xl font-bold mb-2">24/7</h3>
+              <p className="text-white/80">Support Available</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-32 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-6xl md:text-7xl font-bold text-center mb-20">
+      <section className="py-20 px-4 bg-white">
+        <div className="container mx-auto max-w-3xl">
+          <h2 className="text-center text-4xl md:text-5xl font-bold mb-4 text-primary">
             WHAT OUR CLIENTS SAY
           </h2>
-          <div className="max-w-3xl mx-auto">
-            <div className="mb-12 text-center">
-              <p className="text-2xl text-gray-800 mb-8 leading-relaxed italic">
-                "{testimonials[currentTestimonial].text}"
-              </p>
-              <div>
-                <p className="text-xl font-bold">
-                  {testimonials[currentTestimonial].author}
-                </p>
-                <p className="text-gray-600">
-                  {testimonials[currentTestimonial].role}
-                </p>
-              </div>
-            </div>
+          <div className="w-20 h-1 bg-accent mx-auto mb-16"></div>
 
-            <div className="flex justify-center gap-4">
-              <button
-                onClick={prevTestimonial}
-                className="p-3 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors"
-              >
-                <ChevronLeft className="w-6 h-6 text-gray-800" />
-              </button>
-              <button
-                onClick={nextTestimonial}
-                className="p-3 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors"
-              >
-                <ChevronRight className="w-6 h-6 text-gray-800" />
-              </button>
+          <div className="bg-slate-50 p-8 rounded-xl shadow-md">
+            <p className="text-lg text-gray-700 italic mb-6">
+              "{testimonials[currentTestimonial].text}"
+            </p>
+            <div className="text-center">
+              <h4 className="font-bold text-primary text-lg">
+                {testimonials[currentTestimonial].author}
+              </h4>
+              <p className="text-gray-600">
+                {testimonials[currentTestimonial].role}
+              </p>
             </div>
+          </div>
+
+          <div className="flex justify-center gap-4 mt-8">
+            <button
+              onClick={prevTestimonial}
+              className="w-12 h-12 rounded-full bg-accent/20 hover:bg-accent/30 flex items-center justify-center transition-colors"
+            >
+              <ChevronLeft className="w-6 h-6 text-accent" />
+            </button>
+            <button
+              onClick={nextTestimonial}
+              className="w-12 h-12 rounded-full bg-accent/20 hover:bg-accent/30 flex items-center justify-center transition-colors"
+            >
+              <ChevronRight className="w-6 h-6 text-accent" />
+            </button>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-gray-50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-6xl md:text-7xl font-bold mb-8">
+      <section className="py-20 px-4 bg-gradient-to-r from-accent/10 to-accent/5">
+        <div className="container mx-auto text-center max-w-3xl">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
             READY TO TRANSFORM?
           </h2>
-          <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-            Let's discuss how All Things Automated can create the perfect smart home solution for you.
+          <p className="text-lg text-gray-700 mb-8">
+            Let's discuss how SmartHome Hub can create the perfect smart home solution for you.
           </p>
           <Button
             size="lg"
-            className="rounded-lg px-10 py-7 text-lg font-semibold"
+            className="rounded-lg px-8 py-6 text-lg font-semibold"
             onClick={() => navigate("/contact")}
           >
             Get Started Today
@@ -280,29 +290,16 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-12 mb-16">
+      <footer className="bg-primary text-white py-12 px-4">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-              <div className="flex items-center space-x-2 mb-6">
-                <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
-                  alt="All Things Automated Logo"
-                  className="h-10 w-auto"
-                />
-              </div>
-              <p className="text-sm opacity-80">
-                Intelligent automation for modern homes.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-bold mb-4 text-lg">Navigate</h4>
-              <ul className="space-y-3 text-sm opacity-80">
+              <h4 className="font-bold text-lg mb-4">NAVIGATE</h4>
+              <ul className="space-y-2">
                 <li>
                   <button
                     onClick={() => navigate("/")}
-                    className="hover:text-white transition-colors"
+                    className="hover:text-accent transition-colors"
                   >
                     Home
                   </button>
@@ -310,7 +307,7 @@ export default function Home() {
                 <li>
                   <button
                     onClick={() => navigate("/about")}
-                    className="hover:text-white transition-colors"
+                    className="hover:text-accent transition-colors"
                   >
                     About
                   </button>
@@ -318,7 +315,7 @@ export default function Home() {
                 <li>
                   <button
                     onClick={() => navigate("/services")}
-                    className="hover:text-white transition-colors"
+                    className="hover:text-accent transition-colors"
                   >
                     Services
                   </button>
@@ -326,36 +323,62 @@ export default function Home() {
                 <li>
                   <button
                     onClick={() => navigate("/contact")}
-                    className="hover:text-white transition-colors"
+                    className="hover:text-accent transition-colors"
                   >
-                    Contact
+                    Contact Us
                   </button>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold mb-4 text-lg">Services</h4>
-              <ul className="space-y-3 text-sm opacity-80">
-                <li>Smart Lighting</li>
-                <li>Home Security</li>
-                <li>Climate Control</li>
-                <li>Voice Control</li>
+              <h4 className="font-bold text-lg mb-4">SERVICES</h4>
+              <ul className="space-y-2">
+                <li>
+                  <button
+                    onClick={() => navigate("/services")}
+                    className="hover:text-accent transition-colors"
+                  >
+                    Smart Lighting
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navigate("/services")}
+                    className="hover:text-accent transition-colors"
+                  >
+                    Home Security
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navigate("/services")}
+                    className="hover:text-accent transition-colors"
+                  >
+                    Climate Control
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navigate("/services")}
+                    className="hover:text-accent transition-colors"
+                  >
+                    Voice Control
+                  </button>
+                </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold mb-4 text-lg">Contact</h4>
-              <ul className="space-y-3 text-sm opacity-80">
-                <li>(555) 123-4567</li>
-                <li>info@allthingsautomated.com</li>
-                <li>Available 24/7</li>
-              </ul>
+              <h4 className="font-bold text-lg mb-4">CONTACT</h4>
+              <p className="mb-2">(555) 123-4567</p>
+              <p className="mb-4">info@smarthomehub.com</p>
+              <p>Available 24/7</p>
             </div>
           </div>
 
-          <div className="border-t border-white/20 pt-8 text-center text-sm opacity-80">
-            <p>© 2026 All Things Automated. All rights reserved.</p>
+          <div className="border-t border-white/20 pt-8 text-center text-white/80">
+            <p>© 2026 SmartHome Hub. All rights reserved.</p>
           </div>
         </div>
       </footer>

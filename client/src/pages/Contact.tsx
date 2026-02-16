@@ -56,9 +56,9 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-slate-50">
       {/* Navigation */}
-      <nav className="glass sticky top-0 z-50">
+      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="container mx-auto py-4">
           <div className="flex items-center justify-between">
             <button
