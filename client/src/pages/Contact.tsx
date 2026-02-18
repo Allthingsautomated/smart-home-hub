@@ -13,8 +13,17 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useState } from "react";
 import { useLocation } from "wouter";
 
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 export default function Contact() {
   const [, navigate] = useLocation();
+  
+  const handleNavigation = (path: string) => {
+    scrollToTop();
+    navigate(path);
+  };
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -62,7 +71,7 @@ export default function Contact() {
         <div className="container mx-auto py-4">
           <div className="flex items-center justify-between">
             <button
-              onClick={() => navigate("/")}
+              onClick={() => handleNavigation("/")}
               className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
             >
               <img
@@ -74,25 +83,25 @@ export default function Contact() {
             </button>
             <div className="hidden md:flex items-center space-x-6">
               <button
-                onClick={() => navigate("/")}
+                onClick={() => handleNavigation("/")}
                 className="hover:text-primary transition-colors"
               >
                 Home
               </button>
               <button
-                onClick={() => navigate("/about")}
+                onClick={() => handleNavigation("/about")}
                 className="hover:text-primary transition-colors"
               >
                 About Us
               </button>
               <button
-                onClick={() => navigate("/services")}
+                onClick={() => handleNavigation("/services")}
                 className="hover:text-primary transition-colors"
               >
                 Services
               </button>
               <button
-                onClick={() => navigate("/contact")}
+                onClick={() => handleNavigation("/contact")}
                 className="text-primary font-semibold"
               >
                 Contact
@@ -297,7 +306,7 @@ export default function Contact() {
               <ul className="space-y-2 text-sm opacity-80">
                 <li>
                   <button
-                    onClick={() => navigate("/")}
+                    onClick={() => handleNavigation("/")}
                     className="hover:opacity-100"
                   >
                     Home
@@ -305,7 +314,7 @@ export default function Contact() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/about")}
+                    onClick={() => handleNavigation("/about")}
                     className="hover:opacity-100"
                   >
                     About
@@ -313,7 +322,7 @@ export default function Contact() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/services")}
+                    onClick={() => handleNavigation("/services")}
                     className="hover:opacity-100"
                   >
                     Services
@@ -321,7 +330,7 @@ export default function Contact() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/contact")}
+                    onClick={() => handleNavigation("/contact")}
                     className="hover:opacity-100"
                   >
                     Contact Us
@@ -343,8 +352,16 @@ export default function Contact() {
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-sm opacity-80">
-                <li>(555) 123-4567</li>
-                <li>info@allthingsautomated.com</li>
+                <li>
+                  <a href="tel:(941) 263-5325" className="hover:opacity-100 transition-opacity">
+                    (941) 263-5325
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:office@allthingsautomated.org" className="hover:opacity-100 transition-opacity">
+                    office@allthingsautomated.org
+                  </a>
+                </li>
                 <li>Available 24/7</li>
               </ul>
             </div>

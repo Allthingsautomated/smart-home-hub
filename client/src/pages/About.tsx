@@ -1,8 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 export default function About() {
   const [, navigate] = useLocation();
+  
+  const handleNavigation = (path: string) => {
+    scrollToTop();
+    navigate(path);
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-slate-50">
@@ -11,7 +20,7 @@ export default function About() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <button
-              onClick={() => navigate("/")}
+              onClick={() => handleNavigation("/")}
               className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
               <img
@@ -22,25 +31,25 @@ export default function About() {
             </button>
             <div className="hidden md:flex items-center space-x-8">
               <button
-                onClick={() => navigate("/")}
+                onClick={() => handleNavigation("/")}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 Home
               </button>
               <button
-                onClick={() => navigate("/about")}
+                onClick={() => handleNavigation("/about")}
                 className="text-primary font-semibold hover:opacity-80 transition-opacity"
               >
                 About
               </button>
               <button
-                onClick={() => navigate("/services")}
+                onClick={() => handleNavigation("/services")}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 Services
               </button>
               <button
-                onClick={() => navigate("/contact")}
+                onClick={() => handleNavigation("/contact")}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 Contact
@@ -120,6 +129,35 @@ export default function About() {
         </div>
       </section>
 
+      {/* Founder Section */}
+      <section className="py-32 bg-gradient-to-r from-accent/10 to-accent/5">
+        <div className="container mx-auto px-4">
+          <h2 className="text-6xl md:text-7xl font-bold text-center mb-20">MEET THE FOUNDER</h2>
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <div className="w-full h-96 bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                <div className="text-center text-white">
+                  <div className="text-6xl mb-4">👤</div>
+                  <p className="text-lg">Founder Photo Coming Soon</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-4xl md:text-5xl font-bold mb-6 text-primary">Your Name Here</h3>
+              <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                As the founder of All Things Automated, I've dedicated over 15 years to transforming homes and businesses through intelligent automation technology.
+              </p>
+              <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                My passion is making smart home technology accessible and intuitive for everyone. From residential installations to commercial building automation, I believe that the right technology should enhance your life, not complicate it.
+              </p>
+              <p className="text-xl text-gray-700 leading-relaxed">
+                When you work with All Things Automated, you're working with someone who genuinely cares about getting it right the first time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="py-32 bg-primary text-white">
         <div className="container mx-auto px-4">
@@ -185,7 +223,7 @@ export default function About() {
               <ul className="space-y-3 text-sm opacity-80">
                 <li>
                   <button
-                    onClick={() => navigate("/")}
+                    onClick={() => handleNavigation("/")}
                     className="hover:text-white transition-colors"
                   >
                     Home
@@ -193,7 +231,7 @@ export default function About() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/about")}
+                    onClick={() => handleNavigation("/about")}
                     className="hover:text-white transition-colors"
                   >
                     About
@@ -201,7 +239,7 @@ export default function About() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/services")}
+                    onClick={() => handleNavigation("/services")}
                     className="hover:text-white transition-colors"
                   >
                     Services
@@ -209,7 +247,7 @@ export default function About() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/contact")}
+                    onClick={() => handleNavigation("/contact")}
                     className="hover:text-white transition-colors"
                   >
                     Contact

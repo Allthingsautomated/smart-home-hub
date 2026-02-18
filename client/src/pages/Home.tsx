@@ -14,8 +14,12 @@ import {
   Wifi,
   Volume2,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 
 export default function Home() {
   // The userAuth hooks provides authentication state
@@ -23,6 +27,11 @@ export default function Home() {
   let { user, loading, error, isAuthenticated, logout } = useAuth();
 
   const [, navigate] = useLocation();
+  
+  const handleNavigation = (path: string) => {
+    scrollToTop();
+    navigate(path);
+  };
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const testimonials = [
@@ -83,7 +92,7 @@ export default function Home() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <button
-              onClick={() => navigate("/")}
+              onClick={() => handleNavigation("/")}
               className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
               <img
@@ -94,31 +103,31 @@ export default function Home() {
             </button>
             <div className="hidden md:flex items-center space-x-8">
               <button
-                onClick={() => navigate("/")}
+                onClick={() => handleNavigation("/")}
                 className="text-primary font-semibold hover:opacity-80 transition-opacity"
               >
                 Home
               </button>
               <button
-                onClick={() => navigate("/about")}
+                onClick={() => handleNavigation("/about")}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 About
               </button>
               <button
-                onClick={() => navigate("/services")}
+                onClick={() => handleNavigation("/services")}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 Services
               </button>
               <button
-                onClick={() => navigate("/contact")}
+                onClick={() => handleNavigation("/contact")}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 Contact
               </button>
               <button
-                onClick={() => navigate("/quote-builder")}
+                onClick={() => handleNavigation("/quote-builder")}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 Pricing
@@ -149,7 +158,7 @@ export default function Home() {
             <Button
               size="lg"
               className="rounded-lg px-8 py-6 text-lg font-semibold"
-              onClick={() => navigate("/contact")}
+              onClick={() => handleNavigation("/contact")}
             >
               Schedule Consultation
             </Button>
@@ -157,7 +166,7 @@ export default function Home() {
               size="lg"
               variant="outline"
               className="rounded-lg px-8 py-6 text-lg font-semibold bg-white/10 border-white text-white hover:bg-white/20"
-              onClick={() => navigate("/services")}
+              onClick={() => handleNavigation("/services")}
             >
               Explore Services
             </Button>
@@ -180,7 +189,7 @@ export default function Home() {
                 <div
                   key={index}
                   className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer"
-                  onClick={() => navigate("/services")}
+                  onClick={() => handleNavigation("/services")}
                 >
                   <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg flex items-center justify-center mb-4">
                     <Icon className="w-8 h-8 text-accent" />
@@ -199,7 +208,7 @@ export default function Home() {
               size="lg"
               variant="outline"
               className="rounded-lg px-8 py-6 text-lg"
-              onClick={() => navigate("/services")}
+              onClick={() => handleNavigation("/services")}
             >
               View All Services <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
@@ -282,7 +291,7 @@ export default function Home() {
           <Button
             size="lg"
             className="rounded-lg px-8 py-6 text-lg font-semibold"
-            onClick={() => navigate("/contact")}
+            onClick={() => handleNavigation("/contact")}
           >
             Get Started Today
           </Button>
@@ -298,7 +307,7 @@ export default function Home() {
               <ul className="space-y-2">
                 <li>
                   <button
-                    onClick={() => navigate("/")}
+                    onClick={() => handleNavigation("/")}
                     className="hover:text-accent transition-colors"
                   >
                     Home
@@ -306,7 +315,7 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/about")}
+                    onClick={() => handleNavigation("/about")}
                     className="hover:text-accent transition-colors"
                   >
                     About
@@ -314,7 +323,7 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/services")}
+                    onClick={() => handleNavigation("/services")}
                     className="hover:text-accent transition-colors"
                   >
                     Services
@@ -322,7 +331,7 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/contact")}
+                    onClick={() => handleNavigation("/contact")}
                     className="hover:text-accent transition-colors"
                   >
                     Contact Us
@@ -336,7 +345,7 @@ export default function Home() {
               <ul className="space-y-2">
                 <li>
                   <button
-                    onClick={() => navigate("/services")}
+                    onClick={() => handleNavigation("/services")}
                     className="hover:text-accent transition-colors"
                   >
                     Smart Lighting
@@ -344,7 +353,7 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/services")}
+                    onClick={() => handleNavigation("/services")}
                     className="hover:text-accent transition-colors"
                   >
                     Home Security
@@ -352,7 +361,7 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/services")}
+                    onClick={() => handleNavigation("/services")}
                     className="hover:text-accent transition-colors"
                   >
                     Climate Control
@@ -360,7 +369,7 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/services")}
+                    onClick={() => handleNavigation("/services")}
                     className="hover:text-accent transition-colors"
                   >
                     Voice Control
@@ -371,14 +380,22 @@ export default function Home() {
 
             <div>
               <h4 className="font-bold text-lg mb-4">CONTACT</h4>
-              <p className="mb-2">(555) 123-4567</p>
-              <p className="mb-4">info@smarthomehub.com</p>
+              <p className="mb-2">
+                <a href="tel:(941) 263-5325" className="hover:text-accent transition-colors">
+                  (941) 263-5325
+                </a>
+              </p>
+              <p className="mb-4">
+                <a href="mailto:office@allthingsautomated.org" className="hover:text-accent transition-colors">
+                  office@allthingsautomated.org
+                </a>
+              </p>
               <p>Available 24/7</p>
             </div>
           </div>
 
           <div className="border-t border-white/20 pt-8 text-center text-white/80">
-            <p>© 2026 SmartHome Hub. All rights reserved.</p>
+            <p>© 2026 All Things Automated. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -10,11 +10,21 @@ import {
   Building2,
   Volume2,
   Wifi,
+  Zap,
 } from "lucide-react";
 import { useLocation } from "wouter";
 
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 export default function Services() {
   const [, navigate] = useLocation();
+  
+  const handleNavigation = (path: string) => {
+    scrollToTop();
+    navigate(path);
+  };
 
   const residentialServices = [
     {
@@ -52,6 +62,12 @@ export default function Services() {
       icon: Wifi,
       title: "Networks",
       description: "Ubiquiti networking and connectivity solutions.",
+    },
+    {
+      id: "tesla-panels",
+      icon: Zap,
+      title: "Tesla Electrical Panels",
+      description: "Tesla Powerwall and electrical panel installations.",
     },
   ];
 
@@ -162,7 +178,7 @@ export default function Services() {
                   return (
                     <div
                       key={service.id}
-                      onClick={() => navigate(`/services/${service.id}`)}
+                      onClick={() => { scrollToTop(); navigate(`/services/${service.id}`); }}
                       className="text-left hover:opacity-80 transition-opacity cursor-pointer"
                     >
                       <Card className="border-none shadow-sm h-full hover:shadow-lg transition-shadow">
@@ -196,7 +212,7 @@ export default function Services() {
                   return (
                     <div
                       key={service.id}
-                      onClick={() => navigate(`/services/${service.id}`)}
+                      onClick={() => { scrollToTop(); navigate(`/services/${service.id}`); }}
                       className="text-left hover:opacity-80 transition-opacity cursor-pointer"
                     >
                       <Card className="border-none shadow-sm h-full hover:shadow-lg transition-shadow">

@@ -21,6 +21,7 @@ import CommercialAutomation from "./pages/services/CommercialAutomation";
 import CommercialSecurity from "./pages/services/CommercialSecurity";
 import CommercialClimate from "./pages/services/CommercialClimate";
 import CommercialNetworks from "./pages/services/CommercialNetworks";
+import TeslaPanels from "./pages/services/TeslaPanels";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -38,7 +39,8 @@ function Router() {
       <Route path={"/services/commercial-automation"} component={CommercialAutomation} />
       <Route path={"/services/commercial-security"} component={CommercialSecurity} />
       <Route path={"/services/commercial-climate"} component={CommercialClimate} />
-      <Route path={"/services/commercial-networks"} component={CommercialNetworks} />
+       <Route path={"services/commercial-networks"} component={CommercialNetworks} />
+      <Route path={"services/tesla-panels"} component={TeslaPanels} />
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/contact"} component={Contact} />
       <Route path={"/admin"} component={AdminDashboard} />
