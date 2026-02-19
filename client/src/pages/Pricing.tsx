@@ -3,8 +3,17 @@ import { useLocation } from "wouter";
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 export default function Pricing() {
   const [, navigate] = useLocation();
+  
+  const handleNavigation = (path: string) => {
+    scrollToTop();
+    navigate(path);
+  };
   const [systemType, setSystemType] = useState<"caseta" | "ra3" | "homeworks">(
     "caseta"
   );
@@ -409,7 +418,7 @@ export default function Pricing() {
               <ul className="space-y-3 text-sm opacity-80">
                 <li>
                   <button
-                    onClick={() => navigate("/")}
+                    onClick={() => handleNavigation("/")}
                     className="hover:text-white transition-colors"
                   >
                     Home
@@ -417,7 +426,7 @@ export default function Pricing() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/about")}
+                    onClick={() => handleNavigation("/about")}
                     className="hover:text-white transition-colors"
                   >
                     About
@@ -425,7 +434,7 @@ export default function Pricing() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/services")}
+                    onClick={() => handleNavigation("/services")}
                     className="hover:text-white transition-colors"
                   >
                     Services
@@ -433,7 +442,7 @@ export default function Pricing() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/pricing")}
+                    onClick={() => handleNavigation("/pricing")}
                     className="hover:text-white transition-colors"
                   >
                     Pricing
@@ -441,7 +450,7 @@ export default function Pricing() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/contact")}
+                    onClick={() => handleNavigation("/contact")}
                     className="hover:text-white transition-colors"
                   >
                     Contact

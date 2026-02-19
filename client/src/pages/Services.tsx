@@ -282,7 +282,7 @@ export default function Services() {
               <ul className="space-y-2 text-sm opacity-80">
                 <li>
                   <button
-                    onClick={() => navigate("/")}
+                    onClick={() => handleNavigation("/")}
                     className="hover:opacity-100"
                   >
                     Home
@@ -290,7 +290,7 @@ export default function Services() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/about")}
+                    onClick={() => handleNavigation("/about")}
                     className="hover:opacity-100"
                   >
                     About
@@ -298,7 +298,7 @@ export default function Services() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/services")}
+                    onClick={() => handleNavigation("/services")}
                     className="hover:opacity-100"
                   >
                     Services
@@ -306,7 +306,7 @@ export default function Services() {
                 </li>
                 <li>
                   <button
-                    onClick={() => navigate("/contact")}
+                    onClick={() => handleNavigation("/contact")}
                     className="hover:opacity-100"
                   >
                     Contact

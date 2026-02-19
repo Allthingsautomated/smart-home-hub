@@ -94,3 +94,9 @@
 - [x] Add Tesla electrical panel installation service
 - [x] Add Tesla to services page and service detail page
 - [x] Test all links scroll to top functionality
+
+
+## BUG FIX - Footer Links Not Scrolling to Top
+- [x] Fix scroll-to-top functionality on all footer navigation links
+- [x] Ensure all page links scroll to top when clicked
+- [x] Test every link on every page to verify scroll-to-top works
