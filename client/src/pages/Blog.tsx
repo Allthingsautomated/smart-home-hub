@@ -144,9 +144,10 @@ export default function Blog() {
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post) => (
-            <article
+            <button
               key={post.id}
-              className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden hover:-translate-y-1 cursor-pointer"
+              onClick={() => handleNavigation(`/blog/${post.id}`)}
+              className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden hover:-translate-y-1 cursor-pointer text-left"
             >
               {/* Image */}
               <div className="h-48 bg-gradient-to-br from-primary/20 to-accent/20 overflow-hidden">
@@ -187,11 +188,11 @@ export default function Blog() {
                 </div>
 
                 {/* Read More */}
-                <button className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all">
+                <div className="inline-flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
                   Read More <ArrowRight size={16} />
-                </button>
+                </div>
               </div>
-            </article>
+            </button>
           ))}
         </div>
 

@@ -25,6 +25,7 @@ import CommercialNetworks from "./pages/services/CommercialNetworks";
 import TeslaPanels from "./pages/services/TeslaPanels";
 import SmartLightingCatalog from "./pages/SmartLightingCatalog";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -48,6 +49,7 @@ function Router() {
         <Route path={"services/tesla-panels"} component={TeslaPanels} />
         <Route path={"/smart-lighting-catalog"} component={SmartLightingCatalog} />
         <Route path={"/blog"} component={Blog} />
+        <Route path={"/blog/:id"} component={BlogPost} />
         <Route path={"/pricing"} component={Pricing} />
         <Route path={"/contact"} component={Contact} />
         <Route path={"/admin"} component={AdminDashboard} />
