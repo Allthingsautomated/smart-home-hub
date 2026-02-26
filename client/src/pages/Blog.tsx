@@ -72,16 +72,73 @@ export default function Blog() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-primary to-primary/80 text-white py-16 px-4">
+    <div className="min-h-screen flex flex-col bg-white">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => handleNavigation("/")}
+              className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
+            >
+              <img
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
+                alt="SmartHome Hub Logo"
+                className="h-10 w-auto"
+              />
+            </button>
+            <div className="hidden md:flex items-center space-x-8">
+              <button
+                onClick={() => handleNavigation("/")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Home
+              </button>
+              <button
+                onClick={() => handleNavigation("/about")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                About
+              </button>
+              <button
+                onClick={() => handleNavigation("/services")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Services
+              </button>
+              <button
+                onClick={() => handleNavigation("/contact")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Contact
+              </button>
+              <button
+                onClick={() => handleNavigation("/quote-builder")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Pricing
+              </button>
+              <button
+                onClick={() => handleNavigation("/blog")}
+                className="text-primary font-semibold hover:opacity-80 transition-opacity"
+              >
+                Blog
+              </button>
+            </div>
+            <Button className="rounded-full" onClick={() => navigate("/contact")}>Book Now</Button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-primary to-primary/80 text-white py-16 px-4">
         <div className="container mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Smart Home Blog</h1>
           <p className="text-lg text-white/90 max-w-2xl">
             Expert insights, tips, and industry updates on smart home automation and intelligent living
           </p>
         </div>
-      </div>
+      </section>
 
       {/* Blog Posts */}
       <div className="container mx-auto px-4 py-16">
@@ -171,7 +228,7 @@ export default function Blog() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-white py-16 px-4">
+      <footer className="bg-gray-900 text-white py-16 px-4 mt-auto">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
