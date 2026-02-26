@@ -4,6 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -26,29 +27,32 @@ import TeslaPanels from "./pages/services/TeslaPanels";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/about"} component={About} />
-      <Route path={"/services"} component={Services} />
-      <Route path={"/services/smart-lighting"} component={SmartLighting} />
-      <Route path={"/services/home-security"} component={HomeSecurity} />
-      <Route path={"/services/climate-control"} component={ClimateControl} />
-      <Route path={"/services/voice-integration"} component={VoiceIntegration} />
-      <Route path={"/services/home-audio"} component={HomeAudio} />
-      <Route path={"/services/networks"} component={Networks} />
-      <Route path={"/services/commercial-automation"} component={CommercialAutomation} />
-      <Route path={"/services/commercial-security"} component={CommercialSecurity} />
-      <Route path={"/services/commercial-climate"} component={CommercialClimate} />
-       <Route path={"services/commercial-networks"} component={CommercialNetworks} />
-      <Route path={"services/tesla-panels"} component={TeslaPanels} />
-      <Route path={"/pricing"} component={Pricing} />
-      <Route path={"/contact"} component={Contact} />
-      <Route path={"/admin"} component={AdminDashboard} />
-      <Route path={"/quote-builder"} component={QuoteBuilder} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      <ScrollToTop />
+      <Switch>
+        <Route path={"/"} component={Home} />
+        <Route path={"/about"} component={About} />
+        <Route path={"/services"} component={Services} />
+        <Route path={"/services/smart-lighting"} component={SmartLighting} />
+        <Route path={"/services/home-security"} component={HomeSecurity} />
+        <Route path={"/services/climate-control"} component={ClimateControl} />
+        <Route path={"/services/voice-integration"} component={VoiceIntegration} />
+        <Route path={"/services/home-audio"} component={HomeAudio} />
+        <Route path={"/services/networks"} component={Networks} />
+        <Route path={"/services/commercial-automation"} component={CommercialAutomation} />
+        <Route path={"/services/commercial-security"} component={CommercialSecurity} />
+        <Route path={"/services/commercial-climate"} component={CommercialClimate} />
+        <Route path={"services/commercial-networks"} component={CommercialNetworks} />
+        <Route path={"services/tesla-panels"} component={TeslaPanels} />
+        <Route path={"/pricing"} component={Pricing} />
+        <Route path={"/contact"} component={Contact} />
+        <Route path={"/admin"} component={AdminDashboard} />
+        <Route path={"/quote-builder"} component={QuoteBuilder} />
+        <Route path={"/404"} component={NotFound} />
+        {/* Final fallback route */}
+        <Route component={NotFound} />
+      </Switch>
+    </>
   );
 }
 
