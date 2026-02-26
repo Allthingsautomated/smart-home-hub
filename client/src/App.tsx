@@ -23,6 +23,7 @@ import CommercialSecurity from "./pages/services/CommercialSecurity";
 import CommercialClimate from "./pages/services/CommercialClimate";
 import CommercialNetworks from "./pages/services/CommercialNetworks";
 import TeslaPanels from "./pages/services/TeslaPanels";
+import LandscapeLighting from "./pages/services/LandscapeLighting";
 import SmartLightingCatalog from "./pages/SmartLightingCatalog";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -47,6 +48,7 @@ function Router() {
         <Route path={"/services/commercial-climate"} component={CommercialClimate} />
         <Route path={"services/commercial-networks"} component={CommercialNetworks} />
         <Route path={"services/tesla-panels"} component={TeslaPanels} />
+        <Route path={"/services/landscape-lighting"} component={LandscapeLighting} />
         <Route path={"/smart-lighting-catalog"} component={SmartLightingCatalog} />
         <Route path={"/blog"} component={Blog} />
         <Route path={"/blog/:id"} component={BlogPost} />

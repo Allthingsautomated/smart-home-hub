@@ -11,6 +11,7 @@ import {
   Volume2,
   Wifi,
   Zap,
+  Leaf,
 } from "lucide-react";
 import { useLocation } from "wouter";
 
@@ -69,6 +70,12 @@ export default function Services() {
       title: "Tesla Electrical Panels",
       description: "Tesla Powerwall and electrical panel installations.",
     },
+    {
+      id: "landscape-lighting",
+      icon: Leaf,
+      title: "Landscape Lighting",
+      description: "Professional outdoor lighting design and installation.",
+    },
   ];
 
   const commercialServices = [
@@ -95,6 +102,12 @@ export default function Services() {
       icon: Wifi,
       title: "Network Infrastructure",
       description: "Enterprise Ubiquiti networking solutions.",
+    },
+    {
+      id: "landscape-lighting",
+      icon: Leaf,
+      title: "Landscape Lighting",
+      description: "Commercial outdoor lighting systems and design.",
     },
   ];
 
