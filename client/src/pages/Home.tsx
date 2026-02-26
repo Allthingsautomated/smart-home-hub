@@ -13,6 +13,8 @@ import {
   Lock,
   Wifi,
   Volume2,
+  Instagram,
+  Music,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
@@ -131,6 +133,12 @@ export default function Home() {
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 Pricing
+              </button>
+              <button
+                onClick={() => handleNavigation("/blog")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Blog
               </button>
             </div>
             <Button className="rounded-full" onClick={() => navigate("/contact")}>Book Now</Button>
@@ -385,12 +393,16 @@ export default function Home() {
                   (941) 263-5325
                 </a>
               </p>
-              <p className="mb-4">
-                <a href="mailto:office@allthingsautomated.org" className="hover:text-accent transition-colors">
-                  office@allthingsautomated.org
+              <p className="mb-4">Available 24/7</p>
+              <h4 className="font-bold text-lg mb-4 mt-6">FOLLOW US</h4>
+              <div className="flex gap-4">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                  <Instagram size={24} />
                 </a>
-              </p>
-              <p>Available 24/7</p>
+                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                  <Music size={24} />
+                </a>
+              </div>
             </div>
           </div>
 

@@ -106,3 +106,12 @@
 - [x] Add ScrollToTop to App.tsx
 - [x] Test scroll-to-top on all navigation links
 - [x] Verify scroll-to-top works on every page transition
+
+
+## New Features - Catalog Pages, Blog & Social Media
+- [x] Add Instagram and TikTok social media links to footer
+- [x] Create detailed Smart Lighting & Automation Services catalog page
+- [x] Create blog page with article structure
+- [x] Add blog route to navigation menu
+- [x] Create sample blog articles
+- [x] Test all new pages and links
