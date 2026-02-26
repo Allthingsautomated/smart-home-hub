@@ -336,6 +336,14 @@ export default function Contact() {
                     Contact Us
                   </button>
                 </li>
+                <li>
+                  <button
+                    onClick={() => handleNavigation("/blog")}
+                    className="hover:opacity-100"
+                  >
+                    Blog
+                  </button>
+                </li>
               </ul>
             </div>
 

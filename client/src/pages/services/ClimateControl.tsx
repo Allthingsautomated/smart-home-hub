@@ -238,6 +238,14 @@ export default function ClimateControl() {
                     Contact
                   </button>
                 </li>
+                <li>
+                  <button
+                    onClick={() => navigate("/blog")}
+                    className="hover:opacity-100"
+                  >
+                    Blog
+                  </button>
+                </li>
               </ul>
             </div>
 

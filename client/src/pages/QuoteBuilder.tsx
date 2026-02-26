@@ -478,6 +478,14 @@ export default function QuoteBuilder() {
                     Pricing
                   </button>
                 </li>
+                <li>
+                  <button
+                    onClick={() => navigate("/blog")}
+                    className="hover:text-white transition-colors"
+                  >
+                    Blog
+                  </button>
+                </li>
               </ul>
             </div>
             <div>

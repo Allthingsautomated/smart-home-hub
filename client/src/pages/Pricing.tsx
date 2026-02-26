@@ -456,6 +456,14 @@ export default function Pricing() {
                     Contact
                   </button>
                 </li>
+                <li>
+                  <button
+                    onClick={() => handleNavigation("/blog")}
+                    className="hover:text-white transition-colors"
+                  >
+                    Blog
+                  </button>
+                </li>
               </ul>
             </div>
 

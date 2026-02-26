@@ -171,9 +171,91 @@ export default function Blog() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-white py-12 px-4">
-        <div className="container mx-auto text-center">
-          <p className="text-white/80">© 2026 All Things Automated. All rights reserved.</p>
+      <footer className="bg-primary text-white py-16 px-4">
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
+            <div>
+              <div className="flex items-center space-x-2 mb-6">
+                <img
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
+                  alt="All Things Automated Logo"
+                  className="h-10 w-auto"
+                />
+              </div>
+              <p className="text-sm opacity-80">
+                Intelligent automation for modern homes.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-bold mb-4 text-lg">Navigate</h4>
+              <ul className="space-y-3 text-sm opacity-80">
+                <li>
+                  <button
+                    onClick={() => handleNavigation("/")}
+                    className="hover:text-white transition-colors"
+                  >
+                    Home
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleNavigation("/about")}
+                    className="hover:text-white transition-colors"
+                  >
+                    About
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleNavigation("/services")}
+                    className="hover:text-white transition-colors"
+                  >
+                    Services
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleNavigation("/contact")}
+                    className="hover:text-white transition-colors"
+                  >
+                    Contact
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleNavigation("/blog")}
+                    className="hover:text-white transition-colors"
+                  >
+                    Blog
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-bold mb-4 text-lg">Services</h4>
+              <ul className="space-y-3 text-sm opacity-80">
+                <li>Smart Lighting</li>
+                <li>Home Security</li>
+                <li>Climate Control</li>
+                <li>Voice Control</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-bold mb-4 text-lg">Contact</h4>
+              <ul className="space-y-3 text-sm opacity-80">
+                <li>(555) 123-4567</li>
+                <li>info@allthingsautomated.com</li>
+                <li>Available 24/7</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-white/20 pt-8 text-center text-sm opacity-80">
+            <p>© 2026 All Things Automated. All rights reserved.</p>
+          </div>
         </div>
       </footer>
     </div>

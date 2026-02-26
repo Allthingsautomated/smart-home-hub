@@ -115,3 +115,11 @@
 - [x] Add blog route to navigation menu
 - [x] Create sample blog articles
 - [x] Test all new pages and links
+
+
+## Blog Integration - Make it Part of Main Website
+- [ ] Add Blog link to footer on all pages (Services, About, Contact, Pricing, Smart Lighting Catalog)
+- [ ] Update Blog page with proper navigation back to main site
+- [ ] Create blog article detail pages with back to blog link
+- [ ] Ensure blog feels integrated, not separate from main website
+- [ ] Test blog navigation across all pages

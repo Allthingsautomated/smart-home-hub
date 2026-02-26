@@ -345,6 +345,14 @@ export default function Home() {
                     Contact Us
                   </button>
                 </li>
+                <li>
+                  <button
+                    onClick={() => handleNavigation("/blog")}
+                    className="hover:text-accent transition-colors"
+                  >
+                    Blog
+                  </button>
+                </li>
               </ul>
             </div>
 
