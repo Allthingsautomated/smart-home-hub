@@ -29,6 +29,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import AdminLogin from "./pages/AdminLogin";
 import BlogEditor from "./pages/BlogEditor";
+import AdminSecretDashboard from "./pages/AdminSecretDashboard";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -59,7 +60,8 @@ function Router() {
         <Route path={"/admin"} component={AdminDashboard} />
         <Route path={"/admin/login"} component={AdminLogin} />
         <Route path={"/admin/blog-editor"} component={BlogEditor} />
-        <Route path={"/quote-builder"} component={QuoteBuilder} />
+        <Route path={"quote-builder"} component={QuoteBuilder} />
+        <Route path={"/admin-all-things-automated-secret"} component={AdminSecretDashboard} />
         <Route path={"/404"} component={NotFound} />
         {/* Final fallback route */}
         <Route component={NotFound} />
