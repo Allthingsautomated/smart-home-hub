@@ -313,10 +313,10 @@ export default function Blog() {
 
           <div className="border-t border-white/20 pt-8">
             <div className="flex justify-center gap-4 mb-6">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+              <a href="https://www.instagram.com/allthingsautomated8/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
                 <Instagram size={24} />
               </a>
-              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+              <a href="https://www.tiktok.com/@allthingsautomated?_r=1&_t=ZT-94GKcCmT0rW" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
                 <Music size={24} />
               </a>
             </div>
