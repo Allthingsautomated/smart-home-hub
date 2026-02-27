@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, User } from "lucide-react";
+import { ArrowRight, Calendar, User, Instagram, Music } from "lucide-react";
 import { useLocation } from "wouter";
 
 const scrollToTop = () => {
@@ -304,15 +304,23 @@ export default function Blog() {
             <div>
               <h4 className="font-bold mb-4 text-lg">Contact</h4>
               <ul className="space-y-3 text-sm opacity-80">
-                <li>(555) 123-4567</li>
+                <li>(941) 263-5325</li>
                 <li>info@allthingsautomated.com</li>
                 <li>Available 24/7</li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-white/20 pt-8 text-center text-sm opacity-80">
-            <p>© 2026 All Things Automated. All rights reserved.</p>
+          <div className="border-t border-white/20 pt-8">
+            <div className="flex justify-center gap-4 mb-6">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                <Instagram size={24} />
+              </a>
+              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                <Music size={24} />
+              </a>
+            </div>
+            <p className="text-center text-sm opacity-80">© 2026 All Things Automated. All rights reserved.</p>
           </div>
         </div>
       </footer>

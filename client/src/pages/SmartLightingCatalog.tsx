@@ -155,7 +155,8 @@ export default function SmartLightingCatalog() {
       {/* Footer */}
       <footer className="bg-primary text-white py-12 px-4 mt-16">
         <div className="container mx-auto text-center">
-          <p className="text-white/80">© 2026 All Things Automated. All rights reserved.</p>
+          <p className="text-white/80"><a href="tel:(941) 263-5325" className="hover:text-blue-300 transition">(941) 263-5325</a></p>
+          <p className="text-white/80 mt-2">© 2026 All Things Automated. All rights reserved.</p>
         </div>
       </footer>
     </div>

@@ -123,3 +123,14 @@
 - [ ] Create blog article detail pages with back to blog link
 - [ ] Ensure blog feels integrated, not separate from main website
 - [ ] Test blog navigation across all pages
+
+
+## Current Tasks - Phone, About Me, Admin Blog, Title Update
+- [ ] Update page title from "SmartHome Hub" to "All Things Automated" in index.html
+- [ ] Add phone number (941) 263-5325 to all pages (header/footer)
+- [ ] Create About Me section in About Us page with owner bio
+- [ ] Create admin login page for blog management
+- [ ] Create admin blog editor for creating/editing blogs
+- [ ] Ensure Blog page header matches main page header exactly
+- [ ] Verify Instagram and TikTok links on all pages
+- [ ] Sync navigation changes across all pages automatically

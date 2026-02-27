@@ -480,7 +480,7 @@ export default function Pricing() {
             <div>
               <h4 className="font-bold mb-4 text-lg">Contact</h4>
               <ul className="space-y-3 text-sm opacity-80">
-                <li>(555) 123-4567</li>
+                <li>(941) 263-5325</li>
                 <li>info@allthingsautomated.com</li>
                 <li>Available 24/7</li>
               </ul>

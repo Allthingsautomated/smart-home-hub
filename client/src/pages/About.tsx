@@ -277,7 +277,7 @@ export default function About() {
             <div>
               <h4 className="font-bold mb-4 text-lg">Contact</h4>
               <ul className="space-y-3 text-sm opacity-80">
-                <li>(555) 123-4567</li>
+                <li><a href="tel:(941) 263-5325" className="hover:text-blue-400 transition">(941) 263-5325</a></li>
                 <li>info@allthingsautomated.com</li>
                 <li>Available 24/7</li>
               </ul>

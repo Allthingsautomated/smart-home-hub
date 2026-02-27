@@ -499,7 +499,7 @@ export default function QuoteBuilder() {
             <div>
               <h4 className="font-bold mb-4">Contact</h4>
               <ul className="space-y-2 text-sm opacity-80">
-                <li>(555) 123-4567</li>
+                <li>(941) 263-5325</li>
                 <li>info@allthingsautomated.com</li>
                 <li>24/7 Support</li>
               </ul>

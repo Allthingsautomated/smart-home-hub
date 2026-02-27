@@ -262,7 +262,7 @@ export default function ClimateControl() {
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-sm opacity-80">
-                <li>(555) 123-4567</li>
+                <li>(941) 263-5325</li>
                 <li>info@allthingsautomated.com</li>
                 <li>Available 24/7</li>
               </ul>
