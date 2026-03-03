@@ -96,7 +96,7 @@ export default function QuoteBuilder() {
                 alt="All Things Automated Logo"
                 className="h-10 w-auto"
               />
-                <span className="font-bold text-lg hidden sm:inline">All Things Automated</span>
+  
               </button>
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function QuoteBuilder() {
                 alt="All Things Automated Logo"
                 className="h-10 w-auto"
               />
-              <span className="font-bold text-lg hidden sm:inline">All Things Automated</span>
+
             </button>
             <div className="hidden md:flex items-center space-x-8">
               <button
@@ -176,7 +176,7 @@ export default function QuoteBuilder() {
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">GET YOUR FREE ESTIMATE IN 24 HOURS</h1>
+          <h1 className="text-4xl md:text-5xl mb-4" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>GET YOUR FREE ESTIMATE IN 24 HOURS</h1>
           <p className="text-xl text-blue-100">Show us your project with a quick video. We'll analyze it and send you a detailed estimate — no service call needed.</p>
         </div>
       </div>
@@ -298,7 +298,7 @@ export default function QuoteBuilder() {
                       <div className="flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white font-bold">1</div>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900">FILL OUT YOUR INFO</h4>
+                      <h4 className="font-semibold text-gray-900" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>FILL OUT YOUR INFO</h4>
                       <p className="text-gray-600">Tell us about your project and location</p>
                     </div>
                   </div>
@@ -308,7 +308,7 @@ export default function QuoteBuilder() {
                       <div className="flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white font-bold">2</div>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900">UPLOAD YOUR VIDEO</h4>
+                      <h4 className="font-semibold text-gray-900" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>UPLOAD YOUR VIDEO</h4>
                       <p className="text-gray-600">Show us the area that needs work (2-5 minutes)</p>
                     </div>
                   </div>
@@ -318,7 +318,7 @@ export default function QuoteBuilder() {
                       <div className="flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white font-bold">3</div>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900">GET YOUR ESTIMATE</h4>
+                      <h4 className="font-semibold text-gray-900" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>GET YOUR ESTIMATE</h4>
                       <p className="text-gray-600">Receive a detailed estimate within 24 hours</p>
                     </div>
                   </div>
