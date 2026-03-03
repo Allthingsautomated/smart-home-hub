@@ -185,7 +185,7 @@ export default function Home() {
       {/* Services Section */}
       <section className="py-20 px-4 bg-gradient-to-b from-white to-slate-50">
         <div className="container mx-auto">
-          <h2 className="text-center text-4xl md:text-5xl font-bold mb-4 text-primary">
+          <h2 className="text-center text-4xl md:text-5xl mb-4 text-primary" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>
             OUR SERVICES
           </h2>
           <div className="w-20 h-1 bg-accent mx-auto mb-16"></div>
@@ -202,7 +202,7 @@ export default function Home() {
                   <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg flex items-center justify-center mb-4">
                     <Icon className="w-8 h-8 text-accent" />
                   </div>
-                  <h3 className="text-xl font-bold text-primary mb-2">
+                  <h3 className="text-xl text-primary mb-2" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>
                     {service.title}
                   </h3>
                   <p className="text-gray-600">{service.desc}</p>
