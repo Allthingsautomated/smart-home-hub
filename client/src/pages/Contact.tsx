@@ -12,6 +12,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useState } from "react";
 import { useLocation } from "wouter";
+import MobileNav from "@/components/MobileNav";
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -108,6 +109,7 @@ export default function Contact() {
               </button>
               <Button className="rounded-full">Book Now</Button>
             </div>
+            <MobileNav onNavigate={handleNavigation} />
           </div>
         </div>
       </nav>

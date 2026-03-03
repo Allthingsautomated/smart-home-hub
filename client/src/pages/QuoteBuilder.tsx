@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
+import MobileNav from "@/components/MobileNav";
 import { Upload, Phone, CheckCircle, ArrowRight, Lightbulb, ShieldCheck, Thermometer, Mic } from "lucide-react";
 
 export default function QuoteBuilder() {
@@ -169,6 +170,7 @@ export default function QuoteBuilder() {
                 Get Estimate
               </button>
             </div>
+            <MobileNav onNavigate={(path) => navigate(path)} />
           </div>
         </div>
       </nav>

@@ -14,6 +14,7 @@ import {
   Leaf,
 } from "lucide-react";
 import { useLocation } from "wouter";
+import MobileNav from "@/components/MobileNav";
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -155,6 +156,7 @@ export default function Services() {
               </button>
               <Button className="rounded-full">Book Now</Button>
             </div>
+            <MobileNav onNavigate={handleNavigation} />
           </div>
         </div>
       </nav>

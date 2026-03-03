@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User, Share2 } from "lucide-react";
 import { useLocation } from "wouter";
+import MobileNav from "@/components/MobileNav";
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -307,6 +308,7 @@ export default function BlogPost() {
                 Blog
               </button>
             </div>
+            <MobileNav onNavigate={handleNavigation} />
             <Button className="rounded-full" onClick={() => navigate("/contact")}>Book Now</Button>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
+import MobileNav from "@/components/MobileNav";
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -55,7 +56,10 @@ export default function About() {
                 Contact
               </button>
             </div>
-            <Button className="rounded-full">Book Now</Button>
+            <div className="flex items-center space-x-4">
+              <MobileNav onNavigate={handleNavigation} />
+              <Button className="rounded-full hidden md:inline-flex">Book Now</Button>
+            </div>
           </div>
         </div>
       </nav>

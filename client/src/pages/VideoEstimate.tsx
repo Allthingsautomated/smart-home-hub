@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Upload, Phone, CheckCircle, ArrowRight, Lightbulb, ShieldCheck, Thermometer, Mic } from "lucide-react";
+import MobileNav from "@/components/MobileNav";
 
 export default function VideoEstimate() {
   const [, navigate] = useLocation();
@@ -103,7 +104,7 @@ export default function VideoEstimate() {
                 />
                 <span className="font-bold text-lg hidden sm:inline">All Things Automated</span>
               </button>
-              <div className="flex items-center space-x-6">
+              <div className="hidden md:flex items-center space-x-6">
                 <button onClick={() => navigate("/")} className="text-gray-700 hover:text-gray-900">Home</button>
                 <button onClick={() => navigate("/about")} className="text-gray-700 hover:text-gray-900">About</button>
                 <button onClick={() => navigate("/services")} className="text-gray-700 hover:text-gray-900">Services</button>
@@ -116,6 +117,7 @@ export default function VideoEstimate() {
                   Get Estimate
                 </button>
               </div>
+              <MobileNav onNavigate={(path) => navigate(path)} />
             </div>
           </div>
         </nav>
@@ -212,7 +214,7 @@ export default function VideoEstimate() {
               <div className="flex items-center justify-center h-10 w-10 bg-blue-600 rounded text-white font-bold text-lg">🏠</div>
               <span className="font-bold text-lg hidden sm:inline">All Things Automated</span>
             </button>
-            <div className="flex items-center space-x-6">
+            <div className="hidden md:flex items-center space-x-6">
               <button onClick={() => navigate("/")} className="text-gray-700 hover:text-gray-900">Home</button>
               <button onClick={() => navigate("/about")} className="text-gray-700 hover:text-gray-900">About</button>
               <button onClick={() => navigate("/services")} className="text-gray-700 hover:text-gray-900">Services</button>
@@ -225,6 +227,7 @@ export default function VideoEstimate() {
                 Get Estimate
               </button>
             </div>
+            <MobileNav onNavigate={(path) => navigate(path)} />
           </div>
         </div>
       </nav>

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, User, Instagram, Music } from "lucide-react";
 import { useLocation } from "wouter";
+import MobileNav from "@/components/MobileNav";
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -87,7 +88,7 @@ export default function Blog() {
                 className="h-10 w-auto"
               />
             </button>
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-8" style={{position: 'relative'}}>
               <button
                 onClick={() => handleNavigation("/")}
                 className="text-gray-700 hover:text-primary transition-colors"
@@ -125,7 +126,10 @@ export default function Blog() {
                 Blog
               </button>
             </div>
-            <Button className="rounded-full" onClick={() => navigate("/contact")}>Book Now</Button>
+            <div className="flex items-center space-x-4">
+              <MobileNav onNavigate={handleNavigation} />
+              <Button className="rounded-full hidden md:inline-flex" onClick={() => navigate("/contact")}>Book Now</Button>
+            </div>
           </div>
         </div>
       </nav>
