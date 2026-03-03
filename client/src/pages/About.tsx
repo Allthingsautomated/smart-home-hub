@@ -135,15 +135,14 @@ export default function About() {
           <h2 className="text-6xl md:text-7xl font-bold text-center mb-20">MEET THE FOUNDER</h2>
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="rounded-lg overflow-hidden shadow-lg">
-              <div className="w-full h-96 bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <div className="text-center text-white">
-                  <div className="text-6xl mb-4">👤</div>
-                  <p className="text-lg">Founder Photo Coming Soon</p>
-                </div>
-              </div>
+              <img
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/DVqMtgRDSQKXEAnK.PNG"
+                alt="Jorge Romero - Founder"
+                className="w-full h-96 object-cover"
+              />
             </div>
             <div>
-              <h3 className="text-4xl md:text-5xl font-bold mb-6 text-primary">Your Name Here</h3>
+              <h3 className="text-4xl md:text-5xl mb-6 text-primary" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>Jorge Romero</h3>
               <p className="text-xl text-gray-700 mb-6 leading-relaxed">
                 As the founder of All Things Automated, I've dedicated over 15 years to transforming homes and businesses through intelligent automation technology.
               </p>

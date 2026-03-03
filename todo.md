@@ -126,11 +126,17 @@
 
 
 ## Current Tasks - Phone, About Me, Admin Blog, Title Update
-- [ ] Update page title from "SmartHome Hub" to "All Things Automated" in index.html
-- [ ] Add phone number (941) 263-5325 to all pages (header/footer)
-- [ ] Create About Me section in About Us page with owner bio
-- [ ] Create admin login page for blog management
-- [ ] Create admin blog editor for creating/editing blogs
-- [ ] Ensure Blog page header matches main page header exactly
-- [ ] Verify Instagram and TikTok links on all pages
-- [ ] Sync navigation changes across all pages automatically
+- [x] Update page title from "SmartHome Hub" to "All Things Automated" in index.html
+- [x] Add phone number (941) 263-5325 to all pages (header/footer)
+- [x] Create About Me section in About Us page with owner bio
+- [x] Create admin login page for blog management
+- [x] Create admin blog editor for creating/editing blogs
+- [x] Ensure Blog page header matches main page header exactly
+- [x] Verify Instagram and TikTok links on all pages
+- [x] Sync navigation changes across all pages automatically
+
+## About Page Final Updates
+- [x] Update founder name to "Jorge Romero" with Bebas Neue font
+- [x] Replace placeholder with founder photo
+- [x] Fix font weight from bold (700) to normal (400)
+- [x] Verify all changes display correctly on live page
