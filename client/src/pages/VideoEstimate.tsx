@@ -209,11 +209,7 @@ export default function VideoEstimate() {
               onClick={() => navigate("/")}
               className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/LnTadohNeulVPyBf.png"
-                alt="All Things Automated Logo"
-                className="h-10 w-auto"
-              />
+              <div className="flex items-center justify-center h-10 w-10 bg-blue-600 rounded text-white font-bold text-lg">🏠</div>
               <span className="font-bold text-lg hidden sm:inline">All Things Automated</span>
             </button>
             <div className="flex items-center space-x-6">
@@ -362,7 +358,7 @@ export default function VideoEstimate() {
             {/* Info Section */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">How It Works</h3>
+                <h3 className="text-4xl text-gray-900 mb-4" style={{fontFamily: '"Bebas Neue", sans-serif'}}>HOW IT WORKS</h3>
                 <div className="space-y-4">
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
