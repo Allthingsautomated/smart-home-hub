@@ -30,6 +30,8 @@ import BlogPost from "./pages/BlogPost";
 import AdminLogin from "./pages/AdminLogin";
 import BlogEditor from "./pages/BlogEditor";
 import AdminSecretDashboard from "./pages/AdminSecretDashboard";
+import VideoEstimate from "./pages/VideoEstimate";
+import VideoEstimateAdmin from "./pages/VideoEstimateAdmin";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -56,6 +58,8 @@ function Router() {
         <Route path={"/blog"} component={Blog} />
         <Route path={"/blog/:id"} component={BlogPost} />
         <Route path={"/pricing"} component={Pricing} />
+        <Route path={"/video-estimate"} component={VideoEstimate} />
+        <Route path={"/admin/video-estimates"} component={VideoEstimateAdmin} />
         <Route path={"/contact"} component={Contact} />
         <Route path={"/admin"} component={AdminDashboard} />
         <Route path={"/admin/login"} component={AdminLogin} />
