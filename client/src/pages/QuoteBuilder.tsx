@@ -91,7 +91,11 @@ export default function QuoteBuilder() {
                 onClick={() => navigate("/")}
                 className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
               >
-                <div className="flex items-center justify-center h-10 w-10 bg-blue-600 rounded text-white font-bold text-lg">🏠</div>
+                <img
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
+                alt="All Things Automated Logo"
+                className="h-10 w-auto"
+              />
                 <span className="font-bold text-lg hidden sm:inline">All Things Automated</span>
               </button>
             </div>
@@ -113,23 +117,55 @@ export default function QuoteBuilder() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
+      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <button
               onClick={() => navigate("/")}
               className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
-              <div className="flex items-center justify-center h-10 w-10 bg-blue-600 rounded text-white font-bold text-lg">🏠</div>
+              <img
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
+                alt="All Things Automated Logo"
+                className="h-10 w-auto"
+              />
               <span className="font-bold text-lg hidden sm:inline">All Things Automated</span>
             </button>
-            <div className="flex items-center space-x-6">
-              <button onClick={() => navigate("/")} className="text-gray-700 hover:text-gray-900">Home</button>
-              <button onClick={() => navigate("/about")} className="text-gray-700 hover:text-gray-900">About</button>
-              <button onClick={() => navigate("/services")} className="text-gray-700 hover:text-gray-900">Services</button>
-              <button onClick={() => navigate("/contact")} className="text-gray-700 hover:text-gray-900">Contact</button>
-              <button onClick={() => navigate("/blog")} className="text-gray-700 hover:text-gray-900">Blog</button>
-              <button onClick={() => navigate("/video-estimate")} className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+            <div className="hidden md:flex items-center space-x-8">
+              <button
+                onClick={() => navigate("/")}
+                className="text-primary font-semibold hover:opacity-80 transition-opacity"
+              >
+                Home
+              </button>
+              <button
+                onClick={() => navigate("/about")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                About
+              </button>
+              <button
+                onClick={() => navigate("/services")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Services
+              </button>
+              <button
+                onClick={() => navigate("/contact")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Contact
+              </button>
+              <button
+                onClick={() => navigate("/blog")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Blog
+              </button>
+              <button
+                onClick={() => navigate("/video-estimate")}
+                className="bg-primary text-white px-6 py-2 rounded-lg hover:opacity-90 transition-opacity font-semibold"
+              >
                 Get Estimate
               </button>
             </div>
@@ -255,7 +291,7 @@ export default function QuoteBuilder() {
             {/* Info Section */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-4xl text-gray-900 mb-4" style={{fontFamily: '"Bebas Neue", sans-serif'}}>HOW IT WORKS</h3>
+                <h3 className="text-4xl text-gray-900 mb-4" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '300'}}>HOW IT WORKS</h3>
                 <div className="space-y-4">
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
