@@ -74,7 +74,7 @@ export default function FacebookLead() {
                 className="w-10 h-10"
               />
               <span className="text-lg font-bold text-gray-900" style={{ fontFamily: '"Bebas Neue", sans-serif', fontWeight: "400" }}>
-                ALL THINGS AUTOMATED
+                
               </span>
             </a>
             <div className="hidden md:flex items-center space-x-8">
@@ -133,7 +133,7 @@ export default function FacebookLead() {
                   </div>
                 </div>
                 <div>
-                  <p className="font-bold text-gray-900 text-lg">Exact Savings Potential</p>
+                  <p className="font-bold text-gray-900 text-lg" style={{fontWeight: '400', fontFamily: 'bebas Neue '}}>Exact Savings Potential</p>
                   <p className="text-gray-600">How much you can save annually with smart home upgrades</p>
                 </div>
               </div>
@@ -145,7 +145,7 @@ export default function FacebookLead() {
                   </div>
                 </div>
                 <div>
-                  <p className="font-bold text-gray-900 text-lg">Best ROI Upgrades</p>
+                  <p className="font-bold text-gray-900 text-lg" style={{fontWeight: '400', fontFamily: 'bebas Neue '}}>Best ROI Upgrades</p>
                   <p className="text-gray-600">Which specific upgrades will pay for themselves fastest</p>
                 </div>
               </div>
@@ -157,7 +157,7 @@ export default function FacebookLead() {
                   </div>
                 </div>
                 <div>
-                  <p className="font-bold text-gray-900 text-lg">Home Value Increase</p>
+                  <p className="font-bold text-gray-900 text-lg" style={{fontWeight: '400', fontFamily: 'bebas Neue '}}>Home Value Increase</p>
                   <p className="text-gray-600">How much smart home upgrades boost your home's value</p>
                 </div>
               </div>
@@ -169,7 +169,7 @@ export default function FacebookLead() {
                   </div>
                 </div>
                 <div>
-                  <p className="font-bold text-gray-900 text-lg">Tax Credits & Incentives</p>
+                  <p className="font-bold text-gray-900 text-lg" style={{fontWeight: '400', fontFamily: 'bebas Neue '}}>Tax Credits & Incentives</p>
                   <p className="text-gray-600">Federal and state rebates you qualify for</p>
                 </div>
               </div>
@@ -177,7 +177,7 @@ export default function FacebookLead() {
 
             {/* Social Proof */}
             <div className="bg-gray-50 border-l-4 border-blue-900 p-6 rounded">
-              <p className="text-gray-900 font-bold mb-3 text-lg">
+              <p className="text-gray-900 font-bold mb-3 text-lg" style={{fontWeight: '400', fontFamily: 'bebas Neue '}}>
                 TRUSTED BY 500+ HOMEOWNERS
               </p>
               <p className="text-gray-700 mb-4">
@@ -302,7 +302,7 @@ export default function FacebookLead() {
 
           <div className="space-y-8">
             <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
+              <h3 className="text-lg font-bold text-gray-900 mb-3" style={{fontWeight: '400'}}>
                 How much will this cost me?
               </h3>
               <p className="text-gray-700">
@@ -311,7 +311,7 @@ export default function FacebookLead() {
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
+              <h3 className="text-lg font-bold text-gray-900 mb-3" style={{fontWeight: '400'}}>
                 Will you spam me?
               </h3>
               <p className="text-gray-700">
@@ -320,7 +320,7 @@ export default function FacebookLead() {
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
+              <h3 className="text-lg font-bold text-gray-900 mb-3" style={{fontWeight: '400'}}>
                 How personalized is the report?
               </h3>
               <p className="text-gray-700">
@@ -329,7 +329,7 @@ export default function FacebookLead() {
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
+              <h3 className="text-lg font-bold text-gray-900 mb-3" style={{fontWeight: '400'}}>
                 What if I'm not ready to upgrade yet?
               </h3>
               <p className="text-gray-700">
@@ -346,7 +346,7 @@ export default function FacebookLead() {
           <h2 className="text-3xl font-bold mb-4" style={{ fontFamily: '"Bebas Neue", sans-serif', fontWeight: "400" }}>
             READY TO SAVE MONEY?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl text-blue-100 mb-8" style={{fontWeight: '300', fontFamily: 'bebas Neue '}}>
             Get your free personalized Smart Home Energy Savings Report in 60 seconds.
           </p>
           <a
