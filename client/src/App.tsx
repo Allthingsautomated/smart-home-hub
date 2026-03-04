@@ -32,6 +32,7 @@ import BlogEditor from "./pages/BlogEditor";
 import AdminSecretDashboard from "./pages/AdminSecretDashboard";
 import VideoEstimate from "./pages/VideoEstimate";
 import VideoEstimateAdmin from "./pages/VideoEstimateAdmin";
+import { ROUTES } from "@/lib/routes";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -39,34 +40,52 @@ function Router() {
     <>
       <ScrollToTop />
       <Switch>
-        <Route path={"/"} component={Home} />
-        <Route path={"/about"} component={About} />
-        <Route path={"/services"} component={Services} />
-        <Route path={"/services/smart-lighting"} component={SmartLighting} />
-        <Route path={"/services/home-security"} component={HomeSecurity} />
-        <Route path={"/services/climate-control"} component={ClimateControl} />
-        <Route path={"/services/voice-integration"} component={VoiceIntegration} />
-        <Route path={"/services/home-audio"} component={HomeAudio} />
-        <Route path={"/services/networks"} component={Networks} />
-        <Route path={"/services/commercial-automation"} component={CommercialAutomation} />
-        <Route path={"/services/commercial-security"} component={CommercialSecurity} />
-        <Route path={"/services/commercial-climate"} component={CommercialClimate} />
-        <Route path={"services/commercial-networks"} component={CommercialNetworks} />
-        <Route path={"services/tesla-panels"} component={TeslaPanels} />
-        <Route path={"/services/landscape-lighting"} component={LandscapeLighting} />
-        <Route path={"/smart-lighting-catalog"} component={SmartLightingCatalog} />
-        <Route path={"/blog"} component={Blog} />
-        <Route path={"/blog/:id"} component={BlogPost} />
-        <Route path={"/pricing"} component={Pricing} />
-        <Route path={"/video-estimate"} component={VideoEstimate} />
-        <Route path={"/admin/video-estimates"} component={VideoEstimateAdmin} />
-        <Route path={"/contact"} component={Contact} />
-        <Route path={"/admin"} component={AdminDashboard} />
-        <Route path={"/admin/login"} component={AdminLogin} />
-        <Route path={"/admin/blog-editor"} component={BlogEditor} />
-        <Route path={"quote-builder"} component={QuoteBuilder} />
-        <Route path={"/admin-all-things-automated-secret"} component={AdminSecretDashboard} />
-        <Route path={"/404"} component={NotFound} />
+        <Route path={ROUTES.home} component={Home} />
+        <Route path={ROUTES.about} component={About} />
+        <Route path={ROUTES.services} component={Services} />
+        <Route path={ROUTES.smartLighting} component={SmartLighting} />
+        <Route path={ROUTES.homeSecurity} component={HomeSecurity} />
+        <Route path={ROUTES.climateControl} component={ClimateControl} />
+        <Route path={ROUTES.voiceIntegration} component={VoiceIntegration} />
+        <Route path={ROUTES.homeAudio} component={HomeAudio} />
+        <Route path={ROUTES.networks} component={Networks} />
+        <Route
+          path={ROUTES.commercialAutomation}
+          component={CommercialAutomation}
+        />
+        <Route
+          path={ROUTES.commercialSecurity}
+          component={CommercialSecurity}
+        />
+        <Route path={ROUTES.commercialClimate} component={CommercialClimate} />
+        <Route
+          path={ROUTES.commercialNetworks}
+          component={CommercialNetworks}
+        />
+        <Route path={ROUTES.teslaPanels} component={TeslaPanels} />
+        <Route path={ROUTES.landscapeLighting} component={LandscapeLighting} />
+        <Route
+          path={ROUTES.smartLightingCatalog}
+          component={SmartLightingCatalog}
+        />
+        <Route path={ROUTES.blog} component={Blog} />
+        <Route path={`${ROUTES.blog}/:id`} component={BlogPost} />
+        <Route path={ROUTES.pricing} component={Pricing} />
+        <Route path={ROUTES.videoEstimate} component={VideoEstimate} />
+        <Route
+          path={ROUTES.videoEstimateAdmin}
+          component={VideoEstimateAdmin}
+        />
+        <Route path={ROUTES.contact} component={Contact} />
+        <Route path={ROUTES.admin} component={AdminDashboard} />
+        <Route path={ROUTES.adminLogin} component={AdminLogin} />
+        <Route path={ROUTES.adminBlogEditor} component={BlogEditor} />
+        <Route path={ROUTES.quoteBuilder} component={QuoteBuilder} />
+        <Route
+          path={ROUTES.adminSecretDashboard}
+          component={AdminSecretDashboard}
+        />
+        <Route path={ROUTES.notFound} component={NotFound} />
         {/* Final fallback route */}
         <Route component={NotFound} />
       </Switch>

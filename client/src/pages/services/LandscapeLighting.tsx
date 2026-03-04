@@ -8,6 +8,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { useLocation } from "wouter";
+import ServicePageHeader from "@/components/ServicePageHeader";
+import ServiceHeroImage from "@/components/ServiceHeroImage";
 
 export default function LandscapeLighting() {
   const [, navigate] = useLocation();
@@ -79,64 +81,7 @@ export default function LandscapeLighting() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={() => handleNavigation("/")}
-              className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
-            >
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/LnTadohNeulVPyBf.png"
-                alt="All Things Automated Logo"
-                className="h-8"
-              />
-            </button>
-            <div className="hidden md:flex items-center space-x-8">
-              <button
-                onClick={() => handleNavigation("/")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => handleNavigation("/about")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                About
-              </button>
-              <button
-                onClick={() => handleNavigation("/services")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Services
-              </button>
-              <button
-                onClick={() => handleNavigation("/contact")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Contact
-              </button>
-              <button
-                onClick={() => handleNavigation("/pricing")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Pricing
-              </button>
-              <button
-                onClick={() => handleNavigation("/blog")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Blog
-              </button>
-            </div>
-            <Button className="bg-gray-900 text-white hover:bg-gray-800">
-              Book Now
-            </Button>
-          </div>
-        </div>
-      </nav>
+      <ServicePageHeader />
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/10 to-accent/10 py-20">
@@ -168,6 +113,11 @@ export default function LandscapeLighting() {
           </div>
         </div>
       </section>
+
+      <ServiceHeroImage
+        src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80"
+        alt="Luxury home exterior with dramatic landscape lighting at night"
+      />
 
       {/* Features Grid */}
       <section className="py-16">
@@ -249,8 +199,8 @@ export default function LandscapeLighting() {
                 </h3>
                 <p className="text-gray-600 mb-4">
                   Our commercial landscape lighting systems are engineered for
-                  large-scale properties, parking lots, and office buildings.
-                  We provide high-performance LED pole lighting, building accent
+                  large-scale properties, parking lots, and office buildings. We
+                  provide high-performance LED pole lighting, building accent
                   systems, security lighting, and smart controls for efficient
                   energy management. These systems enhance safety, security, and
                   curb appeal while reducing operational costs.

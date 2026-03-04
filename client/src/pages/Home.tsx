@@ -19,9 +19,10 @@ import {
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import MobileNav from "@/components/MobileNav";
+import { ROUTES, type AppRoute } from "@/lib/routes";
 
 const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 export default function Home() {
@@ -30,8 +31,8 @@ export default function Home() {
   let { user, loading, error, isAuthenticated, logout } = useAuth();
 
   const [, navigate] = useLocation();
-  
-  const handleNavigation = (path: string) => {
+
+  const handleNavigation = (path: AppRoute) => {
     scrollToTop();
     navigate(path);
   };
@@ -79,12 +80,12 @@ export default function Home() {
   ];
 
   const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    setCurrentTestimonial(prev => (prev + 1) % testimonials.length);
   };
 
   const prevTestimonial = () => {
     setCurrentTestimonial(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+      prev => (prev - 1 + testimonials.length) % testimonials.length
     );
   };
 
@@ -95,7 +96,7 @@ export default function Home() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <button
-              onClick={() => handleNavigation("/")}
+              onClick={() => handleNavigation(ROUTES.home)}
               className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
               <img
@@ -106,37 +107,37 @@ export default function Home() {
             </button>
             <div className="hidden md:flex items-center space-x-8">
               <button
-                onClick={() => handleNavigation("/")}
+                onClick={() => handleNavigation(ROUTES.home)}
                 className="text-primary font-semibold hover:opacity-80 transition-opacity"
               >
                 Home
               </button>
               <button
-                onClick={() => handleNavigation("/about")}
+                onClick={() => handleNavigation(ROUTES.about)}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 About
               </button>
               <button
-                onClick={() => handleNavigation("/services")}
+                onClick={() => handleNavigation(ROUTES.services)}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 Services
               </button>
               <button
-                onClick={() => handleNavigation("/contact")}
+                onClick={() => handleNavigation(ROUTES.contact)}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 Contact
               </button>
               <button
-                onClick={() => handleNavigation("/quote-builder")}
+                onClick={() => handleNavigation(ROUTES.quoteBuilder)}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 Pricing
               </button>
               <button
-                onClick={() => handleNavigation("/blog")}
+                onClick={() => handleNavigation(ROUTES.blog)}
                 className="text-gray-700 hover:text-primary transition-colors"
               >
                 Blog
@@ -144,7 +145,12 @@ export default function Home() {
             </div>
             <div className="flex items-center space-x-4">
               <MobileNav onNavigate={handleNavigation} />
-              <Button className="rounded-full hidden md:inline-flex" onClick={() => navigate("/contact")}>Book Now</Button>
+              <Button
+                className="rounded-full hidden md:inline-flex"
+                onClick={() => navigate(ROUTES.contact)}
+              >
+                Book Now
+              </Button>
             </div>
           </div>
         </div>
@@ -170,7 +176,7 @@ export default function Home() {
             <Button
               size="lg"
               className="rounded-lg px-8 py-6 text-lg font-semibold"
-              onClick={() => handleNavigation("/contact")}
+              onClick={() => handleNavigation(ROUTES.contact)}
             >
               Schedule Consultation
             </Button>
@@ -178,7 +184,7 @@ export default function Home() {
               size="lg"
               variant="outline"
               className="rounded-lg px-8 py-6 text-lg font-semibold bg-white/10 border-white text-white hover:bg-white/20"
-              onClick={() => handleNavigation("/services")}
+              onClick={() => handleNavigation(ROUTES.services)}
             >
               Explore Services
             </Button>
@@ -189,7 +195,13 @@ export default function Home() {
       {/* Services Section */}
       <section className="py-20 px-4 bg-gradient-to-b from-white to-slate-50">
         <div className="container mx-auto">
-          <h2 className="text-center text-4xl md:text-5xl mb-4 text-primary" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>
+          <h2
+            className="text-center text-4xl md:text-5xl mb-4 text-primary"
+            style={{
+              fontFamily: '"Bebas Neue", sans-serif',
+              fontWeight: "400",
+            }}
+          >
             OUR SERVICES
           </h2>
           <div className="w-20 h-1 bg-accent mx-auto mb-16"></div>
@@ -201,12 +213,18 @@ export default function Home() {
                 <div
                   key={index}
                   className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer"
-                  onClick={() => handleNavigation("/services")}
+                  onClick={() => handleNavigation(ROUTES.services)}
                 >
                   <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg flex items-center justify-center mb-4">
                     <Icon className="w-8 h-8 text-accent" />
                   </div>
-                  <h3 className="text-xl text-primary mb-2" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>
+                  <h3
+                    className="text-xl text-primary mb-2"
+                    style={{
+                      fontFamily: '"Bebas Neue", sans-serif',
+                      fontWeight: "400",
+                    }}
+                  >
                     {service.title}
                   </h3>
                   <p className="text-gray-600">{service.desc}</p>
@@ -220,7 +238,7 @@ export default function Home() {
               size="lg"
               variant="outline"
               className="rounded-lg px-8 py-6 text-lg"
-              onClick={() => handleNavigation("/services")}
+              onClick={() => handleNavigation(ROUTES.services)}
             >
               View All Services <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
@@ -298,12 +316,13 @@ export default function Home() {
             READY TO TRANSFORM?
           </h2>
           <p className="text-lg text-gray-700 mb-8">
-            Let's discuss how SmartHome Hub can create the perfect smart home solution for you.
+            Let's discuss how SmartHome Hub can create the perfect smart home
+            solution for you.
           </p>
           <Button
             size="lg"
             className="rounded-lg px-8 py-6 text-lg font-semibold"
-            onClick={() => handleNavigation("/contact")}
+            onClick={() => handleNavigation(ROUTES.contact)}
           >
             Get Started Today
           </Button>
@@ -319,7 +338,7 @@ export default function Home() {
               <ul className="space-y-2">
                 <li>
                   <button
-                    onClick={() => handleNavigation("/")}
+                    onClick={() => handleNavigation(ROUTES.home)}
                     className="hover:text-accent transition-colors"
                   >
                     Home
@@ -327,7 +346,7 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    onClick={() => handleNavigation("/about")}
+                    onClick={() => handleNavigation(ROUTES.about)}
                     className="hover:text-accent transition-colors"
                   >
                     About
@@ -335,7 +354,7 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    onClick={() => handleNavigation("/services")}
+                    onClick={() => handleNavigation(ROUTES.services)}
                     className="hover:text-accent transition-colors"
                   >
                     Services
@@ -343,7 +362,7 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    onClick={() => handleNavigation("/contact")}
+                    onClick={() => handleNavigation(ROUTES.contact)}
                     className="hover:text-accent transition-colors"
                   >
                     Contact Us
@@ -351,7 +370,7 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    onClick={() => handleNavigation("/blog")}
+                    onClick={() => handleNavigation(ROUTES.blog)}
                     className="hover:text-accent transition-colors"
                   >
                     Blog
@@ -365,7 +384,7 @@ export default function Home() {
               <ul className="space-y-2">
                 <li>
                   <button
-                    onClick={() => handleNavigation("/services")}
+                    onClick={() => handleNavigation(ROUTES.services)}
                     className="hover:text-accent transition-colors"
                   >
                     Smart Lighting
@@ -373,7 +392,7 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    onClick={() => handleNavigation("/services")}
+                    onClick={() => handleNavigation(ROUTES.services)}
                     className="hover:text-accent transition-colors"
                   >
                     Home Security
@@ -381,7 +400,7 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    onClick={() => handleNavigation("/services")}
+                    onClick={() => handleNavigation(ROUTES.services)}
                     className="hover:text-accent transition-colors"
                   >
                     Climate Control
@@ -389,7 +408,7 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    onClick={() => handleNavigation("/services")}
+                    onClick={() => handleNavigation(ROUTES.services)}
                     className="hover:text-accent transition-colors"
                   >
                     Voice Control
@@ -401,17 +420,30 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-lg mb-4">CONTACT</h4>
               <p className="mb-2">
-                <a href="tel:(941) 263-5325" className="hover:text-accent transition-colors">
+                <a
+                  href="tel:(941) 263-5325"
+                  className="hover:text-accent transition-colors"
+                >
                   (941) 263-5325
                 </a>
               </p>
               <p className="mb-4">Available 24/7</p>
               <h4 className="font-bold text-lg mb-4 mt-6">FOLLOW US</h4>
               <div className="flex gap-4">
-                <a href="https://www.instagram.com/allthingsautomated8/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                <a
+                  href="https://www.instagram.com/allthingsautomated8/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors"
+                >
                   <Instagram size={24} />
                 </a>
-                <a href="https://www.tiktok.com/@allthingsautomated?_r=1&_t=ZT-94GKcCmT0rW" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                <a
+                  href="https://www.tiktok.com/@allthingsautomated?_r=1&_t=ZT-94GKcCmT0rW"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors"
+                >
                   <Music size={24} />
                 </a>
               </div>
