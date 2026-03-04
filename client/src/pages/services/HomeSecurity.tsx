@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Check } from "lucide-react";
 import { useLocation } from "wouter";
+import ServicePageHeader from "@/components/ServicePageHeader";
+import ServiceHeroImage from "@/components/ServiceHeroImage";
 
 export default function HomeSecurity() {
   const [, navigate] = useLocation();
@@ -44,44 +46,7 @@ export default function HomeSecurity() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Navigation */}
-      <nav className="glass sticky top-0 z-50">
-        <div className="container mx-auto py-4">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={() => navigate("/")}
-              className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
-            >
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
-                alt="All Things Automated Logo"
-                className="h-12 w-auto"
-              />
-              <span className="text-xl font-bold">All Things Automated</span>
-            </button>
-            <div className="hidden md:flex items-center space-x-6">
-              <button
-                onClick={() => navigate("/")}
-                className="hover:text-primary transition-colors"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => navigate("/services")}
-                className="hover:text-primary transition-colors"
-              >
-                Services
-              </button>
-              <button
-                onClick={() => navigate("/contact")}
-                className="hover:text-primary transition-colors"
-              >
-                Contact
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <ServicePageHeader />
 
       {/* Hero Section */}
       <section className="py-32 bg-background">
@@ -94,13 +59,21 @@ export default function HomeSecurity() {
             Back to Services
           </button>
           <div className="max-w-3xl">
-            <h1 className="text-6xl font-bold mb-8 leading-tight">Home Security</h1>
+            <h1 className="text-6xl font-bold mb-8 leading-tight">
+              Home Security
+            </h1>
             <p className="text-2xl text-muted-foreground leading-relaxed">
-              Professional security systems with Ring, Lorex, and Ubiquiti technology.
+              Professional security systems with Ring, Lorex, and Ubiquiti
+              technology.
             </p>
           </div>
         </div>
       </section>
+
+      <ServiceHeroImage
+        src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1400&q=80"
+        alt="Modern smart home security monitoring setup"
+      />
 
       {/* Main Content */}
       <section className="py-40 bg-background">
@@ -109,7 +82,10 @@ export default function HomeSecurity() {
           <div className="mb-20">
             <h2 className="text-4xl font-bold mb-8">What We Offer</h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              We provide comprehensive home security solutions using industry-leading brands. From smart doorbells to professional-grade camera systems, we'll design and install a security system tailored to your needs.
+              We provide comprehensive home security solutions using
+              industry-leading brands. From smart doorbells to
+              professional-grade camera systems, we'll design and install a
+              security system tailored to your needs.
             </p>
           </div>
 
@@ -121,7 +97,9 @@ export default function HomeSecurity() {
                 <Card key={index} className="border-none shadow-sm">
                   <CardContent className="p-8">
                     <h3 className="text-2xl font-bold mb-2">{product.name}</h3>
-                    <p className="text-muted-foreground mb-8">{product.description}</p>
+                    <p className="text-muted-foreground mb-8">
+                      {product.description}
+                    </p>
                     <div className="space-y-3">
                       {product.features.map((feature, idx) => (
                         <div key={idx} className="flex items-start">
@@ -142,7 +120,9 @@ export default function HomeSecurity() {
             <div className="grid md:grid-cols-2 gap-8">
               <Card className="border-none shadow-sm">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6">Monitoring & Alerts</h3>
+                  <h3 className="text-2xl font-bold mb-6">
+                    Monitoring & Alerts
+                  </h3>
                   <ul className="space-y-3">
                     <li className="flex items-start">
                       <Check className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
@@ -166,7 +146,9 @@ export default function HomeSecurity() {
 
               <Card className="border-none shadow-sm">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6">Advanced Capabilities</h3>
+                  <h3 className="text-2xl font-bold mb-6">
+                    Advanced Capabilities
+                  </h3>
                   <ul className="space-y-3">
                     <li className="flex items-start">
                       <Check className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
@@ -194,7 +176,8 @@ export default function HomeSecurity() {
           <div className="bg-primary/5 p-12 rounded-lg text-center">
             <h2 className="text-3xl font-bold mb-6">Secure Your Home Today</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Let our security experts design a comprehensive system for your home or business.
+              Let our security experts design a comprehensive system for your
+              home or business.
             </p>
             <Button
               size="lg"
