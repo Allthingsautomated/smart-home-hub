@@ -32,6 +32,7 @@ import BlogEditor from "./pages/BlogEditor";
 import AdminSecretDashboard from "./pages/AdminSecretDashboard";
 import VideoEstimate from "./pages/VideoEstimate";
 import VideoEstimateAdmin from "./pages/VideoEstimateAdmin";
+import FacebookLead from "./pages/FacebookLead";
 import { ROUTES } from "@/lib/routes";
 
 function Router() {
@@ -77,6 +78,7 @@ function Router() {
           component={VideoEstimateAdmin}
         />
         <Route path={ROUTES.contact} component={Contact} />
+        <Route path="/facebook-lead" component={FacebookLead} />
         <Route path={ROUTES.admin} component={AdminDashboard} />
         <Route path={ROUTES.adminLogin} component={AdminLogin} />
         <Route path={ROUTES.adminBlogEditor} component={BlogEditor} />
