@@ -69,9 +69,9 @@ export default function FacebookLead() {
           <div className="flex items-center justify-between">
             <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/LnTadohNeulVPyBf.png"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663351682597/aGdKvnS5n4RjPwD5TVBNPS/Logocopy_73c9c171.jpeg"
                 alt="All Things Automated Logo"
-                className="w-10 h-10"
+                className="h-12"
               />
               <span className="text-lg font-bold text-gray-900" style={{ fontFamily: '"Bebas Neue", sans-serif', fontWeight: "400" }}>
                 
