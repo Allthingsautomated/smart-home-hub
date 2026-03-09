@@ -1,372 +1,159 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, User, Instagram, Music } from "lucide-react";
+import { ArrowRight, Calendar, User } from "lucide-react";
 import { useLocation } from "wouter";
-import MobileNav from "@/components/MobileNav";
+import ServicePageHeader from "@/components/ServicePageHeader";
+import PageFooter from "@/components/PageFooter";
 import { ROUTES } from "@/lib/routes";
 
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
+const blogPosts = [
+  {
+    id: 1,
+    title: "The Complete Guide to Smart Lighting Systems",
+    excerpt: "Everything you need to know about smart lighting — from basic dimming to advanced automation scenes and scheduling.",
+    author: "Jorge Romero",
+    date: "February 20, 2026",
+    category: "Smart Lighting",
+    image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 2,
+    title: "Home Automation Trends for 2026",
+    excerpt: "The latest trends in home automation and how they can meaningfully enhance your day-to-day living experience.",
+    author: "Jorge Romero",
+    date: "February 15, 2026",
+    category: "Home Automation",
+    image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 3,
+    title: "Energy Savings with Smart Lighting",
+    excerpt: "How intelligent lighting systems reduce energy consumption and lower utility bills — with real numbers.",
+    author: "Jorge Romero",
+    date: "February 10, 2026",
+    category: "Energy Efficiency",
+    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 4,
+    title: "Lutron Caséta vs RA3: Which System is Right for You?",
+    excerpt: "A clear comparison of Lutron's two most popular lighting control platforms to help you choose the right one.",
+    author: "Jorge Romero",
+    date: "February 5, 2026",
+    category: "Product Comparison",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 5,
+    title: "Smart Home Security Integration",
+    excerpt: "How to integrate smart lighting with your home security system for enhanced protection and peace of mind.",
+    author: "Jorge Romero",
+    date: "January 30, 2026",
+    category: "Home Security",
+    image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 6,
+    title: "Commercial Lighting Solutions for Businesses",
+    excerpt: "How smart lighting can improve productivity, reduce costs, and create the right atmosphere in commercial spaces.",
+    author: "Jorge Romero",
+    date: "January 25, 2026",
+    category: "Commercial",
+    image: "https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=600&q=80",
+  },
+];
 
 export default function Blog() {
   const [, navigate] = useLocation();
 
-  const handleNavigation = (path: string) => {
-    scrollToTop();
+  const handleNav = (path: string) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     navigate(path);
   };
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: "The Complete Guide to Smart Lighting Systems",
-      excerpt:
-        "Learn everything you need to know about smart lighting, from basic dimming to advanced automation scenes and scheduling.",
-      author: "All Things Automated",
-      date: "February 20, 2026",
-      category: "Smart Lighting",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-    },
-    {
-      id: 2,
-      title: "Home Automation Trends for 2026",
-      excerpt:
-        "Discover the latest trends in home automation technology and how they can enhance your living experience.",
-      author: "All Things Automated",
-      date: "February 15, 2026",
-      category: "Home Automation",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-    },
-    {
-      id: 3,
-      title: "Energy Savings with Smart Lighting",
-      excerpt:
-        "Explore how intelligent lighting systems can reduce your energy consumption and lower utility bills.",
-      author: "All Things Automated",
-      date: "February 10, 2026",
-      category: "Energy Efficiency",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-    },
-    {
-      id: 4,
-      title: "Lutron Caséta vs RA3: Which System is Right for You?",
-      excerpt:
-        "Compare the features and benefits of Lutron's popular lighting control systems to find the perfect fit.",
-      author: "All Things Automated",
-      date: "February 5, 2026",
-      category: "Product Comparison",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-    },
-    {
-      id: 5,
-      title: "Smart Home Security Integration",
-      excerpt:
-        "Learn how to integrate smart lighting with your home security system for enhanced protection.",
-      author: "All Things Automated",
-      date: "January 30, 2026",
-      category: "Home Security",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-    },
-    {
-      id: 6,
-      title: "Commercial Lighting Solutions for Businesses",
-      excerpt:
-        "Discover how smart lighting can improve productivity and reduce costs in commercial spaces.",
-      author: "All Things Automated",
-      date: "January 25, 2026",
-      category: "Commercial",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-    },
-  ];
-
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={() => handleNavigation(ROUTES.home)}
-              className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
-            >
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
-                alt="SmartHome Hub Logo"
-                className="h-10 w-auto"
-              />
-            </button>
-            <div
-              className="hidden md:flex items-center space-x-8"
-              style={{ position: "relative" }}
-            >
-              <button
-                onClick={() => handleNavigation(ROUTES.home)}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => handleNavigation(ROUTES.about)}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                About
-              </button>
-              <button
-                onClick={() => handleNavigation(ROUTES.services)}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Services
-              </button>
-              <button
-                onClick={() => handleNavigation(ROUTES.contact)}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Contact
-              </button>
-              <button
-                onClick={() => handleNavigation(ROUTES.quoteBuilder)}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Pricing
-              </button>
-              <button
-                onClick={() => handleNavigation(ROUTES.blog)}
-                className="text-primary font-semibold hover:opacity-80 transition-opacity"
-              >
-                Blog
-              </button>
-            </div>
-            <div className="flex items-center space-x-4">
-              <MobileNav onNavigate={handleNavigation} />
-              <Button
-                className="rounded-full hidden md:inline-flex"
-                onClick={() => navigate(ROUTES.contact)}
-              >
-                Book Now
-              </Button>
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen flex flex-col">
+      <ServicePageHeader />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/80 text-white py-16 px-4">
-        <div className="container mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Smart Home Blog
-          </h1>
-          <p className="text-lg text-white/90 max-w-2xl">
-            Expert insights, tips, and industry updates on smart home automation
-            and intelligent living
-          </p>
+      {/* Hero */}
+      <section className="py-32 bg-background">
+        <div className="container">
+          <div className="max-w-3xl">
+            <h1 className="text-6xl font-bold mb-8 leading-tight">Blog</h1>
+            <p className="text-2xl text-muted-foreground leading-relaxed">
+              Expert insights, installation tips, and industry updates from our team.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Blog Posts */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map(post => (
-            <button
-              key={post.id}
-              onClick={() => handleNavigation(ROUTES.blogPost(post.id))}
-              className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden hover:-translate-y-1 cursor-pointer text-left"
-            >
-              {/* Image */}
-              <div className="h-48 bg-gradient-to-br from-primary/20 to-accent/20 overflow-hidden">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                {/* Category */}
-                <div className="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-semibold mb-3">
-                  {post.category}
+      {/* Posts Grid */}
+      <section className="py-16 bg-background border-t border-border/40">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.map(post => (
+              <button
+                key={post.id}
+                onClick={() => handleNav(ROUTES.blogPost(post.id))}
+                className="group text-left bg-background rounded-xl border border-border/60 overflow-hidden hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
+              >
+                <div className="h-52 overflow-hidden bg-muted">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-
-                {/* Title */}
-                <h2 className="text-xl font-bold text-primary mb-3 line-clamp-2">
-                  {post.title}
-                </h2>
-
-                {/* Excerpt */}
-                <p className="text-gray-600 mb-4 line-clamp-2">
-                  {post.excerpt}
-                </p>
-
-                {/* Meta */}
-                <div className="flex items-center gap-4 text-sm text-gray-500 mb-4 pb-4 border-b border-gray-200">
-                  <div className="flex items-center gap-1">
-                    <Calendar size={16} />
-                    {post.date}
+                <div className="p-6">
+                  <span className="inline-block text-xs font-semibold text-primary bg-primary/10 rounded-full px-3 py-1 mb-4">
+                    {post.category}
+                  </span>
+                  <h2 className="text-lg font-bold mb-3 leading-snug group-hover:text-primary transition-colors">
+                    {post.title}
+                  </h2>
+                  <p className="text-sm text-muted-foreground mb-5 leading-relaxed line-clamp-2">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex items-center gap-4 text-xs text-muted-foreground mb-5 pb-5 border-b border-border/40">
+                    <span className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {post.date}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <User className="w-3.5 h-3.5" />
+                      {post.author}
+                    </span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <User size={16} />
-                    {post.author}
-                  </div>
+                  <span className="flex items-center gap-2 text-sm font-semibold text-primary">
+                    Read Article <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </div>
-
-                {/* Read More */}
-                <div className="inline-flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
-                  Read More <ArrowRight size={16} />
-                </div>
-              </div>
-            </button>
-          ))}
+              </button>
+            ))}
+          </div>
         </div>
+      </section>
 
-        {/* Load More */}
-        <div className="text-center mt-16">
-          <Button
-            size="lg"
-            variant="outline"
-            className="rounded-lg px-8 py-6 text-lg"
-          >
-            Load More Articles
-          </Button>
-        </div>
-      </div>
-
-      {/* Newsletter Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/80 text-white py-16 px-4 mt-16">
-        <div className="container mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Subscribe to Our Newsletter
-          </h2>
-          <p className="text-white/90 mb-8">
-            Get the latest smart home tips, industry updates, and exclusive
-            offers delivered to your inbox.
+      {/* Newsletter */}
+      <section className="py-24 bg-primary text-primary-foreground">
+        <div className="container max-w-2xl text-center">
+          <h2 className="text-3xl font-bold mb-4">Stay in the Loop</h2>
+          <p className="text-primary-foreground/80 mb-10 leading-relaxed">
+            Get smart home tips, product spotlights, and exclusive offers delivered monthly.
           </p>
           <div className="flex gap-2">
             <input
               type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-accent"
+              placeholder="Your email address"
+              className="flex-1 px-4 py-3 rounded-full text-foreground bg-background focus:outline-none focus:ring-2 focus:ring-primary-foreground/30 text-sm"
             />
-            <Button className="rounded-lg px-8 py-3 font-semibold">
+            <Button variant="secondary" className="rounded-full px-6 font-semibold">
               Subscribe
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16 px-4 mt-auto">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div>
-              <div className="flex items-center space-x-2 mb-6">
-                <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
-                  alt="All Things Automated Logo"
-                  className="h-10 w-auto"
-                />
-              </div>
-              <p className="text-sm opacity-80">
-                Intelligent automation for modern homes.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-bold mb-4 text-lg">Navigate</h4>
-              <ul className="space-y-3 text-sm opacity-80">
-                <li>
-                  <button
-                    onClick={() => handleNavigation(ROUTES.home)}
-                    className="hover:text-white transition-colors"
-                  >
-                    Home
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation(ROUTES.about)}
-                    className="hover:text-white transition-colors"
-                  >
-                    About
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation(ROUTES.services)}
-                    className="hover:text-white transition-colors"
-                  >
-                    Services
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation(ROUTES.contact)}
-                    className="hover:text-white transition-colors"
-                  >
-                    Contact
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation(ROUTES.blog)}
-                    className="hover:text-white transition-colors"
-                  >
-                    Blog
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold mb-4 text-lg">Services</h4>
-              <ul className="space-y-3 text-sm opacity-80">
-                <li>Smart Lighting</li>
-                <li>Home Security</li>
-                <li>Climate Control</li>
-                <li>Voice Control</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold mb-4 text-lg">Contact</h4>
-              <ul className="space-y-3 text-sm opacity-80">
-                <li>(941) 263-5325</li>
-                <li>info@allthingsautomated.com</li>
-                <li>Available 24/7</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-white/20 pt-8">
-            <div className="flex justify-center gap-4 mb-6">
-              <a
-                href="https://www.instagram.com/allthingsautomated8/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-accent transition-colors"
-              >
-                <Instagram size={24} />
-              </a>
-              <a
-                href="https://www.tiktok.com/@allthingsautomated?_r=1&_t=ZT-94GKcCmT0rW"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-accent transition-colors"
-              >
-                <Music size={24} />
-              </a>
-            </div>
-            <p className="text-center text-sm opacity-80">
-              © 2026 All Things Automated. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <PageFooter />
     </div>
   );
 }

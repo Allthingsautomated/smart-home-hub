@@ -17,7 +17,7 @@ import {
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import MobileNav from "@/components/MobileNav";
-import { ROUTES, type AppRoute } from "@/lib/routes";
+import { ROUTES } from "@/lib/routes";
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -26,7 +26,7 @@ const scrollToTop = () => {
 export default function Home() {
   const [, navigate] = useLocation();
 
-  const handleNavigation = (path: AppRoute) => {
+  const handleNavigation = (path: string) => {
     scrollToTop();
     navigate(path);
   };
@@ -55,21 +55,25 @@ export default function Home() {
       icon: Zap,
       title: "Smart Lighting",
       desc: "Automated lighting control and ambiance.",
+      route: ROUTES.smartLighting,
     },
     {
       icon: Lock,
       title: "Home Security",
       desc: "Advanced security and monitoring systems.",
+      route: ROUTES.homeSecurity,
     },
     {
       icon: Thermometer,
       title: "Climate Control",
       desc: "Intelligent temperature management.",
+      route: ROUTES.climateControl,
     },
     {
       icon: Volume2,
       title: "Voice Control",
       desc: "Seamless voice integration.",
+      route: ROUTES.voiceIntegration,
     },
   ];
 
@@ -207,7 +211,7 @@ export default function Home() {
                 <div
                   key={index}
                   className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer"
-                  onClick={() => handleNavigation(ROUTES.services)}
+                  onClick={() => handleNavigation(service.route)}
                 >
                   <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg flex items-center justify-center mb-4">
                     <Icon className="w-8 h-8 text-accent" />
