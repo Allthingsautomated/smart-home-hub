@@ -2,10 +2,7 @@ import { useState } from "react";
 import { Check, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MobileNav from "@/components/MobileNav";
-import { useAuth } from "@/_core/hooks/useAuth";
-
 export default function FacebookLead() {
-  const { user, loading, error, isAuthenticated, logout } = useAuth();
   const [formData, setFormData] = useState({
     firstName: "",
     email: "",

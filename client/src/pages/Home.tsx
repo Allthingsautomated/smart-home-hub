@@ -1,5 +1,3 @@
-import { useAuth } from "@/_core/hooks/useAuth";
-
 import { Button } from "@/components/ui/button";
 import {
   Lightbulb,
@@ -26,10 +24,6 @@ const scrollToTop = () => {
 };
 
 export default function Home() {
-  // The userAuth hooks provides authentication state
-  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
-
   const [, navigate] = useLocation();
 
   const handleNavigation = (path: AppRoute) => {
