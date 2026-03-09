@@ -4,6 +4,7 @@ import { ArrowLeft, Check } from "lucide-react";
 import { useLocation } from "wouter";
 import ServicePageHeader from "@/components/ServicePageHeader";
 import ServiceHeroImage from "@/components/ServiceHeroImage";
+import PageFooter from "@/components/PageFooter";
 
 export default function Networks() {
   const [, navigate] = useLocation();
@@ -33,8 +34,8 @@ export default function Networks() {
       </section>
 
       <ServiceHeroImage
-        src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80"
-        alt="Professional home network rack and structured wiring"
+        src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80"
+        alt="Ubiquiti UniFi network rack with structured wiring"
       />
 
       {/* Main Content */}
@@ -166,87 +167,7 @@ export default function Networks() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-foreground text-background py-16 mt-auto">
-        <div className="container">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div>
-              <div className="flex items-center space-x-2 mb-6">
-                <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
-                  alt="All Things Automated Logo"
-                  className="h-10 w-auto"
-                />
-                <span className="text-lg font-bold">All Things Automated</span>
-              </div>
-              <p className="text-sm opacity-80">
-                Intelligent automation for modern homes.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Navigate</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li>
-                  <button
-                    onClick={() => navigate("/")}
-                    className="hover:opacity-100"
-                  >
-                    Home
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => navigate("/services")}
-                    className="hover:opacity-100"
-                  >
-                    Services
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => navigate("/contact")}
-                    className="hover:opacity-100"
-                  >
-                    Contact
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => navigate("/blog")}
-                    className="hover:opacity-100"
-                  >
-                    Blog
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li>Smart Lighting</li>
-                <li>Home Security</li>
-                <li>Climate Control</li>
-                <li>Voice Control</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li>(941) 263-5325</li>
-                <li>info@allthingsautomated.com</li>
-                <li>Available 24/7</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-background/20 pt-8 text-center text-sm opacity-80">
-            <p>© 2026 All Things Automated. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <PageFooter />
     </div>
   );
 }

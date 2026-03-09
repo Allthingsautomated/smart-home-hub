@@ -1,258 +1,193 @@
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowLeft, Check } from "lucide-react";
 import { useLocation } from "wouter";
 import ServicePageHeader from "@/components/ServicePageHeader";
 import ServiceHeroImage from "@/components/ServiceHeroImage";
-import { ArrowLeft, Zap, Battery, Leaf } from "lucide-react";
+import PageFooter from "@/components/PageFooter";
 
 export default function TeslaPanels() {
   const [, navigate] = useLocation();
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleNavigation = (path: string) => {
-    scrollToTop();
-    navigate(path);
-  };
+  const features = [
+    {
+      name: "Tesla Wall Connector",
+      description: "Level 2 home EV charger — up to 44 miles of range per hour",
+      features: [
+        "Up to 48A / 11.5kW output",
+        "Wi-Fi connected with OTA updates",
+        "Works with all Tesla vehicles",
+        "Sleek flush-mount wall design",
+        "Scheduling via Tesla app",
+      ],
+    },
+    {
+      name: "Tesla Powerwall",
+      description: "Whole-home battery backup — energy independence on demand",
+      features: [
+        "13.5 kWh usable capacity",
+        "Seamless grid outage detection",
+        "Solar and grid charging",
+        "Real-time energy monitoring",
+        "Stacks up to 10 units",
+      ],
+    },
+    {
+      name: "Panel Upgrades",
+      description: "Modern electrical panels to support today's smart home loads",
+      features: [
+        "200–400A service upgrades",
+        "EV-ready circuit installation",
+        "Code-compliant permitting",
+        "Whole-home surge protection",
+        "Smart circuit monitoring",
+      ],
+    },
+  ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-slate-50">
+    <div className="min-h-screen flex flex-col">
       <ServicePageHeader />
 
       {/* Hero Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-accent/20 to-accent/10">
-        <div className="container mx-auto">
+      <section className="py-32 bg-background">
+        <div className="container">
           <button
-            onClick={() => handleNavigation("/services")}
-            className="flex items-center gap-2 text-accent hover:text-accent/80 transition-colors mb-8"
+            onClick={() => navigate("/services")}
+            className="flex items-center text-primary hover:opacity-80 mb-8 transition-opacity"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-5 h-5 mr-2" />
             Back to Services
           </button>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-primary">
-            TESLA ELECTRICAL PANELS
-          </h1>
-          <p className="text-xl text-gray-700 max-w-2xl">
-            Advanced electrical panel solutions with Tesla Powerwall integration
-            for energy independence and backup power.
-          </p>
+          <div className="max-w-3xl">
+            <h1 className="text-6xl font-bold mb-8 leading-tight">
+              Tesla Electrical Panels
+            </h1>
+            <p className="text-2xl text-muted-foreground leading-relaxed">
+              Tesla Wall Connectors, Powerwall battery backup, and full electrical
+              panel upgrades for the modern home.
+            </p>
+          </div>
         </div>
       </section>
 
       <ServiceHeroImage
         src="https://images.unsplash.com/photo-1593941707882-a5bac6861d75?auto=format&fit=crop&w=1400&q=80"
-        alt="Tesla Powerwall and modern electrical panel installation"
+        alt="Tesla Wall Connector mounted on a home garage wall"
       />
 
-      {/* Overview Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-primary">
-            TESLA POWERWALL & ELECTRICAL SOLUTIONS
-          </h2>
+      {/* Main Content */}
+      <section className="py-40 bg-background">
+        <div className="container">
+          {/* Overview */}
+          <div className="mb-20">
+            <h2 className="text-4xl font-bold mb-8">What We Offer</h2>
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              We are certified Tesla installers specializing in Wall Connector installations,
+              Powerwall battery systems, and electrical panel upgrades. From EV charging to
+              whole-home energy independence, we deliver clean, professional installs with
+              proper permitting and inspection.
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="p-8 bg-gradient-to-br from-accent/10 to-accent/5 rounded-lg">
-              <Battery className="w-12 h-12 text-accent mb-4" />
-              <h3 className="text-2xl font-bold mb-4 text-primary">
-                Powerwall Integration
-              </h3>
-              <p className="text-gray-700">
-                Store solar energy and use it when you need it most. Seamless
-                integration with your home's electrical system.
-              </p>
-            </div>
-
-            <div className="p-8 bg-gradient-to-br from-accent/10 to-accent/5 rounded-lg">
-              <Leaf className="w-12 h-12 text-accent mb-4" />
-              <h3 className="text-2xl font-bold mb-4 text-primary">
-                Energy Independence
-              </h3>
-              <p className="text-gray-700">
-                Reduce grid dependency and lower your electricity bills with
-                sustainable energy solutions.
-              </p>
-            </div>
-
-            <div className="p-8 bg-gradient-to-br from-accent/10 to-accent/5 rounded-lg">
-              <Zap className="w-12 h-12 text-accent mb-4" />
-              <h3 className="text-2xl font-bold mb-4 text-primary">
-                Backup Power
-              </h3>
-              <p className="text-gray-700">
-                Automatic backup during outages ensures your home stays powered
-                and protected.
-              </p>
+          {/* Solutions */}
+          <div className="mb-20">
+            <h2 className="text-4xl font-bold mb-12">Tesla Solutions</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {features.map((item, index) => (
+                <Card key={index} className="border-none shadow-sm">
+                  <CardContent className="p-8">
+                    <h3 className="text-2xl font-bold mb-2">{item.name}</h3>
+                    <p className="text-muted-foreground mb-8">{item.description}</p>
+                    <div className="space-y-3">
+                      {item.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start">
+                          <Check className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
 
-          <div className="bg-slate-50 p-12 rounded-lg mb-16">
-            <h3 className="text-3xl font-bold mb-8 text-primary">
-              WHAT WE OFFER
-            </h3>
-            <ul className="space-y-4 text-lg text-gray-700">
-              <li className="flex items-start gap-4">
-                <span className="text-accent font-bold">✓</span>
-                <span>Tesla Powerwall installation and configuration</span>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="text-accent font-bold">✓</span>
-                <span>
-                  Complete electrical panel upgrades and modernization
-                </span>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="text-accent font-bold">✓</span>
-                <span>Solar integration and battery storage solutions</span>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="text-accent font-bold">✓</span>
-                <span>Backup power system design and installation</span>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="text-accent font-bold">✓</span>
-                <span>Smart monitoring and energy management</span>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="text-accent font-bold">✓</span>
-                <span>24/7 support and maintenance</span>
-              </li>
-            </ul>
+          {/* Why Tesla */}
+          <div className="mb-20">
+            <h2 className="text-4xl font-bold mb-12">Why Choose Tesla Energy?</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="border-none shadow-sm">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6">Energy Management</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <Check className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                      <span>Automated self-powered mode</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Check className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                      <span>Time-of-use rate optimization</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Check className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                      <span>Solar charging integration</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Check className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                      <span>Real-time app monitoring</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-none shadow-sm">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6">Installation & Support</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <Check className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                      <span>Licensed, permitted, and inspected</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Check className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                      <span>Certified Tesla installer</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Check className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                      <span>Clean cable management</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Check className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                      <span>24/7 post-install support</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
           </div>
 
-          <div className="bg-gradient-to-r from-primary to-primary/80 text-white p-12 rounded-lg">
-            <h3 className="text-3xl font-bold mb-4">READY TO UPGRADE?</h3>
-            <p className="text-lg mb-8 opacity-90">
-              Let our experts design the perfect Tesla electrical solution for
-              your home or business.
+          {/* CTA */}
+          <div className="bg-primary/5 p-12 rounded-lg text-center">
+            <h2 className="text-3xl font-bold mb-6">
+              Ready to Upgrade Your Electrical System?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Schedule a consultation and we'll design the perfect Tesla energy solution
+              for your home or business.
             </p>
             <Button
               size="lg"
-              className="bg-white text-primary hover:bg-white/90 rounded-lg px-8 py-6 text-lg font-semibold"
-              onClick={() => handleNavigation("/contact")}
+              className="rounded-full px-8 py-6 text-lg"
+              onClick={() => navigate("/contact")}
             >
-              Schedule Consultation
+              Get Your Free Consultation
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-primary text-white py-12 px-4 mt-20">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <h4 className="font-bold text-lg mb-4">NAVIGATE</h4>
-              <ul className="space-y-2">
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/")}
-                    className="hover:text-accent transition-colors"
-                  >
-                    Home
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/about")}
-                    className="hover:text-accent transition-colors"
-                  >
-                    About
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/services")}
-                    className="hover:text-accent transition-colors"
-                  >
-                    Services
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/contact")}
-                    className="hover:text-accent transition-colors"
-                  >
-                    Contact Us
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/blog")}
-                    className="hover:text-accent transition-colors"
-                  >
-                    Blog
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold text-lg mb-4">SERVICES</h4>
-              <ul className="space-y-2">
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/services")}
-                    className="hover:text-accent transition-colors"
-                  >
-                    Smart Lighting
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/services")}
-                    className="hover:text-accent transition-colors"
-                  >
-                    Home Security
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/services")}
-                    className="hover:text-accent transition-colors"
-                  >
-                    Climate Control
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/services")}
-                    className="hover:text-accent transition-colors"
-                  >
-                    Tesla Electrical Panels
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold text-lg mb-4">CONTACT</h4>
-              <p className="mb-2">
-                <a
-                  href="tel:(941) 263-5325"
-                  className="hover:text-accent transition-colors"
-                >
-                  (941) 263-5325
-                </a>
-              </p>
-              <p className="mb-4">
-                <a
-                  href="mailto:office@allthingsautomated.org"
-                  className="hover:text-accent transition-colors"
-                >
-                  office@allthingsautomated.org
-                </a>
-              </p>
-              <p>Available 24/7</p>
-            </div>
-          </div>
-
-          <div className="border-t border-white/20 pt-8 text-center text-white/80">
-            <p>© 2026 All Things Automated. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <PageFooter />
     </div>
   );
 }

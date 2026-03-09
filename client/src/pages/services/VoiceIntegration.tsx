@@ -4,6 +4,7 @@ import { ArrowLeft, Check } from "lucide-react";
 import { useLocation } from "wouter";
 import ServicePageHeader from "@/components/ServicePageHeader";
 import ServiceHeroImage from "@/components/ServiceHeroImage";
+import PageFooter from "@/components/PageFooter";
 
 export default function VoiceIntegration() {
   const [, navigate] = useLocation();
@@ -70,8 +71,8 @@ export default function VoiceIntegration() {
       </section>
 
       <ServiceHeroImage
-        src="https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=1400&q=80"
-        alt="Voice-enabled smart home assistant in modern living room"
+        src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=80"
+        alt="Josh.ai smart home voice control hub"
       />
 
       {/* Main Content */}
