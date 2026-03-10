@@ -8,4 +8,13 @@ export const ENV = {
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
   corsOrigin: process.env.CORS_ORIGIN ?? "https://itsallthingsautomated.com",
+  // Social Media Configuration
+  socialEncryptionKey: process.env.SOCIAL_ENCRYPTION_KEY ?? "",
+  instagramAppId: process.env.INSTAGRAM_APP_ID ?? "",
+  instagramAppSecret: process.env.INSTAGRAM_APP_SECRET ?? "",
+  xClientId: process.env.X_CLIENT_ID ?? "",
+  xClientSecret: process.env.X_CLIENT_SECRET ?? "",
+  youtubeClientId: process.env.YOUTUBE_CLIENT_ID ?? "",
+  youtubeClientSecret: process.env.YOUTUBE_CLIENT_SECRET ?? "",
+  socialCallbackUrl: process.env.SOCIAL_CALLBACK_URL ?? "http://localhost:5000/api/social/callback",
 };

@@ -52,3 +52,77 @@ export const laborRates = mysqlTable("labor_rates", {
 
 export type LaborRate = typeof laborRates.$inferSelect;
 export type InsertLaborRate = typeof laborRates.$inferInsert;
+
+// Blog Posts Table
+export const blogPosts = mysqlTable("blog_posts", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 255 }).notNull(),
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  excerpt: text("excerpt").notNull(),
+  content: text("content").notNull(),
+  featuredImage: varchar("featuredImage", { length: 500 }),
+  author: varchar("author", { length: 255 }).notNull(),
+  category: varchar("category", { length: 100 }).notNull(),
+  published: mysqlEnum("published", ["true", "false"]).default("false").notNull(),
+  publishedAt: timestamp("publishedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type BlogPost = typeof blogPosts.$inferSelect;
+export type InsertBlogPost = typeof blogPosts.$inferInsert;
+
+// Social Media Credentials Table
+export const socialMediaCredentials = mysqlTable("social_media_credentials", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  platform: mysqlEnum("platform", ["instagram", "x", "youtube"]).notNull(),
+  accountHandle: varchar("accountHandle", { length: 255 }),
+  credentialData: text("credentialData").notNull(), // encrypted JSON
+  isActive: mysqlEnum("isActive", ["true", "false"]).default("true").notNull(),
+  connectedAt: timestamp("connectedAt").defaultNow().notNull(),
+  lastTokenRefresh: timestamp("lastTokenRefresh"),
+  expiresAt: timestamp("expiresAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type SocialMediaCredential = typeof socialMediaCredentials.$inferSelect;
+export type InsertSocialMediaCredential = typeof socialMediaCredentials.$inferInsert;
+
+// Social Post History Table
+export const socialPostHistory = mysqlTable("social_post_history", {
+  id: int("id").autoincrement().primaryKey(),
+  blogPostId: int("blogPostId").notNull(),
+  platform: mysqlEnum("platform", ["instagram", "x", "youtube"]).notNull(),
+  postId: varchar("postId", { length: 500 }),
+  content: text("content"),
+  imageUrl: varchar("imageUrl", { length: 500 }),
+  status: mysqlEnum("status", ["pending", "posted", "failed"]).default("pending").notNull(),
+  errorMessage: text("errorMessage"),
+  scheduledAt: timestamp("scheduledAt"),
+  postedAt: timestamp("postedAt"),
+  views: int("views").default(0),
+  engagement: int("engagement").default(0),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type SocialPostHistory = typeof socialPostHistory.$inferSelect;
+export type InsertSocialPostHistory = typeof socialPostHistory.$inferInsert;
+
+// Platform Settings Table
+export const platformSettings = mysqlTable("platform_settings", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  platform: mysqlEnum("platform", ["instagram", "x", "youtube"]).notNull(),
+  isEnabled: mysqlEnum("isEnabled", ["true", "false"]).default("true").notNull(),
+  autoPost: mysqlEnum("autoPost", ["true", "false"]).default("false").notNull(),
+  hashtagTemplate: text("hashtagTemplate"),
+  contentTemplate: text("contentTemplate"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type PlatformSettings = typeof platformSettings.$inferSelect;
+export type InsertPlatformSettings = typeof platformSettings.$inferInsert;
