@@ -8,7 +8,6 @@ import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
-import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
 import AdminDashboard from "./pages/AdminDashboard";
 import QuoteBuilder from "./pages/QuoteBuilder";
@@ -71,7 +70,6 @@ function Router() {
         />
         <Route path={ROUTES.blog} component={Blog} />
         <Route path={`${ROUTES.blog}/:id`} component={BlogPost} />
-        <Route path={ROUTES.pricing} component={Pricing} />
         <Route path={ROUTES.videoEstimate} component={VideoEstimate} />
         <Route
           path={ROUTES.videoEstimateAdmin}

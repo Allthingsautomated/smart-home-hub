@@ -16,7 +16,6 @@ const staticRoutes = {
   landscapeLighting: "/services/landscape-lighting",
   smartLightingCatalog: "/smart-lighting-catalog",
   blog: "/blog",
-  pricing: "/pricing",
   quoteBuilder: "/quote-builder",
   videoEstimate: "/video-estimate",
   videoEstimateAdmin: "/admin/video-estimates",

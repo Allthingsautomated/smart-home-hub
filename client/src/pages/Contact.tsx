@@ -69,47 +69,65 @@ export default function Contact() {
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-slate-50">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto py-4">
+        <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <button
               onClick={() => handleNavigation("/")}
-              className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+              className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
                 alt="All Things Automated Logo"
-                className="h-12 w-auto"
+                className="h-10 w-auto"
               />
-              <span className="text-xl font-bold">All Things Automated</span>
             </button>
-            <div className="hidden md:flex items-center space-x-6">
+            <div className="hidden md:flex items-center space-x-8">
               <button
                 onClick={() => handleNavigation("/")}
-                className="hover:text-primary transition-colors"
+                className="text-gray-700 hover:text-primary transition-colors"
               >
                 Home
               </button>
               <button
                 onClick={() => handleNavigation("/about")}
-                className="hover:text-primary transition-colors"
+                className="text-gray-700 hover:text-primary transition-colors"
               >
-                About Us
+                About
               </button>
               <button
                 onClick={() => handleNavigation("/services")}
-                className="hover:text-primary transition-colors"
+                className="text-gray-700 hover:text-primary transition-colors"
               >
                 Services
               </button>
               <button
                 onClick={() => handleNavigation("/contact")}
-                className="text-primary font-semibold"
+                className="text-primary font-semibold hover:opacity-80 transition-opacity"
               >
                 Contact
               </button>
-              <Button className="rounded-full">Book Now</Button>
+              <button
+                onClick={() => handleNavigation("/quote-builder")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Pricing
+              </button>
+              <button
+                onClick={() => handleNavigation("/blog")}
+                className="text-gray-700 hover:text-primary transition-colors"
+              >
+                Blog
+              </button>
             </div>
-            <MobileNav onNavigate={handleNavigation} />
+            <div className="flex items-center space-x-4">
+              <MobileNav onNavigate={handleNavigation} />
+              <Button
+                className="rounded-full hidden md:inline-flex"
+                onClick={() => handleNavigation("/contact")}
+              >
+                Book Now
+              </Button>
+            </div>
           </div>
         </div>
       </nav>
