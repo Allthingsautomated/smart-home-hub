@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ata-backend
+    runtime: node
+    region: oregon
+    branch: main
+    buildCommand: pnpm install --frozen-lockfile && pnpm run build
+    startCommand: pnpm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false  # Set this in the Render dashboard
+      - key: JWT_SECRET
+        generateValue: true  # Render auto-generates a secure secret
+      - key: CORS_ORIGIN
+        value: https://itsallthingsautomated.com
