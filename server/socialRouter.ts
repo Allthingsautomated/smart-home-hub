@@ -31,6 +31,24 @@ import {
   adaptContentForYouTube,
   validateContentForPlatform,
 } from "./_core/social/contentAdapter";
+import {
+  generateInstagramAuthUrl,
+  exchangeInstagramAuthCode,
+  postMediaToInstagram,
+  validateInstagramCredentials,
+} from "./_core/social/instagram";
+import {
+  generateXAuthUrl,
+  exchangeXAuthCode,
+  postTweetToX,
+  validateXCredentials,
+} from "./_core/social/x";
+import {
+  generateYoutubeAuthUrl,
+  exchangeYoutubeAuthCode,
+  createYoutubePost,
+  validateYoutubeCredentials,
+} from "./_core/social/youtube";
 
 const PLATFORM_ENUM = z.enum(["instagram", "x", "youtube"]);
 const POST_STATUS_ENUM = z.enum(["pending", "posted", "failed"]);
@@ -406,6 +424,360 @@ export const socialRouter = router({
         throw new Error(
           `Failed to prepare post: ${error instanceof Error ? error.message : "Unknown error"}`
         );
+      }
+    }),
+
+  /**
+   * OAuth & Authorization - Admin Endpoints
+   */
+
+  // Get OAuth URL for each platform
+  getOAuthUrl: adminProcedure
+    .input(z.object({ platform: PLATFORM_ENUM }))
+    .query(async ({ input }) => {
+      const redirectUri = `${process.env.SOCIAL_CALLBACK_URL || "http://localhost:5000/api/social/callback"}?platform=${input.platform}`;
+
+      switch (input.platform) {
+        case "instagram":
+          return {
+            url: generateInstagramAuthUrl(redirectUri),
+            platform: "instagram",
+          };
+        case "x":
+          // For X, we need PKCE. Generate code verifier and challenge
+          const codeVerifier = Math.random().toString(36).substring(2, 15) +
+            Math.random().toString(36).substring(2, 15);
+          const codeChallenge = Buffer.from(
+            require("crypto").createHash("sha256").update(codeVerifier).digest()
+          ).toString("base64")
+            .replace(/\+/g, "-")
+            .replace(/\//g, "_")
+            .replace(/=/g, "");
+
+          return {
+            url: generateXAuthUrl(redirectUri, codeChallenge),
+            platform: "x",
+            codeVerifier, // Return to client for callback
+          };
+        case "youtube":
+          return {
+            url: generateYoutubeAuthUrl(redirectUri),
+            platform: "youtube",
+          };
+      }
+    }),
+
+  // Handle OAuth callback for each platform
+  handleOAuthCallback: adminProcedure
+    .input(
+      z.object({
+        platform: PLATFORM_ENUM,
+        code: z.string(),
+        codeVerifier: z.string().optional(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      const redirectUri = `${process.env.SOCIAL_CALLBACK_URL || "http://localhost:5000/api/social/callback"}?platform=${input.platform}`;
+
+      try {
+        switch (input.platform) {
+          case "instagram": {
+            const result = await exchangeInstagramAuthCode(
+              input.code,
+              redirectUri
+            );
+            const credentialData = {
+              accessToken: result.accessToken,
+              expiresAt: result.expiresIn
+                ? new Date(
+                  Date.now() + result.expiresIn * 1000
+                ).toISOString()
+                : undefined,
+            };
+            const encrypted = encryptCredentials(credentialData);
+            await saveSocialCredentials(
+              ctx.user.id,
+              "instagram",
+              encrypted,
+              result.userId
+            );
+            return { success: true, platform: "instagram" };
+          }
+
+          case "x": {
+            if (!input.codeVerifier) {
+              throw new Error("Code verifier required for X OAuth");
+            }
+            const result = await exchangeXAuthCode(
+              input.code,
+              redirectUri,
+              input.codeVerifier
+            );
+            const credentialData = {
+              accessToken: result.accessToken,
+              refreshToken: result.refreshToken,
+              expiresAt: new Date(
+                Date.now() + result.expiresIn * 1000
+              ).toISOString(),
+            };
+            const encrypted = encryptCredentials(credentialData);
+            await saveSocialCredentials(ctx.user.id, "x", encrypted);
+            return { success: true, platform: "x" };
+          }
+
+          case "youtube": {
+            const result = await exchangeYoutubeAuthCode(
+              input.code,
+              redirectUri
+            );
+            const credentialData = {
+              accessToken: result.accessToken,
+              refreshToken: result.refreshToken,
+              expiresAt: new Date(
+                Date.now() + result.expiresIn * 1000
+              ).toISOString(),
+            };
+            const encrypted = encryptCredentials(credentialData);
+            await saveSocialCredentials(ctx.user.id, "youtube", encrypted);
+            return { success: true, platform: "youtube" };
+          }
+        }
+      } catch (error) {
+        throw new Error(
+          `OAuth failed for ${input.platform}: ${error instanceof Error ? error.message : "Unknown error"}`
+        );
+      }
+    }),
+
+  /**
+   * Platform-Specific Posting - Admin Endpoints
+   */
+
+  // Post to Instagram
+  postToInstagram: adminProcedure
+    .input(
+      z.object({
+        blogPostId: z.number(),
+        caption: z.string().optional(),
+        businessAccountId: z.string().optional(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      const post = await getBlogPostById(input.blogPostId);
+      if (!post) {
+        throw new Error("Blog post not found");
+      }
+
+      const credentials = await getSocialCredentials(ctx.user.id, "instagram");
+      if (!credentials) {
+        throw new Error("Not connected to Instagram");
+      }
+
+      try {
+        let caption = input.caption;
+        if (!caption) {
+          caption = await adaptContentForInstagram(post);
+        }
+
+        const validation = validateContentForPlatform("instagram", caption);
+        if (!validation.valid) {
+          throw new Error(validation.message);
+        }
+
+        const result = await postMediaToInstagram(
+          credentials.credentialData,
+          caption,
+          post.featuredImage || "",
+          input.businessAccountId
+        );
+
+        await recordSocialPost({
+          blogPostId: input.blogPostId,
+          platform: "instagram" as any,
+          postId: result.postId,
+          content: caption,
+          imageUrl: post.featuredImage,
+          status: "posted" as any,
+          postedAt: new Date(),
+        });
+
+        return { success: true, postId: result.postId };
+      } catch (error) {
+        await recordSocialPost({
+          blogPostId: input.blogPostId,
+          platform: "instagram" as any,
+          content: input.caption,
+          imageUrl: post.featuredImage,
+          status: "failed" as any,
+          errorMessage: error instanceof Error ? error.message : "Unknown error",
+        });
+
+        throw error;
+      }
+    }),
+
+  // Post to X (Twitter)
+  postToX: adminProcedure
+    .input(
+      z.object({
+        blogPostId: z.number(),
+        tweet: z.string().optional(),
+        blogUrl: z.string().url().optional(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      const post = await getBlogPostById(input.blogPostId);
+      if (!post) {
+        throw new Error("Blog post not found");
+      }
+
+      const credentials = await getSocialCredentials(ctx.user.id, "x");
+      if (!credentials) {
+        throw new Error("Not connected to X");
+      }
+
+      try {
+        let content = input.tweet;
+        if (!content) {
+          content = await adaptContentForX(post);
+          // Append blog URL if provided
+          if (input.blogUrl) {
+            content = `${content}\n\n${input.blogUrl}`;
+          }
+        }
+
+        const validation = validateContentForPlatform("x", content);
+        if (!validation.valid) {
+          throw new Error(validation.message);
+        }
+
+        const result = await postTweetToX(credentials.credentialData, content);
+
+        await recordSocialPost({
+          blogPostId: input.blogPostId,
+          platform: "x" as any,
+          postId: result.postId,
+          content: content,
+          status: "posted" as any,
+          postedAt: new Date(),
+        });
+
+        return { success: true, postId: result.postId };
+      } catch (error) {
+        await recordSocialPost({
+          blogPostId: input.blogPostId,
+          platform: "x" as any,
+          content: input.tweet,
+          status: "failed" as any,
+          errorMessage: error instanceof Error ? error.message : "Unknown error",
+        });
+
+        throw error;
+      }
+    }),
+
+  // Post to YouTube
+  postToYoutube: adminProcedure
+    .input(
+      z.object({
+        blogPostId: z.number(),
+        content: z.string().optional(),
+        imageUrl: z.string().url().optional(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      const post = await getBlogPostById(input.blogPostId);
+      if (!post) {
+        throw new Error("Blog post not found");
+      }
+
+      const credentials = await getSocialCredentials(ctx.user.id, "youtube");
+      if (!credentials) {
+        throw new Error("Not connected to YouTube");
+      }
+
+      try {
+        let content = input.content;
+        if (!content) {
+          content = await adaptContentForYouTube(post);
+        }
+
+        const validation = validateContentForPlatform("youtube", content);
+        if (!validation.valid) {
+          throw new Error(validation.message);
+        }
+
+        const result = await createYoutubePost(
+          credentials.credentialData,
+          content,
+          input.imageUrl || post.featuredImage || undefined
+        );
+
+        await recordSocialPost({
+          blogPostId: input.blogPostId,
+          platform: "youtube" as any,
+          postId: result.postId,
+          content: content,
+          imageUrl: input.imageUrl || post.featuredImage,
+          status: "posted" as any,
+          postedAt: new Date(),
+        });
+
+        return { success: true, postId: result.postId };
+      } catch (error) {
+        await recordSocialPost({
+          blogPostId: input.blogPostId,
+          platform: "youtube" as any,
+          content: input.content,
+          status: "failed" as any,
+          errorMessage: error instanceof Error ? error.message : "Unknown error",
+        });
+
+        throw error;
+      }
+    }),
+
+  /**
+   * Validation Endpoints
+   */
+
+  // Validate credentials for a platform
+  validateCredentials: adminProcedure
+    .input(z.object({ platform: PLATFORM_ENUM }))
+    .query(async ({ input, ctx }) => {
+      const credentials = await getSocialCredentials(ctx.user.id, input.platform);
+      if (!credentials) {
+        return { valid: false, message: "Not connected" };
+      }
+
+      try {
+        let isValid = false;
+
+        switch (input.platform) {
+          case "instagram":
+            isValid = await validateInstagramCredentials(
+              credentials.credentialData
+            );
+            break;
+          case "x":
+            isValid = await validateXCredentials(credentials.credentialData);
+            break;
+          case "youtube":
+            isValid = await validateYoutubeCredentials(
+              credentials.credentialData
+            );
+            break;
+        }
+
+        return {
+          valid: isValid,
+          message: isValid ? "Credentials valid" : "Credentials invalid",
+        };
+      } catch (error) {
+        return {
+          valid: false,
+          message: error instanceof Error ? error.message : "Validation failed",
+        };
       }
     }),
 });

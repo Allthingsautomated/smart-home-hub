@@ -9,3 +9,6 @@
 
 export * from "./credentialManager";
 export * from "./contentAdapter";
+export * from "./instagram";
+export * from "./x";
+export * from "./youtube";
