@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, User } from "lucide-react";
 import { useLocation } from "wouter";
@@ -5,7 +6,7 @@ import ServicePageHeader from "@/components/ServicePageHeader";
 import PageFooter from "@/components/PageFooter";
 import { ROUTES } from "@/lib/routes";
 
-const blogPosts = [
+const staticBlogPosts = [
   {
     id: 1,
     title: "The Complete Guide to Smart Lighting Systems",
@@ -64,6 +65,42 @@ const blogPosts = [
 
 export default function Blog() {
   const [, navigate] = useLocation();
+  const [blogPosts, setBlogPosts] = useState(staticBlogPosts);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("blogPosts");
+      if (saved) {
+        const localPosts = JSON.parse(saved) as Array<{
+          id: number;
+          title: string;
+          excerpt: string;
+          author: string;
+          date: string;
+          category: string;
+          coverImage?: string;
+        }>;
+        const mapped = localPosts.map((p) => ({
+          id: p.id,
+          title: p.title,
+          excerpt: p.excerpt,
+          author: p.author,
+          date: p.date,
+          category: p.category,
+          image: p.coverImage ?? "",
+        }));
+        // Local posts first, then static posts not overridden by a matching id
+        const localIds = new Set(mapped.map((p) => p.id));
+        const merged = [
+          ...mapped,
+          ...staticBlogPosts.filter((p) => !localIds.has(p.id)),
+        ];
+        setBlogPosts(merged);
+      }
+    } catch {
+      // Keep static posts on parse error
+    }
+  }, []);
 
   const handleNav = (path: string) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -96,13 +133,15 @@ export default function Blog() {
                 onClick={() => handleNav(ROUTES.blogPost(post.id))}
                 className="group text-left bg-background rounded-xl border border-border/60 overflow-hidden hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
               >
-                <div className="h-52 overflow-hidden bg-muted">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
+                {post.image && (
+                  <div className="h-52 overflow-hidden bg-muted">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
                 <div className="p-6">
                   <span className="inline-block text-xs font-semibold text-primary bg-primary/10 rounded-full px-3 py-1 mb-4">
                     {post.category}
