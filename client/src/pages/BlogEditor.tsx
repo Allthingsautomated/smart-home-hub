@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Plus, Edit2, Trash2, LogOut, AlertCircle } from "lucide-react";
+import { Edit2, Trash2, LogOut, AlertCircle } from "lucide-react";
+import PhotoUpload from "@/components/PhotoUpload";
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -15,6 +16,7 @@ interface BlogPostData {
   author: string;
   content: string;
   excerpt: string;
+  coverImage?: string;
 }
 
 export default function BlogEditor() {
@@ -30,6 +32,7 @@ export default function BlogEditor() {
     author: "All Things Automated",
     content: "",
     excerpt: "",
+    coverImage: "",
   });
 
   const handleNavigation = (path: string) => {
@@ -105,6 +108,7 @@ export default function BlogEditor() {
       author: "All Things Automated",
       content: "",
       excerpt: "",
+      coverImage: "",
     });
     setIsEditing(false);
     setEditingId(null);
@@ -257,6 +261,18 @@ export default function BlogEditor() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Cover Image
+                  </label>
+                  <PhotoUpload
+                    currentUrl={formData.coverImage}
+                    onUpload={(url) =>
+                      setFormData({ ...formData, coverImage: url })
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Content *
                   </label>
                   <textarea
@@ -317,6 +333,13 @@ export default function BlogEditor() {
                       key={post.id}
                       className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition"
                     >
+                      {post.coverImage && (
+                        <img
+                          src={post.coverImage}
+                          alt={post.title}
+                          className="w-full h-32 object-cover rounded-md mb-3"
+                        />
+                      )}
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex-1">
                           <h3 className="font-bold text-lg text-gray-900">
