@@ -16,12 +16,15 @@ import {
   Users,
   DollarSign,
   ClipboardList,
+  Share2,
 } from "lucide-react";
 import ServicePageHeader from "@/components/ServicePageHeader";
+import { useLocation } from "wouter";
+import { ROUTES } from "@/lib/routes";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type Tab = "overview" | "blog" | "contracts" | "invoices" | "leads";
+type Tab = "overview" | "blog" | "contracts" | "invoices" | "leads" | "social";
 
 interface BlogPost {
   id: number;
@@ -625,6 +628,7 @@ function LeadsPanel({ leads }: { leads: Lead[] }) {
 export default function AdminDashboard() {
   const [tab, setTab] = useState<Tab>("overview");
   const [posts, setPosts] = useState<BlogPost[]>(initialBlogPosts);
+  const [, setLocation] = useLocation();
   const leads = sampleLeads;
 
   const navItems: { key: Tab; label: string; icon: React.ElementType }[] = [
@@ -633,7 +637,16 @@ export default function AdminDashboard() {
     { key: "contracts", label: "Contracts", icon: FileText },
     { key: "invoices", label: "Invoices", icon: Receipt },
     { key: "leads", label: "Leads", icon: Users },
+    { key: "social", label: "Social Media", icon: Share2 },
   ];
+
+  const handleTabClick = (key: Tab) => {
+    if (key === "social") {
+      setLocation(ROUTES.adminSocialConnections);
+    } else {
+      setTab(key);
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -647,7 +660,7 @@ export default function AdminDashboard() {
             {navItems.map(({ key, label, icon: Icon }) => (
               <button
                 key={key}
-                onClick={() => setTab(key)}
+                onClick={() => handleTabClick(key)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   tab === key ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
                 }`}
@@ -662,7 +675,7 @@ export default function AdminDashboard() {
         {/* Mobile tab bar */}
         <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border/60 flex">
           {navItems.map(({ key, label, icon: Icon }) => (
-            <button key={key} onClick={() => setTab(key)} className={`flex-1 flex flex-col items-center py-3 text-xs gap-1 ${tab === key ? "text-primary" : "text-muted-foreground"}`}>
+            <button key={key} onClick={() => handleTabClick(key)} className={`flex-1 flex flex-col items-center py-3 text-xs gap-1 ${tab === key ? "text-primary" : "text-muted-foreground"}`}>
               <Icon className="w-4 h-4" />
               {label}
             </button>

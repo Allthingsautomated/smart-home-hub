@@ -30,6 +30,7 @@ import BlogPost from "./pages/BlogPost";
 import AdminLogin from "./pages/AdminLogin";
 import BlogEditor from "./pages/BlogEditor";
 import AdminSecretDashboard from "./pages/AdminSecretDashboard";
+import AdminSocialConnections from "./pages/AdminSocialConnections";
 import VideoEstimate from "./pages/VideoEstimate";
 import VideoEstimateAdmin from "./pages/VideoEstimateAdmin";
 import FacebookLead from "./pages/FacebookLead";
@@ -82,6 +83,7 @@ function Router() {
         <Route path={ROUTES.admin} component={AdminDashboard} />
         <Route path={ROUTES.adminLogin} component={AdminLogin} />
         <Route path={ROUTES.adminBlogEditor} component={BlogEditor} />
+        <Route path={ROUTES.adminSocialConnections} component={AdminSocialConnections} />
         <Route path={ROUTES.quoteBuilder} component={QuoteBuilder} />
         <Route
           path={ROUTES.adminSecretDashboard}
