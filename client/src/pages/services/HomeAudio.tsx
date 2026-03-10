@@ -4,6 +4,7 @@ import { ArrowLeft, Check } from "lucide-react";
 import { useLocation } from "wouter";
 import ServicePageHeader from "@/components/ServicePageHeader";
 import ServiceHeroImage from "@/components/ServiceHeroImage";
+import PageFooter from "@/components/PageFooter";
 
 export default function HomeAudio() {
   const [, navigate] = useLocation();
@@ -35,8 +36,8 @@ export default function HomeAudio() {
       </section>
 
       <ServiceHeroImage
-        src="https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=1400&q=80"
-        alt="Premium whole-home audio speakers in contemporary interior"
+        src="data:image/jpeg;base64,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"
+        alt="Sonos speaker — The Home Sound System"
       />
 
       {/* Main Content */}
@@ -169,87 +170,7 @@ export default function HomeAudio() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-foreground text-background py-16 mt-auto">
-        <div className="container">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div>
-              <div className="flex items-center space-x-2 mb-6">
-                <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
-                  alt="All Things Automated Logo"
-                  className="h-10 w-auto"
-                />
-                <span className="text-lg font-bold">All Things Automated</span>
-              </div>
-              <p className="text-sm opacity-80">
-                Intelligent automation for modern homes.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Navigate</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li>
-                  <button
-                    onClick={() => navigate("/")}
-                    className="hover:opacity-100"
-                  >
-                    Home
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => navigate("/services")}
-                    className="hover:opacity-100"
-                  >
-                    Services
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => navigate("/contact")}
-                    className="hover:opacity-100"
-                  >
-                    Contact
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => navigate("/blog")}
-                    className="hover:opacity-100"
-                  >
-                    Blog
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li>Smart Lighting</li>
-                <li>Home Security</li>
-                <li>Climate Control</li>
-                <li>Voice Control</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li>(941) 263-5325</li>
-                <li>info@allthingsautomated.com</li>
-                <li>Available 24/7</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-background/20 pt-8 text-center text-sm opacity-80">
-            <p>© 2026 All Things Automated. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <PageFooter />
     </div>
   );
 }
