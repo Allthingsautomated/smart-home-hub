@@ -23,19 +23,22 @@ export default function AdminLogin() {
     setError("");
     setIsLoading(true);
 
-    // Simple password check (in production, use proper authentication)
-    // Default password: "admin123" - Change this!
-    const ADMIN_PASSWORD = "admin123";
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ password }),
+      });
 
-    if (password === ADMIN_PASSWORD) {
-      // Store session in localStorage
-      localStorage.setItem("adminSession", JSON.stringify({
-        loggedIn: true,
-        timestamp: new Date().getTime(),
-      }));
-      handleNavigation("/admin/blog-editor");
-    } else {
-      setError("Invalid password. Please try again.");
+      if (res.ok) {
+        handleNavigation("/admin/blog-editor");
+      } else {
+        const data = await res.json();
+        setError(data.error ?? "Invalid password. Please try again.");
+      }
+    } catch {
+      setError("Login failed. Please try again.");
     }
 
     setIsLoading(false);
@@ -52,7 +55,7 @@ export default function AdminLogin() {
               className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
+                src="/logo.png"
                 alt="All Things Automated Logo"
                 className="h-10 w-auto"
               />
@@ -134,14 +137,6 @@ export default function AdminLogin() {
               </Button>
             </form>
 
-            <div className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-              <p className="text-sm text-blue-700">
-                <strong>Demo Password:</strong> admin123
-              </p>
-              <p className="text-xs text-blue-600 mt-2">
-                ⚠️ Change this password in production!
-              </p>
-            </div>
           </div>
         </div>
       </section>

@@ -15,7 +15,7 @@ export default function PageFooter() {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div>
             <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
+              src="/logo.png"
               alt="Logo"
               className="h-10 w-auto mb-4"
             />
