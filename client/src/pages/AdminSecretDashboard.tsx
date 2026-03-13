@@ -49,6 +49,7 @@ import {
   Image as ImageIcon,
   Copy,
   Check,
+  Upload,
 } from "lucide-react";
 import PhotoUpload from "@/components/PhotoUpload";
 
@@ -871,12 +872,15 @@ export default function AdminSecretDashboard() {
             <div className="space-y-6">
               <div>
                 <h2 className="text-xl font-bold text-slate-800">Photo Manager</h2>
-                <p className="text-slate-500 text-sm mt-0.5">Upload and manage your photos</p>
+                <p className="text-slate-500 text-sm mt-0.5">Upload photos from your computer or phone</p>
               </div>
 
               {/* Upload section */}
               <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
-                <h3 className="font-semibold text-slate-800 mb-4">Upload New Photo</h3>
+                <div className="flex items-center gap-2 mb-4">
+                  <Upload size={20} className="text-[#8B5CF6]" />
+                  <h3 className="font-semibold text-slate-800">Upload New Photo</h3>
+                </div>
                 <PhotoUpload onUpload={handlePhotoUpload} />
               </div>
 
