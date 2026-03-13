@@ -1,17 +1,7 @@
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { nanoid } from "nanoid";
 import { z } from "zod";
 import { publicProcedure, router } from "./_core/trpc";
-
-const s3 = new S3Client({
-  region: process.env.AWS_REGION!,
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-  },
-});
-
-const BUCKET = process.env.AWS_S3_BUCKET!;
+import { storagePut } from "./storage";
 
 export const uploadRouter = router({
   uploadImage: publicProcedure
@@ -30,16 +20,7 @@ export const uploadRouter = router({
         : input.base64;
       const buffer = Buffer.from(base64Data, "base64");
 
-      await s3.send(
-        new PutObjectCommand({
-          Bucket: BUCKET,
-          Key: key,
-          Body: buffer,
-          ContentType: input.contentType,
-        })
-      );
-
-      const url = `https://${BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`;
+      const { url } = await storagePut(key, buffer, input.contentType);
       return { url };
     }),
 });

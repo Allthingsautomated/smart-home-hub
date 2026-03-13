@@ -49,7 +49,9 @@ import {
   Image as ImageIcon,
   Copy,
   Check,
+  Upload,
 } from "lucide-react";
+import PhotoUpload from "@/components/PhotoUpload";
 
 interface ContactSubmission {
   id: string;
@@ -133,7 +135,6 @@ export default function AdminSecretDashboard() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [photos, setPhotos] = useState<UploadedPhoto[]>([]);
   const [copiedUrl, setCopiedUrl] = useState<string | null>(null);
-  const [newPhotoUrl, setNewPhotoUrl] = useState<string>("");
 
   const ADMIN_PASSWORD = "admin123";
 
@@ -220,12 +221,11 @@ export default function AdminSecretDashboard() {
     }
   };
 
-  const addPhotoFromUrl = () => {
-    if (!newPhotoUrl.trim()) return;
-    const filename = newPhotoUrl.split("/").pop() ?? "photo";
+  const handlePhotoUpload = (url: string) => {
+    const filename = url.split("/").pop() ?? "photo";
     const newPhoto: UploadedPhoto = {
       id: nanoid(),
-      url: newPhotoUrl,
+      url,
       filename,
       uploadedAt: new Date().toLocaleDateString("en-US", {
         year: "numeric",
@@ -236,7 +236,6 @@ export default function AdminSecretDashboard() {
     const updated = [newPhoto, ...photos];
     setPhotos(updated);
     localStorage.setItem("uploadedPhotos", JSON.stringify(updated));
-    setNewPhotoUrl("");
   };
 
   const deletePhoto = (id: string) => {
@@ -873,30 +872,16 @@ export default function AdminSecretDashboard() {
             <div className="space-y-6">
               <div>
                 <h2 className="text-xl font-bold text-slate-800">Photo Manager</h2>
-                <p className="text-slate-500 text-sm mt-0.5">Add and manage your photos</p>
+                <p className="text-slate-500 text-sm mt-0.5">Upload photos from your computer or phone</p>
               </div>
 
-              {/* Add photo section */}
+              {/* Upload section */}
               <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
-                <h3 className="font-semibold text-slate-800 mb-4">Add Photo URL</h3>
-                <div className="space-y-3">
-                  <input
-                    type="url"
-                    placeholder="Paste photo URL here (e.g., https://example.com/photo.jpg)"
-                    value={newPhotoUrl}
-                    onChange={(e) => setNewPhotoUrl(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && addPhotoFromUrl()}
-                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:border-[#8B5CF6] focus:ring-2 focus:ring-[#8B5CF6]/20 text-sm"
-                  />
-                  <button
-                    onClick={addPhotoFromUrl}
-                    disabled={!newPhotoUrl.trim()}
-                    className="px-4 py-2.5 bg-[#8B5CF6] text-white rounded-lg text-sm font-medium hover:bg-[#7c3aed] disabled:opacity-50 disabled:cursor-not-allowed transition"
-                  >
-                    Add Photo
-                  </button>
+                <div className="flex items-center gap-2 mb-4">
+                  <Upload size={20} className="text-[#8B5CF6]" />
+                  <h3 className="font-semibold text-slate-800">Upload New Photo</h3>
                 </div>
-                <p className="text-xs text-slate-400 mt-3">Tip: Upload your photo to any service (Google Drive, Imgur, etc.) and paste the URL here</p>
+                <PhotoUpload onUpload={handlePhotoUpload} />
               </div>
 
               {/* Photos grid */}
@@ -904,8 +889,8 @@ export default function AdminSecretDashboard() {
                 {photos.length === 0 ? (
                   <div className="py-16 text-center text-slate-400">
                     <ImageIcon className="w-10 h-10 mx-auto mb-3 opacity-30" />
-                    <p className="font-medium">No photos yet</p>
-                    <p className="text-sm mt-1">Paste a photo URL above to get started.</p>
+                    <p className="font-medium">No photos uploaded yet</p>
+                    <p className="text-sm mt-1">Upload your first photo above to get started.</p>
                   </div>
                 ) : (
                   <div className="p-6">
@@ -918,9 +903,6 @@ export default function AdminSecretDashboard() {
                               src={photo.url}
                               alt={photo.filename}
                               className="w-full h-40 object-cover"
-                              onError={(e) => {
-                                e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Crect fill='%23e2e8f0' width='160' height='160'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='12' fill='%23999'%3EImage not found%3C/text%3E%3C/svg%3E";
-                              }}
                             />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-center justify-center gap-2">
                               <button
