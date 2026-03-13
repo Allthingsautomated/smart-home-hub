@@ -7,6 +7,7 @@ import type { User } from "../../drizzle/schema";
 import * as db from "../db";
 import { ENV } from "./env";
 
+// Utility function
 const isNonEmptyString = (value: unknown): value is string =>
   typeof value === "string" && value.length > 0;
 
@@ -16,6 +17,10 @@ export type SessionPayload = {
 };
 
 class SDKServer {
+  constructor() {
+    console.log("[SDK] Initialized for session-based authentication");
+  }
+
   private parseCookies(cookieHeader: string | undefined) {
     if (!cookieHeader) {
       return new Map<string, string>();
@@ -80,7 +85,9 @@ class SDKServer {
       throw ForbiddenError("Invalid session cookie");
     }
 
-    const user = await db.getUserByOpenId(session.openId);
+    const sessionUserId = session.openId;
+    const signedInAt = new Date();
+    let user = await db.getUserByOpenId(sessionUserId);
 
     if (!user) {
       throw ForbiddenError("User not found");

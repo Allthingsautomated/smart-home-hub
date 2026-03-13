@@ -146,7 +146,7 @@ export default function Blog() {
                   <span className="inline-block text-xs font-semibold text-primary bg-primary/10 rounded-full px-3 py-1 mb-4">
                     {post.category}
                   </span>
-                  <h2 className="text-lg font-bold mb-3 leading-snug group-hover:text-primary transition-colors">
+                  <h2 className="text-lg font-semibold mb-3 leading-snug group-hover:text-primary transition-colors">
                     {post.title}
                   </h2>
                   <p className="text-sm text-muted-foreground mb-5 leading-relaxed line-clamp-2">

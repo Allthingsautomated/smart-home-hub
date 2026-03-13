@@ -24,6 +24,8 @@ const staticRoutes = {
   admin: "/admin",
   adminLogin: "/admin/login",
   adminBlogEditor: "/admin/blog-editor",
+  adminPriceManager: "/admin/price-manager",
+  adminSocialConnections: "/admin/social-connections",
   adminSecretDashboard: "/admin-all-things-automated-secret",
   notFound: "/404",
 } as const;

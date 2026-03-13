@@ -236,7 +236,7 @@ export default function BlogPost() {
                 className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
               >
                 <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
+                  src="/logo.png"
                   alt="SmartHome Hub Logo"
                   className="h-10 w-auto"
                 />
@@ -265,7 +265,7 @@ export default function BlogPost() {
               className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
+                src="/logo.png"
                 alt="SmartHome Hub Logo"
                 className="h-10 w-auto"
               />
@@ -413,7 +413,7 @@ export default function BlogPost() {
             <div>
               <div className="flex items-center space-x-2 mb-6">
                 <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
+                  src="/logo.png"
                   alt="All Things Automated Logo"
                   className="h-10 w-auto"
                 />

@@ -3,6 +3,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { pricingRouter } from "./pricing";
+import { socialRouter } from "./socialRouter";
 import { uploadRouter } from "./upload";
 
 export const appRouter = router({
@@ -20,6 +21,7 @@ export const appRouter = router({
   }),
 
   pricing: pricingRouter,
+  social: socialRouter,
   upload: uploadRouter,
 });
 
