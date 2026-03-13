@@ -9,22 +9,6 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { ENV } from "./env";
-import { execSync } from "child_process";
-
-async function runDatabaseMigration() {
-  try {
-    if (ENV.databaseUrl && process.env.NODE_ENV === "production") {
-      console.log("[Database] Running migrations...");
-      execSync("drizzle-kit migrate --config drizzle.config.ts", {
-        env: { ...process.env, DATABASE_URL: ENV.databaseUrl },
-        stdio: "inherit",
-      });
-      console.log("[Database] Migrations completed successfully");
-    }
-  } catch (error) {
-    console.warn("[Database] Migration error (this may be expected):", error instanceof Error ? error.message : String(error));
-  }
-}
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -46,9 +30,6 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 }
 
 async function startServer() {
-  // Run database migrations if in production
-  await runDatabaseMigration();
-
   const app = express();
   const server = createServer(app);
   // CORS — allow frontend origin and local dev
