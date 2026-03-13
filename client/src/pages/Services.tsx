@@ -15,10 +15,20 @@ import {
 import { useLocation } from "wouter";
 import ServicePageHeader from "@/components/ServicePageHeader";
 import PageFooter from "@/components/PageFooter";
+import MobileNav from "@/components/MobileNav";
 import { ROUTES } from "@/lib/routes";
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
 export default function Services() {
   const [, navigate] = useLocation();
+
+  const handleNavigation = (path: string) => {
+    scrollToTop();
+    navigate(path);
+  };
 
   const residentialServices = [
     {
