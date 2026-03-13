@@ -13,7 +13,6 @@ const isNonEmptyString = (value: unknown): value is string =>
 
 export type SessionPayload = {
   openId: string;
-  appId: string;
   name: string;
 };
 
@@ -26,33 +25,19 @@ class SDKServer {
     if (!cookieHeader) {
       return new Map<string, string>();
     }
-
     const parsed = parseCookieHeader(cookieHeader);
     return new Map(Object.entries(parsed));
   }
 
   private getSessionSecret() {
-    const secret = ENV.cookieSecret;
-    return new TextEncoder().encode(secret);
+    return new TextEncoder().encode(ENV.cookieSecret);
   }
 
-  /**
-   * Create a session token for a Manus user openId
-   * @example
-   * const sessionToken = await sdk.createSessionToken(userInfo.openId);
-   */
   async createSessionToken(
     openId: string,
     options: { expiresInMs?: number; name?: string } = {}
   ): Promise<string> {
-    return this.signSession(
-      {
-        openId,
-        appId: ENV.appId,
-        name: options.name || "",
-      },
-      options
-    );
+    return this.signSession({ openId, name: options.name || "" }, options);
   }
 
   async signSession(
@@ -64,11 +49,7 @@ class SDKServer {
     const expirationSeconds = Math.floor((issuedAt + expiresInMs) / 1000);
     const secretKey = this.getSessionSecret();
 
-    return new SignJWT({
-      openId: payload.openId,
-      appId: payload.appId,
-      name: payload.name,
-    })
+    return new SignJWT({ openId: payload.openId, name: payload.name })
       .setProtectedHeader({ alg: "HS256", typ: "JWT" })
       .setExpirationTime(expirationSeconds)
       .sign(secretKey);
@@ -76,33 +57,19 @@ class SDKServer {
 
   async verifySession(
     cookieValue: string | undefined | null
-  ): Promise<{ openId: string; appId: string; name: string } | null> {
-    if (!cookieValue) {
-      console.warn("[Auth] Missing session cookie");
-      return null;
-    }
+  ): Promise<{ openId: string; name: string } | null> {
+    if (!cookieValue) return null;
 
     try {
       const secretKey = this.getSessionSecret();
       const { payload } = await jwtVerify(cookieValue, secretKey, {
         algorithms: ["HS256"],
       });
-      const { openId, appId, name } = payload as Record<string, unknown>;
+      const { openId, name } = payload as Record<string, unknown>;
 
-      if (
-        !isNonEmptyString(openId) ||
-        !isNonEmptyString(appId) ||
-        !isNonEmptyString(name)
-      ) {
-        console.warn("[Auth] Session payload missing required fields");
-        return null;
-      }
+      if (!isNonEmptyString(openId)) return null;
 
-      return {
-        openId,
-        appId,
-        name,
-      };
+      return { openId, name: isNonEmptyString(name) ? name : "" };
     } catch (error) {
       console.warn("[Auth] Session verification failed", String(error));
       return null;
@@ -126,10 +93,7 @@ class SDKServer {
       throw ForbiddenError("User not found");
     }
 
-    await db.upsertUser({
-      openId: user.openId,
-      lastSignedIn: signedInAt,
-    });
+    await db.upsertUser({ openId: user.openId, lastSignedIn: new Date() });
 
     return user;
   }
