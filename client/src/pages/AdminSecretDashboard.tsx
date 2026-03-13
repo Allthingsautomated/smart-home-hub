@@ -411,17 +411,17 @@ export default function AdminSecretDashboard() {
             </div>
           ))}
 
-          {/* Pricing external link */}
+          {/* Admin Tools */}
           <div className="mb-6">
             <p className="text-slate-500 text-[10px] font-semibold uppercase tracking-widest px-3 mb-2">
               TOOLS
             </p>
             <button
-              onClick={() => navigate("/pricing")}
+              onClick={() => navigate("/admin/price-manager")}
               className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:bg-white/5 hover:text-white transition-all"
             >
               <Tag className="w-4 h-4 shrink-0" />
-              Pricing Manager
+              Price Manager
             </button>
             <button
               onClick={() => navigate("/admin/blog-editor")}
@@ -631,7 +631,7 @@ export default function AdminSecretDashboard() {
                     <Plus size={16} /> New Blog Post
                   </button>
                   <button
-                    onClick={() => navigate("/pricing")}
+                    onClick={() => navigate("/admin/price-manager")}
                     className="flex items-center gap-2 px-4 py-2.5 bg-amber-50 text-amber-700 rounded-xl text-sm font-medium hover:bg-amber-100 transition"
                   >
                     <Tag size={16} /> Manage Pricing
