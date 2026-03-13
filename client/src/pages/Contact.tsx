@@ -11,20 +11,10 @@ import {
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useState } from "react";
-import { useLocation } from "wouter";
-import MobileNav from "@/components/MobileNav";
-
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-};
+import ServicePageHeader from "@/components/ServicePageHeader";
+import PageFooter from "@/components/PageFooter";
 
 export default function Contact() {
-  const [, navigate] = useLocation();
-  
-  const handleNavigation = (path: string) => {
-    scrollToTop();
-    navigate(path);
-  };
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -66,53 +56,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-slate-50">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto py-4">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={() => handleNavigation("/")}
-              className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
-            >
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
-                alt="All Things Automated Logo"
-                className="h-12 w-auto"
-              />
-              <span className="text-xl font-bold">All Things Automated</span>
-            </button>
-            <div className="hidden md:flex items-center space-x-6">
-              <button
-                onClick={() => handleNavigation("/")}
-                className="hover:text-primary transition-colors"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => handleNavigation("/about")}
-                className="hover:text-primary transition-colors"
-              >
-                About Us
-              </button>
-              <button
-                onClick={() => handleNavigation("/services")}
-                className="hover:text-primary transition-colors"
-              >
-                Services
-              </button>
-              <button
-                onClick={() => handleNavigation("/contact")}
-                className="text-primary font-semibold"
-              >
-                Contact
-              </button>
-              <Button className="rounded-full">Book Now</Button>
-            </div>
-            <MobileNav onNavigate={handleNavigation} />
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen flex flex-col bg-background">
+      <ServicePageHeader />
 
       {/* Hero Section */}
       <section className="py-32 bg-background">
@@ -285,103 +230,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-foreground text-background py-16 mt-auto">
-        <div className="container">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div>
-              <div className="flex items-center space-x-2 mb-6">
-                <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
-                  alt="All Things Automated Logo"
-                  className="h-10 w-auto"
-                />
-                <span className="text-lg font-bold">All Things Automated</span>
-              </div>
-              <p className="text-sm opacity-80">
-                Intelligent automation for modern homes.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Navigate</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/")}
-                    className="hover:opacity-100"
-                  >
-                    Home
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/about")}
-                    className="hover:opacity-100"
-                  >
-                    About
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/services")}
-                    className="hover:opacity-100"
-                  >
-                    Services
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/contact")}
-                    className="hover:opacity-100"
-                  >
-                    Contact Us
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleNavigation("/blog")}
-                    className="hover:opacity-100"
-                  >
-                    Blog
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li>Smart Lighting</li>
-                <li>Home Security</li>
-                <li>Climate Control</li>
-                <li>Voice Control</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li>
-                  <a href="tel:(941) 263-5325" className="hover:opacity-100 transition-opacity">
-                    (941) 263-5325
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:office@allthingsautomated.org" className="hover:opacity-100 transition-opacity">
-                    office@allthingsautomated.org
-                  </a>
-                </li>
-                <li>Available 24/7</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-background/20 pt-8 text-center text-sm opacity-80">
-            <p>© 2026 All Things Automated. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <PageFooter />
     </div>
   );
 }
