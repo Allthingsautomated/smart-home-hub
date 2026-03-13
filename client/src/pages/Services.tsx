@@ -6,7 +6,6 @@ import {
   ShieldCheck,
   Thermometer,
   Mic,
-  Home as HomeIcon,
   Building2,
   Volume2,
   Wifi,
@@ -14,19 +13,12 @@ import {
   Leaf,
 } from "lucide-react";
 import { useLocation } from "wouter";
-import MobileNav from "@/components/MobileNav";
-
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-};
+import ServicePageHeader from "@/components/ServicePageHeader";
+import PageFooter from "@/components/PageFooter";
+import { ROUTES } from "@/lib/routes";
 
 export default function Services() {
   const [, navigate] = useLocation();
-  
-  const handleNavigation = (path: string) => {
-    scrollToTop();
-    navigate(path);
-  };
 
   const residentialServices = [
     {
@@ -34,48 +26,56 @@ export default function Services() {
       icon: Lightbulb,
       title: "Smart Lighting",
       description: "Lutron Caséta, RA3, and HomeWorks automation systems.",
+      route: ROUTES.smartLighting,
     },
     {
       id: "home-security",
       icon: ShieldCheck,
       title: "Home Security",
       description: "Ring, Lorex, and Ubiquiti security solutions.",
+      route: ROUTES.homeSecurity,
     },
     {
       id: "climate-control",
       icon: Thermometer,
       title: "Climate Control",
       description: "Intelligent HVAC and temperature management.",
+      route: ROUTES.climateControl,
     },
     {
       id: "voice-integration",
       icon: Mic,
       title: "Voice Integration",
       description: "Siri, Alexa, and Josh.ai voice control.",
+      route: ROUTES.voiceIntegration,
     },
     {
       id: "home-audio",
       icon: Volume2,
       title: "Home Audio",
       description: "Sonos and premium TV system installations.",
+      route: ROUTES.homeAudio,
     },
     {
       id: "networks",
       icon: Wifi,
       title: "Networks",
       description: "Ubiquiti networking and connectivity solutions.",
+      route: ROUTES.networks,
     },
     {
       id: "tesla-panels",
       icon: Zap,
       title: "Tesla Electrical Panels",
       description: "Tesla Powerwall and electrical panel installations.",
+      route: ROUTES.teslaPanels,
     },
     {
       id: "landscape-lighting",
       icon: Leaf,
       title: "Landscape Lighting",
       description: "Professional outdoor lighting design and installation.",
+      route: ROUTES.landscapeLighting,
     },
   ];
 
@@ -85,30 +85,35 @@ export default function Services() {
       icon: Building2,
       title: "Building Automation",
       description: "Enterprise-level Lutron and automation systems.",
+      route: ROUTES.commercialAutomation,
     },
     {
       id: "commercial-security",
       icon: ShieldCheck,
       title: "Security Solutions",
       description: "Commercial-grade security infrastructure.",
+      route: ROUTES.commercialSecurity,
     },
     {
       id: "commercial-climate",
       icon: Thermometer,
       title: "Energy Management",
       description: "Optimize energy consumption and costs.",
+      route: ROUTES.commercialClimate,
     },
     {
       id: "commercial-networks",
       icon: Wifi,
       title: "Network Infrastructure",
       description: "Enterprise Ubiquiti networking solutions.",
+      route: ROUTES.commercialNetworks,
     },
     {
-      id: "landscape-lighting",
+      id: "landscape-lighting-commercial",
       icon: Leaf,
       title: "Landscape Lighting",
       description: "Commercial outdoor lighting systems and design.",
+      route: ROUTES.landscapeLighting,
     },
   ];
 
@@ -162,11 +167,11 @@ export default function Services() {
       </nav>
 
       {/* Hero Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-20 px-4 bg-background border-b border-border/40">
         <div className="container mx-auto">
           <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-primary">Services</h1>
-            <p className="text-xl text-gray-700 leading-relaxed">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-foreground">Services</h1>
+            <p className="text-xl text-muted-foreground leading-relaxed">
               Comprehensive automation solutions for residential and commercial properties.
             </p>
           </div>
@@ -174,7 +179,7 @@ export default function Services() {
       </section>
 
       {/* Services Tabs */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-background">
         <div className="container">
           <Tabs defaultValue="residential" className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto mb-20 h-auto">
@@ -191,30 +196,28 @@ export default function Services() {
                 {residentialServices.map((service) => {
                   const IconComponent = service.icon;
                   return (
-                    <div
+                    <button
                       key={service.id}
-                      onClick={() => { scrollToTop(); navigate(`/services/${service.id}`); }}
-                      className="text-left hover:opacity-80 transition-opacity cursor-pointer"
+                      onClick={() => navigate(service.route)}
+                      className="text-left hover:opacity-80 transition-opacity cursor-pointer group"
                     >
-                      <Card className="border-none shadow-sm h-full hover:shadow-lg transition-shadow">
+                      <Card className="border border-border shadow-sm h-full hover:shadow-md transition-shadow bg-card">
                         <CardContent className="p-8">
-                          <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg flex items-center justify-center mb-6">
+                          <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg flex items-center justify-center mb-6 group-hover:from-accent/30 group-hover:to-accent/20 transition-all">
                             <IconComponent className="w-8 h-8 text-accent" />
                           </div>
-                          <h3 className="text-2xl font-bold mb-3">
+                          <h3 className="text-2xl font-bold mb-3 text-foreground">
                             {service.title}
                           </h3>
                           <p className="text-muted-foreground mb-6 leading-relaxed">
                             {service.description}
                           </p>
-                          <div className="pointer-events-none">
-                            <Button variant="outline" className="rounded-full">
-                              See More
-                            </Button>
-                          </div>
+                          <Button className="w-full">
+                            Learn More →
+                          </Button>
                         </CardContent>
                       </Card>
-                    </div>
+                    </button>
                   );
                 })}
               </div>
@@ -225,30 +228,28 @@ export default function Services() {
                 {commercialServices.map((service) => {
                   const IconComponent = service.icon;
                   return (
-                    <div
+                    <button
                       key={service.id}
-                      onClick={() => { scrollToTop(); navigate(`/services/${service.id}`); }}
-                      className="text-left hover:opacity-80 transition-opacity cursor-pointer"
+                      onClick={() => navigate(service.route)}
+                      className="text-left hover:opacity-80 transition-opacity cursor-pointer group"
                     >
-                      <Card className="border-none shadow-sm h-full hover:shadow-lg transition-shadow">
+                      <Card className="border border-border shadow-sm h-full hover:shadow-md transition-shadow bg-card">
                         <CardContent className="p-8">
-                          <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg flex items-center justify-center mb-6">
+                          <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg flex items-center justify-center mb-6 group-hover:from-accent/30 group-hover:to-accent/20 transition-all">
                             <IconComponent className="w-8 h-8 text-accent" />
                           </div>
-                          <h3 className="text-2xl font-bold mb-3">
+                          <h3 className="text-2xl font-bold mb-3 text-foreground">
                             {service.title}
                           </h3>
                           <p className="text-muted-foreground mb-6 leading-relaxed">
                             {service.description}
                           </p>
-                          <div className="pointer-events-none">
-                            <Button variant="outline" className="rounded-full">
-                              See More
-                            </Button>
-                          </div>
+                          <Button className="w-full">
+                            Learn More →
+                          </Button>
                         </CardContent>
                       </Card>
-                    </div>
+                    </button>
                   );
                 })}
               </div>
@@ -258,7 +259,7 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-40 bg-primary text-primary-foreground">
+      <section className="py-24 bg-primary text-primary-foreground">
         <div className="container text-center">
           <h2 className="text-5xl font-bold mb-8">Ready to Get Started?</h2>
           <p className="text-xl mb-12 opacity-90 max-w-2xl mx-auto">
@@ -266,8 +267,8 @@ export default function Services() {
           </p>
           <Button
             size="lg"
-            className="rounded-full bg-white text-primary hover:bg-white/90 px-8 py-6 text-lg"
-            onClick={() => navigate("/contact")}
+            className="rounded-full bg-primary-foreground text-primary hover:bg-primary-foreground/90 px-8 py-6 text-lg font-semibold"
+            onClick={() => navigate(ROUTES.contact)}
           >
             Schedule a Consultation
           </Button>
