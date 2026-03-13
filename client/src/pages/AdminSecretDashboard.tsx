@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
+import { nanoid } from "nanoid";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -45,7 +46,11 @@ import {
   TrendingUp,
   Users,
   Phone,
+  Image as ImageIcon,
+  Copy,
+  Check,
 } from "lucide-react";
+import PhotoUpload from "@/components/PhotoUpload";
 
 interface ContactSubmission {
   id: string;
@@ -81,7 +86,14 @@ interface BlogPost {
   excerpt: string;
 }
 
-type ActiveTab = "overview" | "contacts" | "quotes" | "newsletter" | "blog";
+interface UploadedPhoto {
+  id: string;
+  url: string;
+  filename: string;
+  uploadedAt: string;
+}
+
+type ActiveTab = "overview" | "contacts" | "quotes" | "newsletter" | "blog" | "media";
 
 const NAV_GROUPS = [
   {
@@ -97,6 +109,7 @@ const NAV_GROUPS = [
     items: [
       { id: "newsletter" as const, label: "Newsletter", icon: Zap },
       { id: "blog" as const, label: "Blog", icon: MessageSquare },
+      { id: "media" as const, label: "Media", icon: ImageIcon },
     ],
   },
 ];
@@ -119,6 +132,8 @@ export default function AdminSecretDashboard() {
   const [quotes, setQuotes] = useState<QuoteRequest[]>([]);
   const [subscribers, setSubscribers] = useState<NewsletterSubscriber[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [photos, setPhotos] = useState<UploadedPhoto[]>([]);
+  const [copiedUrl, setCopiedUrl] = useState<string | null>(null);
 
   const ADMIN_PASSWORD = "admin123";
 
@@ -151,6 +166,8 @@ export default function AdminSecretDashboard() {
     if (savedSubscribers) setSubscribers(JSON.parse(savedSubscribers));
     const savedBlog = localStorage.getItem("blogPosts");
     if (savedBlog) setBlogPosts(JSON.parse(savedBlog));
+    const savedPhotos = localStorage.getItem("uploadedPhotos");
+    if (savedPhotos) setPhotos(JSON.parse(savedPhotos));
   };
 
   const handleLogin = (e: React.FormEvent) => {
@@ -201,6 +218,37 @@ export default function AdminSecretDashboard() {
       setBlogPosts(updated);
       localStorage.setItem("blogPosts", JSON.stringify(updated));
     }
+  };
+
+  const handlePhotoUpload = (url: string) => {
+    const filename = url.split("/").pop() ?? "photo";
+    const newPhoto: UploadedPhoto = {
+      id: nanoid(),
+      url,
+      filename,
+      uploadedAt: new Date().toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
+    };
+    const updated = [newPhoto, ...photos];
+    setPhotos(updated);
+    localStorage.setItem("uploadedPhotos", JSON.stringify(updated));
+  };
+
+  const deletePhoto = (id: string) => {
+    if (confirm("Delete this photo?")) {
+      const updated = photos.filter(p => p.id !== id);
+      setPhotos(updated);
+      localStorage.setItem("uploadedPhotos", JSON.stringify(updated));
+    }
+  };
+
+  const copyToClipboard = (url: string) => {
+    navigator.clipboard.writeText(url);
+    setCopiedUrl(url);
+    setTimeout(() => setCopiedUrl(null), 2000);
   };
 
   const formatDate = (d: Date) =>
@@ -812,6 +860,75 @@ export default function AdminSecretDashboard() {
                         </div>
                       </div>
                     ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* ── MEDIA TAB ── */}
+          {activeTab === "media" && (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-xl font-bold text-slate-800">Photo Manager</h2>
+                <p className="text-slate-500 text-sm mt-0.5">Upload and manage your photos</p>
+              </div>
+
+              {/* Upload section */}
+              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+                <h3 className="font-semibold text-slate-800 mb-4">Upload New Photo</h3>
+                <PhotoUpload onUpload={handlePhotoUpload} />
+              </div>
+
+              {/* Photos grid */}
+              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                {photos.length === 0 ? (
+                  <div className="py-16 text-center text-slate-400">
+                    <ImageIcon className="w-10 h-10 mx-auto mb-3 opacity-30" />
+                    <p className="font-medium">No photos uploaded yet</p>
+                    <p className="text-sm mt-1">Upload your first photo above to get started.</p>
+                  </div>
+                ) : (
+                  <div className="p-6">
+                    <h3 className="font-semibold text-slate-800 mb-4">{photos.length} Photos</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {photos.map(photo => (
+                        <div key={photo.id} className="group">
+                          <div className="relative mb-3 rounded-lg overflow-hidden bg-slate-100">
+                            <img
+                              src={photo.url}
+                              alt={photo.filename}
+                              className="w-full h-40 object-cover"
+                            />
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-center justify-center gap-2">
+                              <button
+                                onClick={() => copyToClipboard(photo.url)}
+                                className="p-2 rounded-lg bg-white/20 hover:bg-white/30 transition text-white opacity-0 group-hover:opacity-100"
+                                title="Copy URL"
+                              >
+                                {copiedUrl === photo.url ? (
+                                  <Check size={18} />
+                                ) : (
+                                  <Copy size={18} />
+                                )}
+                              </button>
+                              <button
+                                onClick={() => deletePhoto(photo.id)}
+                                className="p-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 transition text-white opacity-0 group-hover:opacity-100"
+                                title="Delete"
+                              >
+                                <Trash2 size={18} />
+                              </button>
+                            </div>
+                          </div>
+                          <div className="space-y-1">
+                            <p className="text-sm font-medium text-slate-800 truncate">{photo.filename}</p>
+                            <p className="text-xs text-slate-400">{photo.uploadedAt}</p>
+                            <p className="text-xs text-slate-500 break-all font-mono">{photo.url}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
