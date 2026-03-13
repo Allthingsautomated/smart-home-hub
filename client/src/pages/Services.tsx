@@ -118,8 +118,53 @@ export default function Services() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <ServicePageHeader />
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-slate-50">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+        <div className="container mx-auto py-4">
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => navigate("/")}
+              className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+            >
+              <img
+                src="/logo.png"
+                alt="All Things Automated Logo"
+                className="h-12 w-auto"
+              />
+              <span className="text-xl font-bold">All Things Automated</span>
+            </button>
+            <div className="hidden md:flex items-center space-x-6">
+              <button
+                onClick={() => navigate("/")}
+                className="hover:text-primary transition-colors"
+              >
+                Home
+              </button>
+              <button
+                onClick={() => navigate("/about")}
+                className="hover:text-primary transition-colors"
+              >
+                About Us
+              </button>
+              <button
+                onClick={() => navigate("/services")}
+                className="text-primary font-semibold"
+              >
+                Services
+              </button>
+              <button
+                onClick={() => navigate("/contact")}
+                className="hover:text-primary transition-colors"
+              >
+                Contact
+              </button>
+              <Button className="rounded-full">Book Now</Button>
+            </div>
+            <MobileNav onNavigate={handleNavigation} />
+          </div>
+        </div>
+      </nav>
 
       {/* Hero Section */}
       <section className="py-20 px-4 bg-background border-b border-border/40">
@@ -230,7 +275,95 @@ export default function Services() {
         </div>
       </section>
 
-      <PageFooter />
+      {/* Footer */}
+      <footer className="bg-foreground text-background py-16">
+        <div className="container">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
+            <div>
+              <div className="flex items-center space-x-2 mb-6">
+                <img
+                  src="/logo.png"
+                  alt="All Things Automated Logo"
+                  className="h-10 w-auto"
+                />
+                <span className="text-lg font-bold">All Things Automated</span>
+              </div>
+              <p className="text-sm opacity-80">
+                Intelligent automation for modern homes.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Navigate</h4>
+              <ul className="space-y-2 text-sm opacity-80">
+                <li>
+                  <button
+                    onClick={() => handleNavigation("/")}
+                    className="hover:opacity-100"
+                  >
+                    Home
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleNavigation("/about")}
+                    className="hover:opacity-100"
+                  >
+                    About
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleNavigation("/services")}
+                    className="hover:opacity-100"
+                  >
+                    Services
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleNavigation("/contact")}
+                    className="hover:opacity-100"
+                  >
+                    Contact
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleNavigation("/blog")}
+                    className="hover:opacity-100"
+                  >
+                    Blog
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Services</h4>
+              <ul className="space-y-2 text-sm opacity-80">
+                <li>Smart Lighting</li>
+                <li>Home Security</li>
+                <li>Climate Control</li>
+                <li>Voice Control</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Contact</h4>
+              <ul className="space-y-2 text-sm opacity-80">
+                <li>(941) 263-5325</li>
+                <li>info@allthingsautomated.com</li>
+                <li>Available 24/7</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-background/20 pt-8 text-center text-sm opacity-80">
+            <p>© 2026 All Things Automated. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
