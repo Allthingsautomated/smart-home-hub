@@ -11,10 +11,22 @@ import {
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useState } from "react";
+import { useLocation } from "wouter";
 import ServicePageHeader from "@/components/ServicePageHeader";
 import PageFooter from "@/components/PageFooter";
+import MobileNav from "@/components/MobileNav";
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
 export default function Contact() {
+  const [, navigate] = useLocation();
+
+  const handleNavigation = (path: string) => {
+    scrollToTop();
+    navigate(path);
+  };
   const [formData, setFormData] = useState({
     name: "",
     email: "",
