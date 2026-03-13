@@ -116,7 +116,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="rounded-2xl overflow-hidden">
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/DVqMtgRDSQKXEAnK.PNG"
+                src="/logo.png"
                 alt="Jorge Romero - Founder"
                 className="w-full h-96 object-cover object-top"
               />

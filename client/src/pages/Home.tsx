@@ -98,7 +98,7 @@ export default function Home() {
               className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
+                src="/logo.png"
                 alt="SmartHome Hub Logo"
                 className="h-10 w-auto"
               />
@@ -156,11 +156,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section
-        className="relative h-screen flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://private-us-east-1.manuscdn.com/sessionFile/G41wwZxJTdeFqWuVf8Z88y/sandbox/XHFc9s6nwSGdz8ri9QjlWr-img-1_1771269105000_na1fn_c21hcnQtaG9tZS1oZXJv.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvRzQxd3daeEpUZGVGcVd1VmY4Wjg4eS9zYW5kYm94L1hIRmM5czZud1NHZHo4cmk5UWpsV3ItaW1nLTFfMTc3MTI2OTEwNTAwMF9uYTFmbl9jMjFoY25RdGFHOXRaUzFvWlhKdi5qcGc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=qbwv4hUTzejzL1mj6PefAdpDLb0Cn8qCYTRv3IlWb8SfAdfxCijCBATn-kekKPEp0cN3F5g-8OAENz92uvCBTGsXt7utGT9SIHJIfeZcUj-~uHmVfaMyZbJQiZGVpbgJJJrwQM0I3Yyw1-xC1jEtCGd1MzGAn4EywjI6DKTMpcGnxHsL5hciy-1rLdOKaV0CgY1LETJ5YDTaW7JYF7xseUZhoK3XTUZVv-~ErR-uNvCvpjvX-Ic1Zee4qg~sgUehi4SWgvO-Mv9eoWdWVJ88vrSm~oJwVPlGBEBQOaRa95kYBhgvWFteV829VYjo1sfaGp8dnuPHMnI8HKNfy6oe1g__')",
-        }}
+        className="relative h-screen flex items-center justify-center bg-cover bg-center bg-gradient-to-br from-slate-900 to-slate-700"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
         <div className="relative z-10 text-center px-4 max-w-4xl">
