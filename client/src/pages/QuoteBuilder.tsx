@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import MobileNav from "@/components/MobileNav";
-import { Upload, Phone, CheckCircle, ArrowRight, Lightbulb, ShieldCheck, Thermometer, Mic } from "lucide-react";
+import ServicePageHeader from "@/components/ServicePageHeader";
+import PageFooter from "@/components/PageFooter";
+import { Upload, Phone, CheckCircle, Lightbulb, ShieldCheck, Thermometer, Mic } from "lucide-react";
 
 export default function QuoteBuilder() {
   const [, navigate] = useLocation();
@@ -84,168 +85,98 @@ export default function QuoteBuilder() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex flex-col bg-white">
-        <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <button
-                onClick={() => navigate("/")}
-                className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
-              >
-                <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
-                alt="All Things Automated Logo"
-                className="h-10 w-auto"
-              />
-  
-              </button>
-            </div>
-          </div>
-        </nav>
+      <div className="min-h-screen flex flex-col bg-background">
+        <ServicePageHeader />
 
         <div className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="text-center">
             <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Thank You!</h2>
-            <p className="text-gray-600 mb-4">Your project has been submitted successfully.</p>
-            <p className="text-gray-600">We'll analyze your video and send you an estimate within 24 hours.</p>
+            <h2 className="text-3xl font-bold text-foreground mb-2">Thank You!</h2>
+            <p className="text-muted-foreground mb-4">Your project has been submitted successfully.</p>
+            <p className="text-muted-foreground">We'll analyze your video and send you an estimate within 24 hours.</p>
           </div>
         </div>
+
+        <PageFooter />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={() => navigate("/")}
-              className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
-            >
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663351682597/UgZHwSmgWWJSnIDw.png"
-                alt="All Things Automated Logo"
-                className="h-10 w-auto"
-              />
-
-            </button>
-            <div className="hidden md:flex items-center space-x-8">
-              <button
-                onClick={() => navigate("/")}
-                className="text-primary font-semibold hover:opacity-80 transition-opacity"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => navigate("/about")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                About
-              </button>
-              <button
-                onClick={() => navigate("/services")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Services
-              </button>
-              <button
-                onClick={() => navigate("/contact")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Contact
-              </button>
-              <button
-                onClick={() => navigate("/blog")}
-                className="text-gray-700 hover:text-primary transition-colors"
-              >
-                Blog
-              </button>
-              <button
-                onClick={() => navigate("/video-estimate")}
-                className="bg-primary text-white px-6 py-2 rounded-lg hover:opacity-90 transition-opacity font-semibold"
-              >
-                Get Estimate
-              </button>
-            </div>
-            <MobileNav onNavigate={(path) => navigate(path)} />
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen flex flex-col bg-background">
+      <ServicePageHeader />
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+      <div className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl mb-4" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>GET YOUR FREE ESTIMATE IN 24 HOURS</h1>
-          <p className="text-xl text-blue-100">Show us your project with a quick video. We'll analyze it and send you a detailed estimate — no service call needed.</p>
+          <p className="text-xl text-primary-foreground/80">Show us your project with a quick video. We'll analyze it and send you a detailed estimate — no service call needed.</p>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 py-12">
+      <div className="flex-1 py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Form Section */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">SUBMIT YOUR PROJECT</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-8">SUBMIT YOUR PROJECT</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Your Name *</label>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Your Name *</label>
                   <input
                     type="text"
                     name="name"
                     placeholder="John Smith"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-card"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Phone Number *</label>
                   <input
                     type="tel"
                     name="phone"
                     placeholder="(941) 263-5325"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-card"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Email Address *</label>
                   <input
                     type="email"
                     name="email"
                     placeholder="john@example.com"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-card"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Project Address *</label>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Project Address *</label>
                   <input
                     type="text"
                     name="address"
                     placeholder="123 Main St, Tampa, FL 33602"
                     value={formData.address}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-card"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Service Type *</label>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Service Type *</label>
                   <select
                     name="serviceType"
                     value={formData.serviceType}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-card"
                   >
                     <option value="smart-home">Smart Home Automation</option>
                     <option value="audio-video">Audio/Video Systems</option>
@@ -256,11 +187,11 @@ export default function QuoteBuilder() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Upload Project Video (Optional)</label>
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-600 transition-colors">
-                    <Upload className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                    <p className="text-gray-600 mb-2">Click to upload or drag and drop</p>
-                    <p className="text-sm text-gray-500 mb-4">MP4, MOV, or AVI (max 500MB)</p>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Upload Project Video (Optional)</label>
+                  <div className="border-2 border-dashed border-border rounded-lg p-8 text-center hover:border-accent transition-colors bg-muted/30">
+                    <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-2" />
+                    <p className="text-muted-foreground mb-2">Click to upload or drag and drop</p>
+                    <p className="text-sm text-muted-foreground mb-4">MP4, MOV, or AVI (max 500MB)</p>
                     <input
                       type="file"
                       accept="video/*"
@@ -272,7 +203,7 @@ export default function QuoteBuilder() {
                       {formData.videoFile ? (
                         <span className="text-green-600 font-semibold">{formData.videoFile.name}</span>
                       ) : (
-                        <span className="text-gray-600">Choose file</span>
+                        <span className="text-muted-foreground">Choose file</span>
                       )}
                     </label>
                   </div>
@@ -280,7 +211,7 @@ export default function QuoteBuilder() {
 
                 <Button
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold"
+                  className="w-full py-3 rounded-lg font-semibold"
                   disabled={uploadProgress > 0 && uploadProgress < 100}
                 >
                   {uploadProgress > 0 && uploadProgress < 100
@@ -293,46 +224,46 @@ export default function QuoteBuilder() {
             {/* Info Section */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-4xl text-gray-900 mb-4" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '300'}}>HOW IT WORKS</h3>
+                <h3 className="text-4xl text-foreground mb-4" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '300'}}>HOW IT WORKS</h3>
                 <div className="space-y-4">
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white font-bold">1</div>
+                      <div className="flex items-center justify-center h-10 w-10 rounded-md bg-accent text-accent-foreground font-bold">1</div>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>FILL OUT YOUR INFO</h4>
-                      <p className="text-gray-600">Tell us about your project and location</p>
+                      <h4 className="font-semibold text-foreground" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>FILL OUT YOUR INFO</h4>
+                      <p className="text-muted-foreground">Tell us about your project and location</p>
                     </div>
                   </div>
 
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white font-bold">2</div>
+                      <div className="flex items-center justify-center h-10 w-10 rounded-md bg-accent text-accent-foreground font-bold">2</div>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>UPLOAD YOUR VIDEO</h4>
-                      <p className="text-gray-600">Show us the area that needs work (2-5 minutes)</p>
+                      <h4 className="font-semibold text-foreground" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>UPLOAD YOUR VIDEO</h4>
+                      <p className="text-muted-foreground">Show us the area that needs work (2-5 minutes)</p>
                     </div>
                   </div>
 
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white font-bold">3</div>
+                      <div className="flex items-center justify-center h-10 w-10 rounded-md bg-accent text-accent-foreground font-bold">3</div>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>GET YOUR ESTIMATE</h4>
-                      <p className="text-gray-600">Receive a detailed estimate within 24 hours</p>
+                      <h4 className="font-semibold text-foreground" style={{fontFamily: '"Bebas Neue", sans-serif', fontWeight: '400'}}>GET YOUR ESTIMATE</h4>
+                      <p className="text-muted-foreground">Receive a detailed estimate within 24 hours</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">OR SCHEDULE A LIVE CALL</h3>
-                <p className="text-gray-600 mb-4">Prefer to show us your project in real-time? Schedule a video walkthrough with our team.</p>
+                <h3 className="text-2xl font-bold text-foreground mb-4">OR SCHEDULE A LIVE CALL</h3>
+                <p className="text-muted-foreground mb-4">Prefer to show us your project in real-time? Schedule a video walkthrough with our team.</p>
                 <Button
                   onClick={handleScheduleCall}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold flex items-center justify-center gap-2"
+                  className="w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
                   Schedule Video Call
@@ -340,23 +271,23 @@ export default function QuoteBuilder() {
               </div>
 
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">WHY CHOOSE US?</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-4">WHY CHOOSE US?</h3>
                 <ul className="space-y-3">
                   <li className="flex gap-3">
-                    <Lightbulb className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">Expert Smart Home Solutions</span>
+                    <Lightbulb className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
+                    <span className="text-foreground">Expert Smart Home Solutions</span>
                   </li>
                   <li className="flex gap-3">
-                    <ShieldCheck className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">Licensed & Insured</span>
+                    <ShieldCheck className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
+                    <span className="text-foreground">Licensed & Insured</span>
                   </li>
                   <li className="flex gap-3">
-                    <Thermometer className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">Fast, Accurate Estimates</span>
+                    <Thermometer className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
+                    <span className="text-foreground">Fast, Accurate Estimates</span>
                   </li>
                   <li className="flex gap-3">
-                    <Mic className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">24/7 Customer Support</span>
+                    <Mic className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
+                    <span className="text-foreground">24/7 Customer Support</span>
                   </li>
                 </ul>
               </div>
@@ -365,50 +296,7 @@ export default function QuoteBuilder() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h4 className="font-bold text-lg mb-4">NAVIGATE</h4>
-              <ul className="space-y-2">
-                <li><button onClick={() => navigate("/")} className="hover:text-blue-400">Home</button></li>
-                <li><button onClick={() => navigate("/about")} className="hover:text-blue-400">About</button></li>
-                <li><button onClick={() => navigate("/services")} className="hover:text-blue-400">Services</button></li>
-                <li><button onClick={() => navigate("/contact")} className="hover:text-blue-400">Contact</button></li>
-                <li><button onClick={() => navigate("/blog")} className="hover:text-blue-400">Blog</button></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold text-lg mb-4">SERVICES</h4>
-              <ul className="space-y-2">
-                <li><button onClick={() => navigate("/services")} className="hover:text-blue-400">Smart Lighting</button></li>
-                <li><button onClick={() => navigate("/services")} className="hover:text-blue-400">Home Security</button></li>
-                <li><button onClick={() => navigate("/services")} className="hover:text-blue-400">Climate Control</button></li>
-                <li><button onClick={() => navigate("/services")} className="hover:text-blue-400">Voice Control</button></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold text-lg mb-4">CONTACT</h4>
-              <p className="text-gray-400"><a href="tel:(941) 263-5325" className="hover:text-blue-400">(941) 263-5325</a></p>
-            </div>
-
-            <div>
-              <h4 className="font-bold text-lg mb-4">FOLLOW US</h4>
-              <div className="flex gap-4">
-                <a href="https://www.instagram.com/allthingsautomated8/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">Instagram</a>
-                <a href="https://www.tiktok.com/@allthingsautomated?_r=1&_t=ZT-94GKcCmT0rW" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">TikTok</a>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>&copy; 2026 All Things Automated. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <PageFooter />
     </div>
   );
 }
