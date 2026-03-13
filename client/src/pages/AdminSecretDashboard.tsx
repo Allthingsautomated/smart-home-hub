@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { nanoid } from "nanoid";
+import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -88,10 +89,13 @@ interface BlogPost {
 }
 
 interface UploadedPhoto {
-  id: string;
-  url: string;
+  id: number;
+  s3Url: string;
   filename: string;
-  uploadedAt: string;
+  uploadedAt: Date;
+  contentType: string;
+  fileSize: number;
+  s3Key: string;
 }
 
 type ActiveTab = "overview" | "contacts" | "quotes" | "newsletter" | "blog" | "media";
@@ -133,8 +137,17 @@ export default function AdminSecretDashboard() {
   const [quotes, setQuotes] = useState<QuoteRequest[]>([]);
   const [subscribers, setSubscribers] = useState<NewsletterSubscriber[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [photos, setPhotos] = useState<UploadedPhoto[]>([]);
   const [copiedUrl, setCopiedUrl] = useState<string | null>(null);
+
+  // tRPC hooks for photos
+  const photosQuery = trpc.photos.list.useQuery({ limit: 100, offset: 0 });
+  const deletePhotoMutation = trpc.photos.delete.useMutation({
+    onSuccess: () => {
+      photosQuery.refetch();
+    },
+  });
+
+  const photos = photosQuery.data?.photos || [];
 
   const ADMIN_PASSWORD = "admin123";
 
@@ -167,8 +180,7 @@ export default function AdminSecretDashboard() {
     if (savedSubscribers) setSubscribers(JSON.parse(savedSubscribers));
     const savedBlog = localStorage.getItem("blogPosts");
     if (savedBlog) setBlogPosts(JSON.parse(savedBlog));
-    const savedPhotos = localStorage.getItem("uploadedPhotos");
-    if (savedPhotos) setPhotos(JSON.parse(savedPhotos));
+    // Photos are now loaded from server via tRPC
   };
 
   const handleLogin = (e: React.FormEvent) => {
@@ -222,27 +234,13 @@ export default function AdminSecretDashboard() {
   };
 
   const handlePhotoUpload = (url: string) => {
-    const filename = url.split("/").pop() ?? "photo";
-    const newPhoto: UploadedPhoto = {
-      id: nanoid(),
-      url,
-      filename,
-      uploadedAt: new Date().toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      }),
-    };
-    const updated = [newPhoto, ...photos];
-    setPhotos(updated);
-    localStorage.setItem("uploadedPhotos", JSON.stringify(updated));
+    // Refetch photos after upload
+    photosQuery.refetch();
   };
 
-  const deletePhoto = (id: string) => {
+  const deletePhoto = (id: number) => {
     if (confirm("Delete this photo?")) {
-      const updated = photos.filter(p => p.id !== id);
-      setPhotos(updated);
-      localStorage.setItem("uploadedPhotos", JSON.stringify(updated));
+      deletePhotoMutation.mutate({ id });
     }
   };
 
@@ -896,21 +894,21 @@ export default function AdminSecretDashboard() {
                   <div className="p-6">
                     <h3 className="font-semibold text-slate-800 mb-4">{photos.length} Photos</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {photos.map(photo => (
+                      {photos.map((photo: UploadedPhoto) => (
                         <div key={photo.id} className="group">
                           <div className="relative mb-3 rounded-lg overflow-hidden bg-slate-100">
                             <img
-                              src={photo.url}
+                              src={photo.s3Url}
                               alt={photo.filename}
                               className="w-full h-40 object-cover"
                             />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-center justify-center gap-2">
                               <button
-                                onClick={() => copyToClipboard(photo.url)}
+                                onClick={() => copyToClipboard(photo.s3Url)}
                                 className="p-2 rounded-lg bg-white/20 hover:bg-white/30 transition text-white opacity-0 group-hover:opacity-100"
                                 title="Copy URL"
                               >
-                                {copiedUrl === photo.url ? (
+                                {copiedUrl === photo.s3Url ? (
                                   <Check size={18} />
                                 ) : (
                                   <Copy size={18} />
@@ -920,6 +918,7 @@ export default function AdminSecretDashboard() {
                                 onClick={() => deletePhoto(photo.id)}
                                 className="p-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 transition text-white opacity-0 group-hover:opacity-100"
                                 title="Delete"
+                                disabled={deletePhotoMutation.isPending}
                               >
                                 <Trash2 size={18} />
                               </button>
@@ -927,8 +926,14 @@ export default function AdminSecretDashboard() {
                           </div>
                           <div className="space-y-1">
                             <p className="text-sm font-medium text-slate-800 truncate">{photo.filename}</p>
-                            <p className="text-xs text-slate-400">{photo.uploadedAt}</p>
-                            <p className="text-xs text-slate-500 break-all font-mono">{photo.url}</p>
+                            <p className="text-xs text-slate-400">
+                              {new Date(photo.uploadedAt).toLocaleDateString("en-US", {
+                                year: "numeric",
+                                month: "short",
+                                day: "numeric",
+                              })}
+                            </p>
+                            <p className="text-xs text-slate-500 break-all font-mono">{photo.s3Url}</p>
                           </div>
                         </div>
                       ))}

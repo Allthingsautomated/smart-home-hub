@@ -126,3 +126,18 @@ export const platformSettings = mysqlTable("platform_settings", {
 
 export type PlatformSettings = typeof platformSettings.$inferSelect;
 export type InsertPlatformSettings = typeof platformSettings.$inferInsert;
+
+// Photos Table (for portfolio/gallery)
+export const photos = mysqlTable("photos", {
+  id: int("id").autoincrement().primaryKey(),
+  filename: varchar("filename", { length: 255 }).notNull(),
+  s3Key: varchar("s3Key", { length: 500 }).notNull().unique(),
+  s3Url: varchar("s3Url", { length: 500 }).notNull(),
+  contentType: varchar("contentType", { length: 100 }).notNull(),
+  fileSize: int("fileSize").notNull(),
+  uploadedAt: timestamp("uploadedAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Photo = typeof photos.$inferSelect;
+export type InsertPhoto = typeof photos.$inferInsert;
