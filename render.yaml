@@ -4,7 +4,7 @@ services:
     runtime: node
     region: oregon
     branch: main
-    buildCommand: pnpm install --frozen-lockfile && pnpm run build
+    buildCommand: pnpm install --frozen-lockfile && pnpm run build && pnpm exec drizzle-kit migrate
     startCommand: pnpm run start
     envVars:
       - key: NODE_ENV
